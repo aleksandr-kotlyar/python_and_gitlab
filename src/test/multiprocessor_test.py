@@ -9,27 +9,27 @@ from bs4 import BeautifulSoup
 
 # test goes about 45 seconds
 def test_multiprocessor():
-    sitemap_link = "https://bonus.qiwi.com/sitemap"
-    link_startswith = "https://bonus.qiwi.com"
+    sitemap_link: str = "https://bonus.qiwi.com/sitemap"
+    link_startswith: str = "https://bonus.qiwi.com"
 
     '''
     # arrange
     # Get sitemap page source
     '''
-    page_source = requests.get(sitemap_link).text
+    page_source: requests.Response.text = requests.get(sitemap_link).text
 
     '''
     # act
     # Collect all links from sitemap
     '''
-    list_sitemap_links = links_starting_with(page_source, link_startswith)
+    list_sitemap_links: list = links_starting_with(page_source, link_startswith)
 
     '''
     # assertion
     # Check all links return code 200
     '''
     # parallel checking in streams
-    threads = 20
+    threads: int = 15
     with Pool(processes=threads) as pool:
         # use soft assertions
         with soft_assertions():
@@ -83,4 +83,5 @@ def assert_status_code_is_200(link):
     # get status code
     code = requests.get(link).status_code
     # assert status code is equal 200
+    print(link, code)
     assert_that(code, 'status code for link "' + link + '"').is_equal_to(200)
