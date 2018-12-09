@@ -11,6 +11,8 @@ requests = "*"
 assertpy = "*"
 beautifulsoup4 = "*"
 selene = "*"
+allure-pytest = "*"
+validictory = "*"
 
 [requires]
 python_version = "3.6"
