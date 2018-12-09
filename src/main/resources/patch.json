@@ -1,0 +1,109 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "required": [
+    "args",
+    "data",
+    "files",
+    "form",
+    "headers",
+    "json",
+    "origin",
+    "url"
+  ],
+  "properties": {
+    "args": {
+      "$id": "#/properties/args",
+      "type": "object"
+    },
+    "data": {
+      "$id": "#/properties/data",
+      "type": "string"
+    },
+    "files": {
+      "$id": "#/properties/files",
+      "type": "object"
+    },
+    "form": {
+      "$id": "#/properties/form",
+      "type": "object"
+    },
+    "headers": {
+      "$id": "#/properties/headers",
+      "type": "object",
+      "required": [
+        "Accept",
+        "Accept-Encoding",
+        "Accept-Language",
+        "Connection",
+        "Content-Length",
+        "Cookie",
+        "Dnt",
+        "Host",
+        "Origin",
+        "Referer",
+        "User-Agent"
+      ],
+      "properties": {
+        "Accept": {
+          "$id": "#/properties/headers/properties/Accept",
+          "type": "string"
+        },
+        "Accept-Encoding": {
+          "$id": "#/properties/headers/properties/Accept-Encoding",
+          "type": "string"
+        },
+        "Accept-Language": {
+          "$id": "#/properties/headers/properties/Accept-Language",
+          "type": "string"
+        },
+        "Connection": {
+          "$id": "#/properties/headers/properties/Connection",
+          "type": "string"
+        },
+        "Content-Length": {
+          "$id": "#/properties/headers/properties/Content-Length",
+          "type": "string"
+        },
+        "Cookie": {
+          "$id": "#/properties/headers/properties/Cookie",
+          "type": "string"
+        },
+        "Dnt": {
+          "$id": "#/properties/headers/properties/Dnt",
+          "type": "string"
+        },
+        "Host": {
+          "$id": "#/properties/headers/properties/Host",
+          "type": "string"
+        },
+        "Origin": {
+          "$id": "#/properties/headers/properties/Origin",
+          "type": "string"
+        },
+        "Referer": {
+          "$id": "#/properties/headers/properties/Referer",
+          "type": "string"
+        },
+        "User-Agent": {
+          "$id": "#/properties/headers/properties/User-Agent",
+          "type": "string"
+        }
+      }
+    },
+    "json": {
+      "$id": "#/properties/json",
+      "type": "null"
+    },
+    "origin": {
+      "$id": "#/properties/origin",
+      "type": "string"
+    },
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string"
+    }
+  }
+}
