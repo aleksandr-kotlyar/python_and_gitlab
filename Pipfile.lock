@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f546c66b2acacefb19812005a409f79cd7f2fbf4f354b405706020bfbb4d4726"
+            "sha256": "b20f6806f76839de040e8d6da772fad37414ad34682cf8520bd0a7628513ae7b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,21 @@
         ]
     },
     "default": {
+        "allure-pytest": {
+            "hashes": [
+                "sha256:79bac46b368125e55118452de39714c892fc9af128475a9bdfce5a50f74698b1",
+                "sha256:cb70cf3d0d1aa5100db74637edad111231f0026369e9f54cf66762a840c9a11a"
+            ],
+            "index": "pypi",
+            "version": "==2.5.4"
+        },
+        "allure-python-commons": {
+            "hashes": [
+                "sha256:5d804ae6c8f8a2ec2da51e3d92a2fa4db92b12d10710ed5882c47a3504f222c3",
+                "sha256:c11ffddeea169516b46e5eaec4d846e6be195a46cf8288ce75837b408f70364f"
+            ],
+            "version": "==2.5.4"
+        },
         "assertpy": {
             "hashes": [
                 "sha256:1b7e591f490616e3f2707b6e511b91b188a8c6facb3a4ff0db2339b0a41d73c4"
@@ -55,10 +70,10 @@
         },
         "certifi": {
             "hashes": [
-                "sha256:339dc09518b07e2fa7eda5450740925974815557727d6bd35d319c1524a04a4c",
-                "sha256:6d58c986d22b038c8c0df30d639f23a3e6d172a05c3583e766f4c0b785c0986a"
+                "sha256:47f9c83ef4c0c621eaef743f133f09fa8a74a9b75f037e8624f83bd1b6626cb7",
+                "sha256:993f830721089fef441cdfeb4b2c8c9df86f0c63239f06bd025a76a7daddb033"
             ],
-            "version": "==2018.10.15"
+            "version": "==2018.11.29"
         },
         "chardet": {
             "hashes": [
@@ -167,6 +182,14 @@
                 "sha256:de9529817c93f27c8ccbfead6985011db27bd0ddfcdb2d86f3f663385c6a9c22"
             ],
             "version": "==1.24.1"
+        },
+        "validictory": {
+            "hashes": [
+                "sha256:3a87b84658592f75f37d6bab77ac223774c9989dc7349c8aad19a424770835ba",
+                "sha256:eb7ec9d811f3cf062fb943ce369a9b34a9f291037217ecf5a40a5f2421d29c0a"
+            ],
+            "index": "pypi",
+            "version": "==1.1.2"
         },
         "webdriver-manager": {
             "hashes": [
