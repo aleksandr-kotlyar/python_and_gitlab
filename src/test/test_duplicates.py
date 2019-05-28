@@ -34,3 +34,19 @@ def test_list_of_dictionaries_does_not_duplicate_by_some_key_value():
         for key in new_some_view:
             assert_that(len(new_some_view[key])).described_as(
                 f'key "{key}"" has duplicates "{new_some_view[key]}"').is_less_than_or_equal_to(1)
+
+
+def test_print_duplicates():
+    some_list = [20, 30, 20, 30, 40, 50, 15, 11, 20, 40, 50, 15, 6, 7]
+
+    some_list.sort()
+    print(some_list)
+
+    new_list = sorted(set(some_list))
+    dup_list = []
+
+    for i in range(len(new_list)):
+        if some_list.count(new_list[i]) > 1:
+            dup_list.append(new_list[i])
+
+    print(dup_list)
