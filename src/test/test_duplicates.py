@@ -1,4 +1,5 @@
 from collections import defaultdict
+from logging import info
 
 from assertpy import soft_assertions, assert_that
 
@@ -50,3 +51,24 @@ def test_print_duplicates():
             dup_list.append(new_list[i])
 
     print(dup_list)
+
+
+def has_duplicates(list_of_values):
+    value_dict = defaultdict(int)
+    for item in list_of_values:
+        value_dict[item] += 1
+    return any(val > 1 for val in value_dict.values())
+
+
+def test_print_not_duplicated():
+    list_of_values = [2, -2]
+
+    info(has_duplicates(list_of_values))
+    assert has_duplicates(list_of_values) is False
+
+
+def test_print_duplicated():
+    list_of_values = [2, 2]
+
+    info(has_duplicates(list_of_values))
+    assert has_duplicates(list_of_values) is True
