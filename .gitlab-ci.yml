@@ -5,9 +5,9 @@ stages:
 variables:
   ENVIRONMENT: 'dev'
   # suits
-  TEST_MULTI_THREAD: './src/test/multiprocessor_test::test_multiprocessor'
-  TEST_DUPLICATES: './src/test/test_duplicates'
-  TEST_API: './src/test/allure_api_test'
+  TEST_MULTI_THREAD: './src/test/multiprocessor_test.py::test_multiprocessor'
+  TEST_DUPLICATES: './src/test/test_duplicates.py'
+  TEST_API: './src/test/allure_api_test.py'
   TEST_SCOPE: $TEST_API
   # Allure
   ALLURE_DIR: $CI_JOB_ID
