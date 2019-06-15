@@ -131,4 +131,4 @@ merge_preprod:
   extends: .job_merges_template
   stage: preprod
   variables:
-    ENVIRONMENT: CI_JOB_STAGE
+    ENVIRONMENT: '$CI_JOB_STAGE'
