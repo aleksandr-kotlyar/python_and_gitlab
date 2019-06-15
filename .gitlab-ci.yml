@@ -1,0 +1,134 @@
+stages:
+  - dev
+  - preprod
+
+variables:
+  ENVIRONMENT: 'dev'
+  # suits
+  TEST_MULTI_THREAD: './src/test/multiprocessor_test.py::test_multiprocessor'
+  TEST_DUPLICATES: './src/test/test_duplicates.py'
+  TEST_API: './src/test/allure_api_test.py'
+  TEST_SCOPE: $TEST_API
+  # Allure
+  ALLURE_DIR: $CI_JOB_ID
+  ALLURE_REPORT_PATH: $CI_PROJECT_NAME!$ENVIRONMENT!$CI_COMMIT_REF_NAME!$CI_JOB_ID
+  # Slack
+  SLACK_TEXT_START: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has started_  *$CI_PIPELINE_SOURCE* job <$CI_JOB_URL|$CI_JOB_ID> on *$ENVIRONMENT* _at branch <$CI_PROJECT_URL/commit/$CI_COMMIT_SHA|$CI_COMMIT_REF_NAME>_'
+  SLACK_TEXT_FINISH: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has finished_ *$CI_PIPELINE_SOURCE* job $CI_JOB_ID on *$ENVIRONMENT* _and generated_ *<$ALLURE_REPORTS_STORAGE/$CI_PROJECT_NAME/$ENVIRONMENT/$CI_COMMIT_REF_NAME/$CI_JOB_ID|Allure Reports>*'
+
+
+.job_template:
+  allow_failure: true
+  image: python:3.7-alpine
+  script:
+    - pytest $TEST_SCOPE # --server=$ENVIRONMENT
+  tags:
+    - gitlab-org
+  only:
+    variables:
+      - $ENVIRONMENT == $CI_JOB_STAGE
+
+# JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
+.job_no_slack_template:
+  extends: .job_template
+  before_script:
+    # - apk add curl
+    - pip3 install -r ./requirements.txt
+  # after_script:
+    # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
+    # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
+
+.job_slack_template:
+  extends: .job_template
+  before_script:
+    # install curl package
+    # - apk add curl
+    # install dependencies
+    - pip3 install -r ./requirements.txt
+    # notification to Slack about test execution on ENVIRONMENT
+    # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+  # after_script:
+    # packaging allure-reports to .tgz
+    # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
+    # sending allure-reports to Allure-Storage
+    # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
+    # notification to Slack about finished test execution on ENVIRONMENT with link to allure-report
+    # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+
+# JOBS ON PUSH: dev
+.job_push_template:
+  extends: .job_no_slack_template
+  only:
+    refs:
+      # Pipeline is triggered by a git push by the user
+      - pushes
+
+push_dev:
+  extends: .job_push_template
+  stage: dev
+
+# JOBS ON WEB UI: dev, preprod
+.job_web_ui:
+  extends: .job_slack_template
+  only:
+    refs:
+      # For pipelines created using Run pipeline button in GitLab UI (under your project’s Pipelines)
+      - web
+
+manual_dev:
+  extends: .job_web_ui
+  stage: dev
+
+manual_preprod:
+  extends: .job_web_ui
+  stage: preprod
+
+# JOBS ON SCHEDULE: dev, preprod
+.job_schedule_template:
+  extends: .job_slack_template
+  only:
+    refs:
+      # For scheduled pipelines.
+      - schedules
+
+schedule_dev:
+  extends: .job_schedule_template
+  stage: dev
+
+schedule_preprod:
+  extends: .job_schedule_template
+  stage: preprod
+
+# JOBS ON TRIGGERS: dev, preprod
+.job_triggers_template:
+  extends: .job_slack_template
+  only:
+    refs:
+      # For scheduled pipelines.
+      - triggers
+
+triggers_dev:
+  extends: .job_triggers_template
+  stage: dev
+
+triggers_preprod:
+  extends: .job_triggers_template
+  stage: preprod
+
+# JOBS ON MERGE_REQUESTS: dev, preprod
+.job_merges_template:
+  extends: .job_slack_template
+  only:
+    refs:
+      # When a merge request is created or updated.
+      - merge_requests
+
+merge_dev:
+  extends: .job_merges_template
+  stage: dev
+
+merge_preprod:
+  extends: .job_merges_template
+  stage: preprod
+  variables:
+    ENVIRONMENT: 'preprod'
