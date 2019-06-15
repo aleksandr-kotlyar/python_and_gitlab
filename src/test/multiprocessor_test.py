@@ -2,6 +2,7 @@ import logging
 from multiprocessing.dummy import Pool
 
 import allure
+import pytest
 import requests
 from assertpy import assert_that
 from assertpy import soft_assertions
@@ -27,6 +28,7 @@ def test_multiprocessor():
 
 
 # test goes about 9 minutes
+@pytest.mark.skip(reason='gitlab execution time economy')
 def test_one_thread():
     sitemap_link = "https://bonus.qiwi.com/sitemap"
     link_startswith = "https://bonus.qiwi.com"
