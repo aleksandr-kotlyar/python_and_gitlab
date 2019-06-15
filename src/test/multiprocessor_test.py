@@ -15,12 +15,17 @@ def test_multiprocessor():
     link_startswith: str = "https://bonus.qiwi.com"
 
     with allure.step('arrange: Get sitemap page source'):
+        logging.info('START arrange: Get sitemap page source')
         page_source: requests.Response.text = requests.get(sitemap_link).text
+        logging.info('PASS arrange: Get sitemap page source')
 
     with allure.step('act: Collect all links from sitemap'):
+        logging.info('START act: Collect all links from sitemap')
         list_sitemap_links: list = links_starting_with(page_source, link_startswith)
+        logging.info('PASS act: Collect all links from sitemap')
 
     with allure.step('assert: Check all links return code 200'):
+        logging.info(f'LEN {len(list_sitemap_links)}')
         threads: int = 15
         with Pool(processes=threads) as pool:
             with soft_assertions():
@@ -61,5 +66,5 @@ def links_starting_with(page_source, schema):
 
 def assert_status_code_is_200(link):
     code = requests.get(link).status_code
-    logging.info(link, code)
+    logging.info(f'{code} {link}')
     assert_that(code, 'status code for link "' + link + '"').is_equal_to(200)
