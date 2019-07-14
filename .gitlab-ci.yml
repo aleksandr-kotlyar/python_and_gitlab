@@ -31,28 +31,21 @@ variables:
 # JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
 .job_no_slack_template:
   extends: .job_template
-  before_script:
-    # - apk add curl
-    - pip3 install -r ./requirements.txt
   # after_script:
     # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
     # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
 
 .job_slack_template:
   extends: .job_template
-  before_script:
-    # install curl package
-    # - apk add curl
-    # install dependencies
-    - pip3 install -r ./requirements.txt
-    # notification to Slack about test execution on ENVIRONMENT
+  # before_script:
+    # # notification to Slack about test execution on ENVIRONMENT
     # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
   # after_script:
-    # packaging allure-reports to .tgz
+    # # packaging allure-reports to .tgz
     # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
-    # sending allure-reports to Allure-Storage
+    # # sending allure-reports to Allure-Storage
     # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
-    # notification to Slack about finished test execution on ENVIRONMENT with link to allure-report
+    # # notification to Slack about finished test execution on ENVIRONMENT with link to allure-report
     # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
 
 # JOBS ON PUSH: dev
