@@ -10,22 +10,22 @@ from bs4 import BeautifulSoup
 
 
 # test goes about 45 seconds
+from src.main.allure_helpers import *
+
+
 def test_multiprocessor():
     sitemap_link: str = "https://bonus.qiwi.com/sitemap"
     link_startswith: str = "https://bonus.qiwi.com"
 
-    with allure.step('arrange: Get sitemap page source'):
-        logging.info('START arrange: Get sitemap page source')
+    with arrange('Get sitemap page source'):
         page_source: requests.Response.text = requests.get(sitemap_link).text
         logging.info('PASS arrange: Get sitemap page source')
 
-    with allure.step('act: Collect all links from sitemap'):
-        logging.info('START act: Collect all links from sitemap')
+    with act('Collect all links from sitemap'):
         list_sitemap_links: list = links_starting_with(page_source, link_startswith)
         logging.info('PASS act: Collect all links from sitemap')
 
-    with allure.step('assert: Check all links return code 200'):
-        logging.info(f'LEN {len(list_sitemap_links)}')
+    with assertion(f'Check all links return code 200, LEN {len(list_sitemap_links)}'):
         threads: int = 15
         with Pool(processes=threads) as pool:
             with soft_assertions():
