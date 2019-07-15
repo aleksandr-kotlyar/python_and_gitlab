@@ -13,8 +13,8 @@ def attach_json(json_object, name):
     attach(json_object, name, attachment_type.JSON)
 
 
-def step(title: str):
-    logging.info(msg=title)
+def step(title: str, action: str = None):
+    logging.info(msg=f'{action}: {title}')
     if callable(title):
         return StepContext(title.__name__, {})(title)
     else:
@@ -22,24 +22,12 @@ def step(title: str):
 
 
 def arrange(title):
-    logging.info(msg=f'ARRANGE: {title}')
-    if callable(title):
-        return StepContext(title.__name__, {})(title)
-    else:
-        return StepContext(title, {})
+    return step(title=title, action='ARRANGE')
 
 
 def act(title):
-    logging.info(msg=f'ACT: {title}')
-    if callable(title):
-        return StepContext(title.__name__, {})(title)
-    else:
-        return StepContext(title, {})
+    return step(title=title, action='ACT    ')
 
 
 def assertion(title):
-    logging.info(msg=f'ASSERT: {title}')
-    if callable(title):
-        return StepContext(title.__name__, {})(title)
-    else:
-        return StepContext(title, {})
+    return step(title=title, action='ASSERT ')
