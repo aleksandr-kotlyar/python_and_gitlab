@@ -56,6 +56,8 @@ push_dev:
   extends: .job_push_template
   variables:
     ENVIRONMENT: 'dev'
+  except:
+    - master
 
 # JOBS ON WEB UI: dev, preprod
 .job_web_ui:
