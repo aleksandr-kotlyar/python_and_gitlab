@@ -1,4 +1,5 @@
 stages:
+  - code_style
   - test
   - slack-notification
   - upload-allure-reports
@@ -17,6 +18,26 @@ variables:
   SLACK_TEXT_START: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has started_  *$CI_PIPELINE_SOURCE* job <$CI_JOB_URL|$CI_JOB_ID> on *$ENVIRONMENT* _at branch <$CI_PROJECT_URL/commit/$CI_COMMIT_SHA|$CI_COMMIT_REF_NAME>_'
   SLACK_TEXT_FINISH: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has finished_ *$CI_PIPELINE_SOURCE* job $CI_JOB_ID on *$ENVIRONMENT* _and generated_ *<$ALLURE_REPORTS_STORAGE/$CI_PROJECT_NAME/$ENVIRONMENT/$CI_COMMIT_REF_NAME/$CI_JOB_ID|Allure Reports>*'
 
+.linter_template:
+  stage: code_style
+  only:
+    refs:
+      - pushes
+  except:
+    refs:
+      - web
+      - triggers
+      - schedules
+  tags:
+    - gitlab-org
+
+pylint_check:
+  extends: .linter_template
+  script:
+    - >
+      touch __init__.py;
+      pylint --rcfile=pylintrc $(pwd) | tee ./pylint/pylint.log || pylint-exit $?;
+      rm __init__.py
 
 .job_template:
   allow_failure: true
@@ -31,18 +52,18 @@ variables:
 .job_allure_reports_upload_template:
   extends: .job_template
   stage: upload-allure-reports
-  # after_script:
+    # after_script:
     # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
-    # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
+  # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
 
 .job_slack_custom_notification_template:
   # Start and Stop notification to Slack of test execution status on ENVIRONMENT
   extends: .job_template
   stage: slack-notification
-  # before_script:
+    # before_script:
     # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
-  # after_script:
-    # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+    # after_script:
+  # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
 
 # JOBS ON PUSH: dev
 .job_push_template:
