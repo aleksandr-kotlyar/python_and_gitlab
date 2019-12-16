@@ -34,7 +34,7 @@ variables:
 pylint_check:
   extends: .linter_template
   script:
-    - echo ${pwd}
+    - echo $PWD
     - mkdir ./pylint
     - >
       touch __init__.py;
