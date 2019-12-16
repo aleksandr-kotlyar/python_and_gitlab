@@ -35,6 +35,7 @@ pylint_check:
   extends: .linter_template
   script:
     - >
+      mkdir ./pylint;
       touch __init__.py;
       pylint --rcfile=pylintrc $(pwd) | tee ./pylint/pylint.log || pylint-exit $?;
       rm __init__.py
