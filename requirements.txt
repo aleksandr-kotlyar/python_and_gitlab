@@ -1,5 +1,5 @@
 allure-pytest==2.6.5
-assertpy==0.14
+assertpy==1.0
 beautifulsoup4==4.7.1
 pytest==4.6.3
 requests==2.21.0
