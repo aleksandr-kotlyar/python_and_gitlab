@@ -1,3 +1,4 @@
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:latest
 stages:
   - code_style
   - test
@@ -44,7 +45,6 @@ pylint_check:
 
 .job_template:
   allow_failure: true
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:latest
   stage: test
   script:
     - pytest $TEST_SCOPE # --server=$ENVIRONMENT
