@@ -46,6 +46,7 @@ pylint_check:
 
 .job_template:
   allow_failure: true
+  when: manual
   script:
     - pytest $TEST_SCOPE # --server=$ENVIRONMENT
   only:
