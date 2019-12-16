@@ -40,6 +40,7 @@ pylint_check:
       touch __init__.py;
       pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?;
       rm __init__.py
+  allow_failure: true
 
 .job_template:
   allow_failure: true
