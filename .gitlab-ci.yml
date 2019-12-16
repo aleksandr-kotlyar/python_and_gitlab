@@ -95,24 +95,6 @@ schedule_preprod:
   variables:
     ENVIRONMENT: 'preprod'
 
-# JOBS ON TRIGGERS: dev, preprod
-.job_triggers_template:
-  extends: .job_template
-  only:
-    refs:
-      # For scheduled pipelines.
-      - triggers
-
-triggers_dev:
-  extends: .job_triggers_template
-  variables:
-    ENVIRONMENT: 'dev'
-
-triggers_preprod:
-  extends: .job_triggers_template
-  variables:
-    ENVIRONMENT: 'preprod'
-
 # JOBS ON MERGE_REQUESTS: dev, preprod
 .job_merges_template:
   extends: .job_template

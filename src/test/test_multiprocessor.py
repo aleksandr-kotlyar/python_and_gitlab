@@ -21,7 +21,7 @@ def test_multiprocessor():
     with act('Collect all links from sitemap'):
         list_sitemap_links: list = links_starting_with(page_source, link_startswith)
 
-    with assertion(f'Check all links return code 200, LEN {len(list_sitemap_links)}'):
+    with assertion(f'Check all links return code 200, Links count "{len(list_sitemap_links)}"'):
         threads: int = 15
         with Pool(processes=threads) as pool:
             with soft_assertions():
