@@ -8,15 +8,15 @@ stages:
 
 variables:
   ENVIRONMENT: 'dev'
-  # suits
+  ## suits
   TEST_MULTI_THREAD: './src/test/test_multiprocessor.py::test_multiprocessor'
   TEST_DUPLICATES: './src/test/test_duplicates.py'
   TEST_API: './src/test/test_allure_api.py'
   TEST_SCOPE: $TEST_MULTI_THREAD
-  # Allure
+  ## Allure
   ALLURE_DIR: $CI_JOB_ID
   ALLURE_REPORT_PATH: $CI_PROJECT_NAME!$ENVIRONMENT!$CI_COMMIT_REF_NAME!$CI_JOB_ID
-  # Slack
+  ## Slack
   SLACK_TEXT_START: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has started_  *$CI_PIPELINE_SOURCE* job <$CI_JOB_URL|$CI_JOB_ID> on *$ENVIRONMENT* _at branch <$CI_PROJECT_URL/commit/$CI_COMMIT_SHA|$CI_COMMIT_REF_NAME>_'
   SLACK_TEXT_FINISH: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has finished_ *$CI_PIPELINE_SOURCE* job $CI_JOB_ID on *$ENVIRONMENT* _and generated_ *<$ALLURE_REPORTS_STORAGE/$CI_PROJECT_NAME/$ENVIRONMENT/$CI_COMMIT_REF_NAME/$CI_JOB_ID|Allure Reports>*'
 
@@ -54,29 +54,29 @@ pylint_check:
   tags:
     - gitlab-org
 
-# JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
 .job_allure_reports_upload_template:
+  ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
   extends: .job_template
   stage: upload-allure-reports
-    # after_script:
-    # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
+  # after_script:
+  # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
   # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
 
 .job_slack_custom_notification_template:
-  # Start and Stop notification to Slack of test execution status on ENVIRONMENT
+  ## Start and Stop notification to Slack of test execution status on ENVIRONMENT
   extends: .job_template
   stage: slack-notification
-    # before_script:
-    # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
-    # after_script:
+  # before_script:
+  # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+  # after_script:
   # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
 
-# JOBS ON PUSH: dev
 .job_push_template:
+  ## JOBS ON PUSH
   extends: .job_template
   only:
     refs:
-      # Pipeline is triggered by a git push by the user
+      ## Pipeline is triggered by a git push by the user
       - pushes
 
 push_dev:
@@ -87,12 +87,12 @@ push_dev:
   except:
     - master
 
-# JOBS ON WEB UI: dev, preprod
 .job_web_ui:
+  ## JOBS ON WEB UI: dev, preprod
   extends: .job_template
   only:
     refs:
-      # For pipelines created using Run pipeline button in GitLab UI (under your project’s Pipelines)
+      ## For pipelines created using Run pipeline button in GitLab UI (under your project’s Pipelines)
       - web
 
 manual_dev:
@@ -107,12 +107,12 @@ manual_preprod:
   variables:
     ENVIRONMENT: 'preprod'
 
-# JOBS ON SCHEDULE: dev, preprod
 .job_schedule_template:
+  ## JOBS ON SCHEDULE: dev, preprod
   extends: .job_template
   only:
     refs:
-      # For scheduled pipelines.
+      ## For scheduled pipelines.
       - schedules
 
 schedule_dev:
@@ -127,8 +127,8 @@ schedule_preprod:
   variables:
     ENVIRONMENT: 'preprod'
 
-# JOBS ON MERGE_REQUESTS: dev, preprod
 .job_merges_template:
+  ## JOBS ON MERGE_REQUESTS: dev, preprod
   extends: .job_push_template
   only:
     refs:
