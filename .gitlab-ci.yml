@@ -38,7 +38,7 @@ pylint_check:
     - mkdir ./pylint
     - >
       touch __init__.py;
-      pylint --rcfile=pylintrc $(pwd) | tee ./pylint/pylint.log || pylint-exit $?;
+      pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?;
       rm __init__.py
 
 .job_template:
