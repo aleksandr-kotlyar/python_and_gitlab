@@ -51,6 +51,9 @@ pylint_check:
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
+  artifacts:
+    paths:
+      - reports
   tags:
     - gitlab-org
 
