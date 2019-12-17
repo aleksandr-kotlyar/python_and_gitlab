@@ -46,7 +46,6 @@ pylint_check:
 
 .job_template:
   allow_failure: true
-  when: manual
   script:
     - pytest $TEST_SCOPE # --server=$ENVIRONMENT
   only:
@@ -75,6 +74,7 @@ pylint_check:
 .job_push_template:
   ## JOBS ON PUSH
   extends: .job_template
+  when: manual
   only:
     refs:
       ## Pipeline is triggered by a git push by the user
