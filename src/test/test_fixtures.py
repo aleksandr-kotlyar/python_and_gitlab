@@ -17,7 +17,7 @@ def test_parametrize_fixture_multiplication(abc, onetwothree):
     """ Example of fixture multiplication.
         For each of 'abc' to each of 'onetwothree':
         [a-1, a-2, a-3,
-        b-1, b-2, b-3, 
+        b-1, b-2, b-3,
         c-1, c-2, c-3,
     """
     assert abc == onetwothree
