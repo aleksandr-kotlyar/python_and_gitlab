@@ -12,6 +12,7 @@ from src.main.allure_helpers import arrange, act, assertion
 
 # test goes about 45 seconds
 def test_multiprocessor_sitemap_checker():
+    """ Sitemap checking for 200 status code (multi thread) """
     sitemap_link: str = "https://bonus.qiwi.com/sitemap"
     link_startswith: str = "https://bonus.qiwi.com"
 
@@ -31,6 +32,7 @@ def test_multiprocessor_sitemap_checker():
 # test goes about 9 minutes
 @pytest.mark.skip(reason='gitlab execution time economy')
 def test_one_thread_sitemap_checker():
+    """ Sitemap checking for 200 status code (one thread) """
     sitemap_link = "https://bonus.qiwi.com/sitemap"
     link_startswith = "https://bonus.qiwi.com"
 

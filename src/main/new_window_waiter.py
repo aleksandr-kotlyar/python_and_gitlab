@@ -3,6 +3,7 @@ from selene.browser import driver
 
 
 def wait_until_browser_title_equals(title, timeout, period=0.05):
+    """ Wait for browser window title name """
     import time
     must_end = time.time() + timeout
     while time.time() < must_end:

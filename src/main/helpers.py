@@ -5,6 +5,7 @@ import allure
 
 
 def read_json(filename):
+    """ Read json file from path and attach into Allure Reports """
     file_path = os.path.join(os.path.dirname(__file__), 'resources', filename)
 
     with open(file_path) as file:
