@@ -1,3 +1,4 @@
+import logging
 from multiprocessing import dummy
 
 import pytest
@@ -6,7 +7,7 @@ from assertpy import assert_that
 from assertpy import soft_assertions
 from bs4 import BeautifulSoup
 
-from src.main.allure_helpers import *
+from src.main.allure_helpers import arrange, act, assertion
 
 
 # test goes about 45 seconds
@@ -40,9 +41,8 @@ def test_one_thread_sitemap_checker():
         list_sitemap_links = links_starting_with(page_source, link_startswith)
 
     with assertion('Check all links return code 200'):
-        with soft_assertions():
-            # go through the whole links_list
-            for link in list_sitemap_links:
+        for link in list_sitemap_links:
+            with soft_assertions():
                 assert_status_code_is_200(link)
 
 
