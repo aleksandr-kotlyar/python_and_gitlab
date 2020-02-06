@@ -1,4 +1,4 @@
-# Starting my python here.
+# Starting my python here. Here you can find examples of gitlab-ci pytest jobs, pylint-check jobs, storing artifacts in gitlab, parametrization-tests, multithread using inside test, sitemap checking for status codes.
 
 To run tests you should have: 
 
