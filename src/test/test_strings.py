@@ -30,7 +30,7 @@ def test_cut_m3u8_another():
 
 
 def test_any_from_list_is_in_string():
-    """ Test method (any) and print if any finds any """
+    """ Test method any() and print if any finds any """
     arr = ['ab', 'cd', 'ej']
     string = 'cd'
     if any(test in string for test in arr):
