@@ -13,18 +13,18 @@ STRING = """#EXTM3U
 
 def test_cut_m3u8():
     """ (generator) Find first string contains m3u8 and print """
-    arr = STRING.split('\n')
-    m3u8 = next((a for a in arr if 'm3u8' in a), None)
+    lines = STRING.split('\n')
+    m3u8 = next((line for line in lines if 'm3u8' in line), None)
     logging.info(m3u8)
 
 
 def test_cut_m3u8_another():
     """ (loop with break) Find first string contains m3u8 and print """
-    arr = STRING.split('\n')
+    lines = STRING.split('\n')
     m3u8 = ''
-    for a in arr:
-        if 'm3u8' in a:
-            m3u8 = a
+    for line in lines:
+        if 'm3u8' in line:
+            m3u8 = line
             break
     logging.info(m3u8)
 

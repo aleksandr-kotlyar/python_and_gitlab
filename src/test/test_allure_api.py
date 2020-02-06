@@ -34,6 +34,7 @@ def test_response_schema_validation(method, url, json_schema):
     response = requests.request(method=method, url=url).json()
 
     allure.attach(body=json.dumps(obj=response, indent=2, ensure_ascii=False).encode('utf8'),
-                  name='API response', attachment_type=allure.attachment_type.JSON, extension='json')
+                  name='API response', attachment_type=allure.attachment_type.JSON,
+                  extension='json')
 
     validictory.validate(data=response, schema=json_schema, fail_fast=False)

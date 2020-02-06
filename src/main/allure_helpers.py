@@ -7,8 +7,7 @@ def step(title: str, action: str = None):
     logging.info(msg=f'{action}: {title}')
     if callable(title):
         return StepContext(title.__name__, {})(title)
-    else:
-        return StepContext(title, {})
+    return StepContext(title, {})
 
 
 def arrange(title):
