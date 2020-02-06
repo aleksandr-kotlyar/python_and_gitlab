@@ -6,23 +6,22 @@ from assertpy import assert_that
 from assertpy import soft_assertions
 from bs4 import BeautifulSoup
 
-
-# test goes about 45 seconds
 from src.main.allure_helpers import *
 
 
+# test goes about 45 seconds
 def test_multiprocessor():
     sitemap_link: str = "https://bonus.qiwi.com/sitemap"
     link_startswith: str = "https://bonus.qiwi.com"
 
     with arrange('Get sitemap page source'):
-        page_source: requests.Response.text = requests.get(sitemap_link).text
+        page_source = requests.get(sitemap_link).text
 
     with act('Collect all links from sitemap'):
-        list_sitemap_links: list = links_starting_with(page_source, link_startswith)
+        list_sitemap_links = links_starting_with(page_source, link_startswith)
 
     with assertion(f'Check all links return code 200, Links count "{len(list_sitemap_links)}"'):
-        threads: int = 15
+        threads = 15
         with Pool(processes=threads) as pool:
             with soft_assertions():
                 pool.map(assert_status_code_is_200, list_sitemap_links)
