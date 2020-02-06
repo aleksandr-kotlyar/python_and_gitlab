@@ -12,12 +12,14 @@ STRING = """#EXTM3U
 
 
 def test_cut_m3u8():
+    """ (generator) Find first string contains m3u8 and print """
     arr = STRING.split('\n')
     m3u8 = next((a for a in arr if 'm3u8' in a), None)
     logging.info(m3u8)
 
 
 def test_cut_m3u8_another():
+    """ (loop with break) Find first string contains m3u8 and print """
     arr = STRING.split('\n')
     m3u8 = ''
     for a in arr:
@@ -28,6 +30,7 @@ def test_cut_m3u8_another():
 
 
 def test_any_from_list_is_in_string():
+    """ Test method (any) and print if any finds any """
     arr = ['ab', 'cd', 'ej']
     string = 'cd'
     if any(test in string for test in arr):

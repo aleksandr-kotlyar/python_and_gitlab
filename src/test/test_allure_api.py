@@ -13,6 +13,19 @@ from src.main import helpers
     ('PATCH', 'https://httpbin.org/patch', 'patch.json')
 ])
 def test_response_schema_validation(method, url, json_schema):
+    """ Example with using
+        standard methods of python such as
+            json.dumps(),
+            json.loads(),
+            open(file),
+            with-construction
+
+        pytest parametrization
+
+        additional libraries:
+            allure
+            validictory
+    """
     json_schema = helpers.read_json(json_schema)
 
     allure.attach(body=url, name='Requested API', attachment_type=allure.attachment_type.URI_LIST,
