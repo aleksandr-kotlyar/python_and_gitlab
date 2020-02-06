@@ -3,5 +3,9 @@ COPY requirements.txt /app/requirements.txt
 
 WORKDIR /app
 
-RUN apk --no-cache add curl gcc libc-dev
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apk add --no-cache \
+    curl \
+    gcc \
+    libc-dev
+
+RUN pip3 install --no-cache-dir -r requirements.txt
