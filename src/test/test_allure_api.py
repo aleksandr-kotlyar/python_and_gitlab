@@ -12,7 +12,7 @@ from src.main import helpers
     ('GET', 'https://httpbin.org/get', 'get.json'),
     ('PATCH', 'https://httpbin.org/patch', 'patch.json')
 ])
-def test_requests(method, url, json_schema):
+def test_response_schema_validation(method, url, json_schema):
     json_schema = helpers.read_json(json_schema)
 
     allure.attach(body=url, name='Requested API', attachment_type=allure.attachment_type.URI_LIST,
