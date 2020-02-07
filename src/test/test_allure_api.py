@@ -1,27 +1,40 @@
+import json
+
 import allure
-from validictory import validate
+import requests
+import validictory
+from pytest import mark
 
-from src.main import api_helpers
-from src.main.helpers import read_json
-
-json_get = 'get.json'
-url_get = 'https://httpbin.org/get'
-
-json_patch = 'patch.json'
-url_patch = 'https://httpbin.org/patch'
+from src.main import helpers
 
 
-@allure.title('GET "https://httpbin.org/get"')
-def test_get():
-    json_schema = read_json(json_get)
-    requested_url = api_helpers.mutate(url_get)
-    response_body = api_helpers.get_request(requested_url)
-    validate(response_body, json_schema, fail_fast=False)
+@mark.parametrize('method, url, json_schema', [
+    ('GET', 'https://httpbin.org/get', 'get.json'),
+    ('PATCH', 'https://httpbin.org/patch', 'patch.json')
+])
+def test_response_schema_validation(method, url, json_schema):
+    """ Example with using
+        standard methods of python such as
+            json.dumps(),
+            json.loads(),
+            open(file),
+            with-construction
 
+        pytest parametrization
 
-@allure.title('PATCH "https://httpbin.org/patch"')
-def test_patch():
-    json_schema = read_json(json_patch)
-    requested_url = api_helpers.mutate(url_patch)
-    response_body = api_helpers.patch_request(requested_url)
-    validate(response_body, json_schema, fail_fast=False)
+        additional libraries:
+            allure
+            validictory
+    """
+    json_schema = helpers.read_json(json_schema)
+
+    allure.attach(body=url, name='Requested API', attachment_type=allure.attachment_type.URI_LIST,
+                  extension='txt')
+
+    response = requests.request(method=method, url=url).json()
+
+    allure.attach(body=json.dumps(obj=response, indent=2, ensure_ascii=False).encode('utf8'),
+                  name='API response', attachment_type=allure.attachment_type.JSON,
+                  extension='json')
+
+    validictory.validate(data=response, schema=json_schema, fail_fast=False)

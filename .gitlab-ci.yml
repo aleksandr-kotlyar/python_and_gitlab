@@ -9,7 +9,7 @@ stages:
 variables:
   ENVIRONMENT: 'dev'
   ## suits
-  TEST_MULTI_THREAD: './src/test/test_multiprocessor.py::test_multiprocessor'
+  TEST_MULTI_THREAD: './src/test/test_multiprocessor.py::test_multiprocessor_sitemap_checker'
   TEST_DUPLICATES: './src/test/test_duplicates.py'
   TEST_API: './src/test/test_allure_api.py'
   TEST_SCOPE: $TEST_MULTI_THREAD

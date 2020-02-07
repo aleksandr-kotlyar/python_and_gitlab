@@ -3,7 +3,7 @@ from logging import info
 
 from assertpy import soft_assertions, assert_that
 
-something = [
+SOMETHING = [
     {
         'key': 'abc', 'id': 1
     },
@@ -17,19 +17,15 @@ something = [
 
 
 def test_list_of_dictionaries_does_not_duplicate_by_some_key_value():
+    """
+    1. create new dict with global keys by some key value which could repeat in list of dictionaries
+    and append to this key a list of dictionaries, where this value figure
+    2.  assert that dictionaries does not duplicate by some key's value
+    """
     new_some_view = defaultdict(list)
 
-    """
-    create new dict with global keys by some key value, which could repeat in list of dictionaries
-    and append to this key a list of dictionaries, where this value figure
-    """
-
-    for some in something:
+    for some in SOMETHING:
         new_some_view[some['key']].append(some['id'])
-
-    """
-    assert that dictionaries does not duplicate by some key's value
-    """
 
     with soft_assertions():
         for key in new_some_view:
