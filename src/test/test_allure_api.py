@@ -4,6 +4,8 @@ import allure
 import requests
 import validictory
 from pytest import mark
+from pytest_voluptuous import S
+from voluptuous import Schema, Optional, PREVENT_EXTRA
 
 from src.main import helpers
 
@@ -38,3 +40,25 @@ def test_response_schema_validation(method, url, json_schema):
                   extension='json')
 
     validictory.validate(data=response, schema=json_schema, fail_fast=False)
+
+
+def test_voluptuous_response_schema_validation():
+    """ Example with voluptuous schema validation """
+    response = requests.get(url='https://httpbin.org/get', headers={'dnt': "1"}).json()
+
+    assert S(Schema(
+        {
+            "args": {},
+            "headers": {
+                "Accept": str,
+                Optional("Dnt"): str,
+                'Host': str,
+                'Accept-Encoding': str,
+                'User-Agent': str,
+                'X-Amzn-Trace-Id': str,
+            },
+            'origin': str,
+            'url': str
+        },
+        extra=PREVENT_EXTRA,
+        required=True)) == response
