@@ -61,5 +61,4 @@ def test_voluptuous_response_schema_validation():
             'url': str
         },
         extra=PREVENT_EXTRA,
-        required=True)
-    ) == response
+        required=True)) == response
