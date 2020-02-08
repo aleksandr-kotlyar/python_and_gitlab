@@ -8,3 +8,5 @@ validictory==1.1.2
 pylint==2.4.4
 pylint-exit==1.1.0
 anybadge==1.6.2
+voluptuous==0.11.7
+pytest-voluptuous==1.1.0
