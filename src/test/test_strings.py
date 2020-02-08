@@ -11,14 +11,14 @@ STRING = """#EXTM3U
     """
 
 
-def test_cut_m3u8():
+def test_find_string_pythonic():
     """ (generator) Find first string contains m3u8 and print """
     lines = STRING.split('\n')
     m3u8 = next((line for line in lines if 'm3u8' in line), None)
     logging.info(m3u8)
 
 
-def test_cut_m3u8_another():
+def test_find_string_classic():
     """ (loop with break) Find first string contains m3u8 and print """
     lines = STRING.split('\n')
     m3u8 = ''
@@ -29,8 +29,8 @@ def test_cut_m3u8_another():
     logging.info(m3u8)
 
 
-def test_any_from_list_is_in_string():
-    """ Test method any() and print if any finds any """
+def test_find_any_from_list():
+    """ Test method any() and print if any finds any ;) """
     arr = ['ab', 'cd', 'ej']
     string = 'cd'
     if any(test in string for test in arr):
