@@ -19,12 +19,7 @@
       "required": [
         "Accept",
         "Accept-Encoding",
-        "Accept-Language",
-        "Connection",
-        "Cookie",
-        "Dnt",
         "Host",
-        "Referer",
         "User-Agent"
       ],
       "properties": {
@@ -36,28 +31,8 @@
           "$id": "#/properties/headers/properties/Accept-Encoding",
           "type": "string"
         },
-        "Accept-Language": {
-          "$id": "#/properties/headers/properties/Accept-Language",
-          "type": "string"
-        },
-        "Connection": {
-          "$id": "#/properties/headers/properties/Connection",
-          "type": "string"
-        },
-        "Cookie": {
-          "$id": "#/properties/headers/properties/Cookie",
-          "type": "string"
-        },
-        "Dnt": {
-          "$id": "#/properties/headers/properties/Dnt",
-          "type": "string"
-        },
         "Host": {
           "$id": "#/properties/headers/properties/Host",
-          "type": "string"
-        },
-        "Referer": {
-          "$id": "#/properties/headers/properties/Referer",
           "type": "string"
         },
         "User-Agent": {
