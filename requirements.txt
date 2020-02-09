@@ -3,7 +3,7 @@ assertpy==1.0
 beautifulsoup4==4.7.1
 pytest==4.6.3
 requests==2.21.0
-selene==1.0.0a13
+selene==2.0.0a21
 validictory==1.1.2
 pylint==2.4.4
 pylint-exit==1.1.0
