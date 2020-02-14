@@ -66,7 +66,7 @@ def test_voluptuous_response_schema_validation():
 
 
 def test_voluptuous_soft_assertion_schema_validation():
-    """ Example with voluptuous schema validation """
+    """ Example with soft validation list of schemas with voluptuous """
     response_list = [
         {
             'data': {
