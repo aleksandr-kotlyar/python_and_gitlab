@@ -8,6 +8,7 @@ from pytest_voluptuous import S
 from voluptuous import Schema, Optional, PREVENT_EXTRA
 
 from src.main import helpers
+from src.test.test_assertions import soft_schema_assert, assert_voluptuous
 
 
 @mark.parametrize('method, url, json_schema', [
@@ -62,3 +63,37 @@ def test_voluptuous_response_schema_validation():
         },
         extra=PREVENT_EXTRA,
         required=True)) == response
+
+
+def test_voluptuous_soft_assertion_schema_validation():
+    """ Example with voluptuous schema validation """
+    response_list = [
+        {
+            'data': {
+                'first_name': 'John',
+                'last_name': 'Doe'
+            }
+        },
+        {
+            'data': {
+                'firstName': 'Albus',
+                'lastName': 'Dumbdoor'
+            }
+        },
+        {
+            'data': {
+                'first_name': 100,
+                'last_name': None
+            }
+        }]
+    with soft_schema_assert():
+        for response_json in response_list:
+            assert_voluptuous(S(Schema(
+                {
+                    'data': {
+                        'first_name': str,
+                        'last_name': str
+                    }
+                },
+                extra=PREVENT_EXTRA,
+                required=True)), response_json)
