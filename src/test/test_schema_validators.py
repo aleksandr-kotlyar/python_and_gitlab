@@ -12,7 +12,7 @@ from src.test.test_assertions import soft_schema_assert, assert_voluptuous
     ('GET', 'https://httpbin.org/get', 'get.json'),
     ('PATCH', 'https://httpbin.org/patch', 'patch.json')
 ])
-def test_response_schema_validation(method, url, json_schema, api_session):
+def test_validictory(method, url, json_schema, api_session):
     """ Example with using
         standard methods of python such as
             json.dumps(),
@@ -36,7 +36,7 @@ def test_response_schema_validation(method, url, json_schema, api_session):
     validictory.validate(data=response.json(), schema=json_schema, fail_fast=False)
 
 
-def test_voluptuous_response_schema_validation(api_session):
+def test_voluptuous(api_session):
     """ Example with voluptuous schema validation """
     response = api_session.get(url='https://httpbin.org/get', headers={'dnt': "1"})
 
@@ -58,7 +58,7 @@ def test_voluptuous_response_schema_validation(api_session):
         required=True)) == response.json()
 
 
-def test_voluptuous_soft_assertion_schema_validation():
+def test_voluptuous_soft_assertion():
     """ Example with soft validation list of schemas with voluptuous """
     response_list = [
         {
