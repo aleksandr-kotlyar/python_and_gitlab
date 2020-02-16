@@ -1,7 +1,4 @@
-import json
-
 import allure
-import requests
 import validictory
 from pytest import mark
 from pytest_voluptuous import S
@@ -15,7 +12,7 @@ from src.test.test_assertions import soft_schema_assert, assert_voluptuous
     ('GET', 'https://httpbin.org/get', 'get.json'),
     ('PATCH', 'https://httpbin.org/patch', 'patch.json')
 ])
-def test_response_schema_validation(method, url, json_schema):
+def test_response_schema_validation(method, url, json_schema, api_session):
     """ Example with using
         standard methods of python such as
             json.dumps(),
@@ -34,18 +31,14 @@ def test_response_schema_validation(method, url, json_schema):
     allure.attach(body=url, name='Requested API', attachment_type=allure.attachment_type.TEXT,
                   extension='txt')
 
-    response = requests.request(method=method, url=url).json()
+    response = api_session.request(method=method, url=url)
 
-    allure.attach(body=json.dumps(obj=response, indent=2, ensure_ascii=False).encode('utf8'),
-                  name='API response', attachment_type=allure.attachment_type.JSON,
-                  extension='json')
-
-    validictory.validate(data=response, schema=json_schema, fail_fast=False)
+    validictory.validate(data=response.json(), schema=json_schema, fail_fast=False)
 
 
-def test_voluptuous_response_schema_validation():
+def test_voluptuous_response_schema_validation(api_session):
     """ Example with voluptuous schema validation """
-    response = requests.get(url='https://httpbin.org/get', headers={'dnt': "1"}).json()
+    response = api_session.get(url='https://httpbin.org/get', headers={'dnt': "1"})
 
     assert S(Schema(
         {
@@ -62,7 +55,7 @@ def test_voluptuous_response_schema_validation():
             'url': str
         },
         extra=PREVENT_EXTRA,
-        required=True)) == response
+        required=True)) == response.json()
 
 
 def test_voluptuous_soft_assertion_schema_validation():
