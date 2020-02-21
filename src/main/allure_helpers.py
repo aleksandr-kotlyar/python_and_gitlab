@@ -48,7 +48,7 @@ class AllureCatchLogs:
         self.rootlogger.removeHandler(self.allurehandler)
 
 
-def add_allure_logger(function):
+def add_allure_request_logger(function):
     """
     Allure/Logger decorator for logging information about request
     """
