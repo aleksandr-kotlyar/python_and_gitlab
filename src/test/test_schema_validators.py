@@ -28,7 +28,7 @@ def test_validictory(method, url, json_schema, api_session):
     """
     json_schema = helpers.read_json(json_schema)
 
-    allure.attach(body=url, name='Requested API', attachment_type=allure.attachment_type.TEXT,
+    allure.attach(body=url, name='Requested URI', attachment_type=allure.attachment_type.TEXT,
                   extension='txt')
 
     response = api_session.request(method=method, url=url)
@@ -46,7 +46,7 @@ def test_voluptuous(api_session):
             "headers": {
                 "Accept": str,
                 Optional("Dnt"): str,
-                'Host': str,
+                # 'Host': str,
                 'Accept-Encoding': str,
                 'User-Agent': str,
                 'X-Amzn-Trace-Id': str,

@@ -1,5 +1,9 @@
+import json
 import logging
+from functools import wraps
 
+import allure
+import curlify
 from allure_commons._allure import StepContext
 
 
@@ -20,3 +24,62 @@ def act(title):
 
 def assertion(title):
     return step(title=title, action='ASSERT ')
+
+
+class AllureLoggingHandler(logging.Handler):
+    def log(self, message):
+        with allure.step(message):
+            pass
+
+    def emit(self, record):
+        self.log(record.getMessage())
+
+
+class AllureCatchLogs:
+    def __init__(self):
+        self.rootlogger = logging.getLogger()
+        self.allurehandler = AllureLoggingHandler()
+
+    def __enter__(self):
+        if self.allurehandler not in self.rootlogger.handlers:
+            self.rootlogger.addHandler(self.allurehandler)
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.rootlogger.removeHandler(self.allurehandler)
+
+
+def add_allure_logger(function):
+    """
+    Allure/Logger decorator for logging information about request
+    """
+
+    @wraps(function)
+    def wrapper(*args, **kwargs):
+        response = function(*args, **kwargs)
+        msg = curlify.to_curl(response.request)
+        logging.info(f'{response.status_code} {msg}')
+        allure.attach(
+            body=msg.encode('utf8'),
+            name=f'Request {response.status_code} {response.request.method} {response.request.url}',
+            attachment_type=allure.attachment_type.TEXT,
+            extension='txt')
+
+        try:
+            response.json()
+            allure.attach(
+                body=json.dumps(response.json(), indent=4, ensure_ascii=False).encode('utf8'),
+                name=f'Response {response.status_code} {response.request.method} {response.request.url}',
+                attachment_type=allure.attachment_type.JSON,
+                extension='json')
+
+        except ValueError as error:
+            logging.error('RESPONSE IN NOT JSON FORMAT')
+            allure.attach(
+                body=response.text.encode('utf8'),
+                name=f'NOT JSON Response {response.status_code} {response.request.method} {response.request.url}',
+                attachment_type=allure.attachment_type.TEXT,
+                extension='txt')
+            raise error
+        return response
+
+    return wrapper
