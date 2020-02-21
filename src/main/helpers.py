@@ -4,7 +4,7 @@ import os
 import allure
 from requests import Session, Response
 
-from src.main.allure_helpers import add_allure_logger
+from src.main.allure_helpers import add_allure_request_logger
 
 
 def read_json(filename):
@@ -24,7 +24,7 @@ class MySession(Session):
     def __init__(self):
         super().__init__()
 
-    @add_allure_logger
+    @add_allure_request_logger
     def request(self, method, url, **kwargs) -> Response:
         """ Log request/response to allure and info"""
 
