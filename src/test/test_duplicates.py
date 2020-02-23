@@ -1,7 +1,10 @@
+import logging
+import random
 from collections import defaultdict
 from logging import info
 
 from assertpy import soft_assertions, assert_that
+from pytest import mark
 
 SOMETHING = [
     {
@@ -33,20 +36,24 @@ def test_list_of_dictionaries_does_not_duplicate_by_some_key_value():
                 f'key "{key}"" has duplicates "{new_some_view[key]}"').is_less_than_or_equal_to(1)
 
 
-def test_print_duplicates():
-    some_list = [20, 30, 20, 30, 40, 50, 15, 11, 20, 40, 50, 15, 6, 7]
+def random_list(start, stop, _len):
+    return [random.randint(start, stop) for i in range(_len)]
 
+
+@mark.parametrize('some_list', [
+    ([20, 30, 20, 30, 40, 50, 15, 11, 20, 40, 50, 15, 6, 7]),
+    ([9, 5, 4]),
+    random_list(start=0, stop=4, _len=4),
+])
+def test_list_doesnt_have_duplicates(some_list):
     some_list.sort()
-    print(some_list)
+    logging.info(some_list)
 
-    new_list = sorted(set(some_list))
-    dup_list = []
+    uniq_list = sorted(set(some_list))
+    dup_list = [uniq_list[i] for i in range(len(uniq_list)) if some_list.count(uniq_list[i]) > 1]
+    logging.info(dup_list)
 
-    for i in range(len(new_list)):
-        if some_list.count(new_list[i]) > 1:
-            dup_list.append(new_list[i])
-
-    print(dup_list)
+    assert dup_list == [], 'duplicates'
 
 
 def has_duplicates(list_of_values):
