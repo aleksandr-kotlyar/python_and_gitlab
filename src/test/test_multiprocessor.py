@@ -62,5 +62,5 @@ def find_urls_on_sitemap(pagesource, startswith):
 def assert_status_code(url, status_code=200):
     """ Request url to assert response status code """
     code = requests.get(url=url).status_code
-    logging.info(f'{code} {url}')
+    logging.debug(f'{code} {url}')
     assert_that(val=code, description='status code for link "' + url + '"').is_equal_to(status_code)
