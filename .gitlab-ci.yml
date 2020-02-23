@@ -9,10 +9,7 @@ stages:
 variables:
   ENVIRONMENT: 'dev'
   ## suits
-  TEST_MULTI_THREAD: './src/test/test_multiprocessor.py::test_multiprocessor_sitemap_checker'
-  TEST_DUPLICATES: './src/test/test_duplicates.py'
-  TEST_API: './src/test/test_api.py'
-  TEST_SCOPE: $TEST_MULTI_THREAD
+  TEST_SCOPE: src/test
   ## Allure
   ALLURE_DIR: $CI_JOB_ID
   ALLURE_REPORT_PATH: $CI_PROJECT_NAME!$ENVIRONMENT!$CI_COMMIT_REF_NAME!$CI_JOB_ID
@@ -33,11 +30,10 @@ variables:
   tags:
     - gitlab-org
 
-pylint_check:
+Pylint:
   allow_failure: true
   extends: .linter_template
   script:
-    - echo $PWD
     - mkdir ./pylint
     - >
       touch __init__.py;
@@ -47,7 +43,7 @@ pylint_check:
 .job_template:
   allow_failure: true
   script:
-    - pytest $TEST_SCOPE # --server=$ENVIRONMENT
+    - pytest $TEST_SCOPE
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
@@ -58,18 +54,18 @@ pylint_check:
   tags:
     - gitlab-org
 
-.job_allure_reports_upload_template:
+# .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
-  extends: .job_template
-  stage: upload-allure-reports
+  # extends: .job_template
+  # stage: upload-allure-reports
   # after_script:
   # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
   # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
 
-.job_slack_custom_notification_template:
+# .job_slack_custom_notification_template:
   ## Start and Stop notification to Slack of test execution status on ENVIRONMENT
-  extends: .job_template
-  stage: slack-notification
+  # extends: .job_template
+  # stage: slack-notification
   # before_script:
   # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
   # after_script:
@@ -138,6 +134,7 @@ schedule_preprod:
   only:
     refs:
       - master
+      - merge_requests
 
 merge_dev:
   extends: .job_merges_template
