@@ -16,7 +16,7 @@ stages:
   displayName: Build image
   jobs:  
   - job: Build
-    displayName: Build
+    displayName: Build Docker image
     pool:
       vmImage: 'ubuntu-latest'
     steps:
@@ -27,3 +27,12 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+- stage: Test
+  displayName: Test
+  jobs: 
+  - job: Test
+    displayName: Test Execution
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: pytest tests
