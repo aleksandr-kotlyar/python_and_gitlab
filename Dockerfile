@@ -6,6 +6,5 @@ WORKDIR /app
 RUN apk add --no-cache \
     curl \
     gcc \
-    libc-dev
-
-RUN pip3 install --no-cache-dir -r requirements.txt
+    libc-dev \
+    && pip3 install --no-cache-dir -r requirements.txt
