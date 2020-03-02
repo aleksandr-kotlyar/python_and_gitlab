@@ -103,7 +103,7 @@ def test_chrome_manager_with_wrong_version():
 
 
 def test_chrome_manager_with_selenium():
-    driver_path = ChromeDriverManager().install()
+    driver_path = ChromeDriverManager('79.0.3945.36').install()
     driver = webdriver.Chrome(driver_path)
     driver.get("http://automation-remarks.com")
     driver.close()
