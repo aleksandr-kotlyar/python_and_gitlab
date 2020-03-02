@@ -9,7 +9,7 @@ stages:
 variables:
   ENVIRONMENT: 'dev'
   ## suits
-  TEST_SCOPE: src/test
+  TESTS: src/test
   ## Allure
   ALLURE_DIR: $CI_JOB_ID
   ALLURE_REPORT_PATH: $CI_PROJECT_NAME!$ENVIRONMENT!$CI_COMMIT_REF_NAME!$CI_JOB_ID
@@ -43,7 +43,7 @@ Pylint:
 .job_template:
   allow_failure: true
   script:
-    - pytest $TEST_SCOPE
+    - pytest ${TESTS}
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
