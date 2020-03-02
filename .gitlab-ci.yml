@@ -50,7 +50,7 @@ Pylint:
 #    - su - apps
 #    - whoami
   services:
-    - selenium/standalone-chrome
+    - selenium/standalone-chrome --host=selenium__standalone-chrome
   script:
     - pytest ${TESTS}
   only:
