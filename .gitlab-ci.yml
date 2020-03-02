@@ -42,17 +42,17 @@ Pylint:
 
 .job_template:
   allow_failure: true
-#  before_script:
-#    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -;
-#    - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list';
-#    - apt-get update && apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*;
-#    - whoami
-#    - su - apps
-#    - whoami
-  services:
-    - selenium/standalone-chrome
+  before_script:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -;
+    - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list';
+    - apt-get update && apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*;
+    - whoami
+    - su - seleuser -c "selenium-standalone start"
+    - whoami
+#  services:
+#    - selenium/standalone-chrome
   script:
-    - pytest ${TESTS} --host=selenium__standalone-chrome
+    - pytest ${TESTS}
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
