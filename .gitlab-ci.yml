@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:latest
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
 stages:
   - code_style
   - dev
@@ -42,6 +42,10 @@ Pylint:
 
 .job_template:
   allow_failure: true
+  before_script:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -;
+    - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list';
+    - apt-get update && sudo apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*;
   script:
     - pytest ${TESTS}
   only:
@@ -54,7 +58,7 @@ Pylint:
   tags:
     - gitlab-org
 
-# .job_allure_reports_upload_template:
+  # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
   # extends: .job_template
   # stage: upload-allure-reports
@@ -62,7 +66,7 @@ Pylint:
   # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
   # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
 
-# .job_slack_custom_notification_template:
+  # .job_slack_custom_notification_template:
   ## Start and Stop notification to Slack of test execution status on ENVIRONMENT
   # extends: .job_template
   # stage: slack-notification
