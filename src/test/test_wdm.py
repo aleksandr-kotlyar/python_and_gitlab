@@ -107,9 +107,10 @@ def test_chrome_manager_with_wrong_version():
                               '79.0.3945.36',
                               '80.0.3987.16',
                               '80.0.3987.106',
-                              '81.0.4044.20'])
-def test_chrome_manager_with_selenium():
-    driver_path = ChromeDriverManager().install()
+                              '81.0.4044.20',
+                              'latest'])
+def test_chrome_manager_with_selenium(version):
+    driver_path = ChromeDriverManager(version=version).install()
     driver = webdriver.Chrome(driver_path)
     driver.get("http://automation-remarks.com")
     driver.close()
