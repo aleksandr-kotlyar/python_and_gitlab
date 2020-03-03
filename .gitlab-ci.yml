@@ -49,10 +49,11 @@ Pylint:
     - whoami
     - su - apps
     - whoami
+    - su - apps -c whoami
 #  services:
 #    - sel  enium/standalone-chrome
   script:
-    - pytest ${TESTS}
+    - su - apps -c pytest ${TESTS}
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
