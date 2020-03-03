@@ -153,5 +153,5 @@ e2e:chrome:
   extends:
     - .job_template
   variables:
-    TESTS: src/test/ctc
+    TEST_SCOPE: src/test/ctc
   stage: dev
