@@ -10,5 +10,5 @@ RUN apt-get update && apt-get install -y curl \
     gnupg2 \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install --no-cache-dir -r requirements.txt
-RUN adduser apps -system -disabled-password -shell /bin/bash -ingroup sudo && mkdir -p /home/apps && chown apps:root /home/apps
+RUN adduser apps -system -disabled-password -shell /bin/bash -ingroup sudo
 ENV DISPLAY=:99.0
