@@ -53,7 +53,7 @@ Pylint:
 #  services:
 #    - sel  enium/standalone-chrome
   script:
-    - pytest ${TESTS}
+    - su apps -c "pytest ${TESTS}"
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
