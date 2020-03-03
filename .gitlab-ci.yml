@@ -31,7 +31,7 @@ variables:
   tags:
     - gitlab-org
 
-Pylint:
+.Pylint:
   allow_failure: true
   extends: .linter_template
   script:
