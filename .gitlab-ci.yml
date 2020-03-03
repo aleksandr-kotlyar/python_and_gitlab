@@ -58,8 +58,10 @@ variables:
     - whoami
     - su - apps -c whoami
     - echo $PATH
+    - echo ${CI_BUILDS_DIR}
+    - echo ${CI_PROJECT_NAME}
   script:
-    - su - apps -c "pytest --rootdir=${GIT_CLONE_PATH} ${TEST_SCOPE}"
+    - su - apps -c "pytest --rootdir=${CI_BUILDS_DIR}/${CI_PROJECT_NAME} ${TEST_SCOPE}"
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
