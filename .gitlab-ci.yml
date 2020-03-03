@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-apps-user
 
 stages:
   - code_style
@@ -47,8 +47,11 @@ Pylint:
     - whoami
     - ls -la
     - pwd
+    - su - apps
+    - whoami
+    - su - apps -c whoami
   script:
-    - pytest $TEST_SCOPE
+    - su - apps -c "pytest ${TEST_SCOPE}"
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
@@ -59,7 +62,7 @@ Pylint:
   tags:
     - gitlab-org
 
-# .job_allure_reports_upload_template:
+  # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
   # extends: .job_template
   # stage: upload-allure-reports
@@ -67,7 +70,7 @@ Pylint:
   # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
   # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
 
-# .job_slack_custom_notification_template:
+  # .job_slack_custom_notification_template:
   ## Start and Stop notification to Slack of test execution status on ENVIRONMENT
   # extends: .job_template
   # stage: slack-notification
