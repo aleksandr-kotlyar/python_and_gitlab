@@ -151,7 +151,7 @@ merge_preprod:
 
 e2e:chrome:
   extends:
-    - .job_push_template
+    - .job_template
   variables:
     TESTS: src/test/ctc
   stage: dev
