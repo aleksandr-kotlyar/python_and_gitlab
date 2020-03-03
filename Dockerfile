@@ -11,4 +11,4 @@ RUN apt-get update && apt-get install -y curl \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install --no-cache-dir -r requirements.txt
 RUN useradd apps && mkdir -p /home/apps && chown apps:apps /home/apps
-ENV DISPLAY :99.0
+ENV DISPLAY=:99.0
