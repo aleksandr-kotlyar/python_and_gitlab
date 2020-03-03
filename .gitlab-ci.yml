@@ -43,6 +43,10 @@ Pylint:
 
 .job_template:
   allow_failure: true
+  before_script:
+    - whoami
+    - ls -la
+    - pwd
   script:
     - pytest $TEST_SCOPE
   only:
@@ -151,8 +155,7 @@ merge_preprod:
 
 
 e2e:chrome:
-  extends:
-    - .job_template
+  extends: .job_template
   variables:
     TEST_SCOPE: src/test/ctc
   stage: dev
