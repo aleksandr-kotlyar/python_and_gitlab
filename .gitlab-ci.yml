@@ -9,7 +9,7 @@ stages:
 variables:
   ENVIRONMENT: 'dev'
   ## suits
-  TESTS: src/test
+  TESTS: src/test/test_wdm.py
   ## Allure
   ALLURE_DIR: $CI_JOB_ID
   ALLURE_REPORT_PATH: $CI_PROJECT_NAME!$ENVIRONMENT!$CI_COMMIT_REF_NAME!$CI_JOB_ID
@@ -83,7 +83,6 @@ Pylint:
 .job_push_template:
   ## JOBS ON PUSH
   extends: .job_template
-  when: manual
   only:
     refs:
       ## Pipeline is triggered by a git push by the user
