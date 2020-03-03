@@ -50,9 +50,9 @@ variables:
     - ls -la
     - ls /root -la
     - whoami
-    - su - apps
-    - whoami
-    - su - apps -c whoami
+    #    - su - apps
+    #    - whoami
+    #    - su - apps -c whoami
     - echo $PATH
     - echo ${CI_BUILDS_DIR}
     - echo ${GITLAB_USER_NAME}
