@@ -9,6 +9,7 @@ import requests
 import urllib3
 from pytest import mark
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager import utils
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.utils import OSType, os_name
@@ -111,7 +112,17 @@ def test_chrome_manager_with_wrong_version():
                               'latest'])
 def test_chrome_manager_with_selenium(version):
     driver_path = ChromeDriverManager(version=version).install()
-    driver = webdriver.Chrome(driver_path)
+    chrome_options = Options()
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-notifications")
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-infobars")
+    chrome_options.add_argument("--enable-automation")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-setuid-sandbox")
+    driver = webdriver.Chrome(driver_path, chrome_options=chrome_options)
     driver.get("http://automation-remarks.com")
     driver.close()
 
