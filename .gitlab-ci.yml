@@ -59,9 +59,10 @@ variables:
     - su - apps -c whoami
     - echo $PATH
     - echo ${CI_BUILDS_DIR}
+    - echo ${GITLAB_USER_NAME}
     - echo ${CI_PROJECT_NAME}
   script:
-    - su - apps -c "pytest --rootdir=${CI_BUILDS_DIR}/${CI_PROJECT_NAME} ${TEST_SCOPE}"
+    - su - apps -c "pytest --rootdir=${CI_BUILDS_DIR}/${GITLAB_USER_NAME}/${CI_PROJECT_NAME} ${TEST_SCOPE}"
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
