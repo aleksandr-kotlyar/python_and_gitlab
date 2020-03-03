@@ -45,6 +45,7 @@ Pylint:
   allow_failure: true
   before_script:
     - echo $HOME
+    - ls /root -la
     - whoami
     - ls -la
     - pwd
