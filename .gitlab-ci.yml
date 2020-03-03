@@ -60,7 +60,7 @@ variables:
     - echo ${CI_PROJECT_NAME}
     - echo ${CI_PROJECT_NAMESPACE}
   script:
-    - su - apps -c "pytest --rootdir=${CI_BUILDS_DIR}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/${TEST_SCOPE}"
+    - su - apps -c "pytest ${CI_BUILDS_DIR}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/${TEST_SCOPE}"
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
