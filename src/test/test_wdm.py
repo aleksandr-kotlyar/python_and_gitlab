@@ -112,6 +112,7 @@ def test_chrome_manager_with_wrong_version():
                               '81.0.4044.20',
                               'latest'])
 def test_chrome_manager_with_selenium(version):
+    logging.info('start')
     driver_path = ChromeDriverManager(version=version).install()
     chrome_options = Options()
     chrome_options.add_argument("--no-sandbox")
@@ -128,10 +129,11 @@ def test_chrome_manager_with_selenium(version):
     must_end = time.time() + 10
     while time.time() < must_end:
         if driver.find_element_by_id('blog-logo').is_displayed():
-            return
+            break
         time.sleep(0.05)
     assert driver.find_element_by_id('blog-logo').is_displayed()
     driver.close()
+    logging.info('finish')
 
 
 @pytest.mark.parametrize('path', [".", None])
