@@ -59,7 +59,7 @@ variables:
     - su - apps -c whoami
     - echo $PATH
   script:
-    - su - apps -c "pytest ${TEST_SCOPE}"
+    - su - apps -c "pytest --rootdir=${GIT_CLONE_PATH} ${TEST_SCOPE}"
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
