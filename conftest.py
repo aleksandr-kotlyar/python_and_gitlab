@@ -13,8 +13,9 @@ def api_session() -> MySession:
 
 
 def pytest_addoption(parser):
+    """ Pytest option variables"""
     parser.addoption('--browser',
-                     help=u'Тестовый браузер',
+                     help=u'Test browser',
                      choices=['chrome',
                               ],
                      default='chrome')
@@ -22,7 +23,6 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope='session')
 def t_browser(request):
-    # logging.getLogger("urllib3").setLevel(logging.ERROR)
     """  Test browser. Params: [chrome, opera, firefox].  """
     return request.config.getoption('--browser')
 
