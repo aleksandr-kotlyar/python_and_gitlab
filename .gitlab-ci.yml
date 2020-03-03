@@ -1,4 +1,5 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:latest
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome
+
 stages:
   - code_style
   - dev
@@ -30,7 +31,7 @@ variables:
   tags:
     - gitlab-org
 
-Pylint:
+.Pylint:
   allow_failure: true
   extends: .linter_template
   script:
@@ -42,8 +43,24 @@ Pylint:
 
 .job_template:
   allow_failure: true
+  before_script:
+    - echo $HOME
+    - pwd
+    - ls /builds -la
+    - ls -la
+    - ls /root -la
+    - whoami
+    #    - su - apps
+    #    - whoami
+    #    - su - apps -c whoami
+    - echo $PATH
+    - echo ${CI_BUILDS_DIR}
+    - echo ${GITLAB_USER_NAME}
+    - echo ${GITLAB_USER_ID}
+    - echo ${CI_PROJECT_NAME}
+    - echo ${CI_PROJECT_NAMESPACE}
   script:
-    - pytest $TEST_SCOPE
+    - pytest ${TEST_SCOPE}
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
@@ -54,7 +71,7 @@ Pylint:
   tags:
     - gitlab-org
 
-# .job_allure_reports_upload_template:
+  # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
   # extends: .job_template
   # stage: upload-allure-reports
@@ -62,7 +79,7 @@ Pylint:
   # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
   # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
 
-# .job_slack_custom_notification_template:
+  # .job_slack_custom_notification_template:
   ## Start and Stop notification to Slack of test execution status on ENVIRONMENT
   # extends: .job_template
   # stage: slack-notification
@@ -136,14 +153,9 @@ schedule_preprod:
       - master
       - merge_requests
 
-merge_dev:
-  extends: .job_merges_template
-  stage: dev
-  variables:
-    ENVIRONMENT: 'dev'
 
-merge_preprod:
-  extends: .job_merges_template
-  stage: test
+e2e:chrome:
+  extends: .job_template
   variables:
-    ENVIRONMENT: 'preprod'
+    TEST_SCOPE: src/test/ctc
+  stage: dev
