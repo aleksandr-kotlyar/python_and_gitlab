@@ -147,3 +147,11 @@ merge_preprod:
   stage: test
   variables:
     ENVIRONMENT: 'preprod'
+
+
+e2e:chrome:
+  extends:
+    - .job_push_template
+  variables:
+    TESTS: src/test/ctc
+  stage: dev
