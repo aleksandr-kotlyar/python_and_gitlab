@@ -1,7 +1,7 @@
 import logging
 
 import pytest
-from selene.support.shared import browser, config
+from selene.support.shared import config
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -9,17 +9,17 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.fixture(scope='function')
 def browser_func(t_browser):
-    browser.set_driver(custom_driver(t_browser))
+    config.driver = custom_driver(t_browser)
 
 
 @pytest.fixture(scope='class')
 def browser_class(t_browser):
-    browser.set_driver(custom_driver(t_browser))
+    config.driver = custom_driver(t_browser)
 
 
 @pytest.fixture(scope='module')
 def browser_module(t_browser):
-    browser.set_driver(custom_driver(t_browser))
+    config.driver = custom_driver(t_browser)
 
 
 def custom_driver(t_browser):
