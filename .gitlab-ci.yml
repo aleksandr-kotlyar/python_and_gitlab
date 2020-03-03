@@ -45,6 +45,7 @@ variables:
   allow_failure: true
   before_script:
     - echo $HOME
+    - echo $rootdir
     - ls /root -la
     - whoami
     - ls -la
