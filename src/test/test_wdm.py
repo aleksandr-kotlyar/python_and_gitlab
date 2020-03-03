@@ -7,6 +7,7 @@ import sys
 import pytest
 import requests
 import urllib3
+from pytest import mark
 from selenium import webdriver
 from webdriver_manager import utils
 from webdriver_manager.chrome import ChromeDriverManager
@@ -102,6 +103,11 @@ def test_chrome_manager_with_wrong_version():
     assert "There is no such driver by url" in ex.value.args[0]
 
 
+@mark.parametrize('version', ['79.0.3945.16',
+                              '79.0.3945.36',
+                              '80.0.3987.16',
+                              '80.0.3987.106',
+                              '81.0.4044.20'])
 def test_chrome_manager_with_selenium():
     driver_path = ChromeDriverManager().install()
     driver = webdriver.Chrome(driver_path)
