@@ -3,6 +3,7 @@ import os
 import platform
 import re
 import sys
+import time
 
 import pytest
 import requests
@@ -124,7 +125,12 @@ def test_chrome_manager_with_selenium(version):
     chrome_options.add_argument("--disable-setuid-sandbox")
     driver = webdriver.Chrome(driver_path, chrome_options=chrome_options)
     driver.get("http://automation-remarks.com")
-    assert driver.find_element(by='blog-logo').is_displayed()
+    must_end = time.time() + 10
+    while time.time() < must_end:
+        if driver.find_element_by_id('blog-logo').is_displayed():
+            return
+        time.sleep(0.05)
+    assert driver.find_element_by_id('blog-logo').is_displayed()
     driver.close()
 
 
