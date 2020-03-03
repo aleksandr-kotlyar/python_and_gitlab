@@ -57,6 +57,7 @@ variables:
     - su - apps
     - whoami
     - su - apps -c whoami
+    - echo $PATH
   script:
     - su - apps -c "pytest ${TEST_SCOPE}"
   only:
