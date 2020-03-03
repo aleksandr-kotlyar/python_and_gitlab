@@ -124,6 +124,7 @@ def test_chrome_manager_with_selenium(version):
     chrome_options.add_argument("--disable-setuid-sandbox")
     driver = webdriver.Chrome(driver_path, chrome_options=chrome_options)
     driver.get("http://automation-remarks.com")
+    assert driver.find_element(by='blog-logo').is_displayed()
     driver.close()
 
 
