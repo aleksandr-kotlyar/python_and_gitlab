@@ -45,24 +45,22 @@ variables:
   allow_failure: true
   before_script:
     - echo $HOME
-    - echo $rootdir
-    - cd /builds
     - pwd
-    - cd ..
+    - ls /builds -la
     - ls -la
     - ls /root -la
     - whoami
-    - ls -la
-    - pwd
     - su - apps
     - whoami
     - su - apps -c whoami
     - echo $PATH
     - echo ${CI_BUILDS_DIR}
     - echo ${GITLAB_USER_NAME}
+    - echo ${GITLAB_USER_ID}
     - echo ${CI_PROJECT_NAME}
+    - echo ${CI_PROJECT_NAMESPACE}
   script:
-    - su - apps -c "pytest --rootdir=${CI_BUILDS_DIR}/${GITLAB_USER_NAME}/${CI_PROJECT_NAME} ${TEST_SCOPE}"
+    - su - apps -c "pytest --rootdir=${CI_BUILDS_DIR}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME} ${TEST_SCOPE}"
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
