@@ -1,7 +1,8 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-80.0.3987.132
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
 
 stages:
   - code_style
+  - browser_install
   - dev
   - test
   - slack-notification
@@ -9,6 +10,7 @@ stages:
 
 variables:
   ENVIRONMENT: 'dev'
+  BROWSER: chrome
   ## suits
   TEST_SCOPE: src/test
   ## Allure
@@ -40,6 +42,17 @@ Pylint:
       touch __init__.py;
       pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?;
       rm __init__.py
+
+google-chrome:
+  stage: browser_install
+  script:
+    - |
+      wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -;
+      sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list';
+      apt-get update && apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*;
+  only:
+    variables:
+      - $BROWSER == chrome
 
 .job_template:
   allow_failure: true
