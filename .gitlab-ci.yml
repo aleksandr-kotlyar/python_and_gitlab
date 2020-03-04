@@ -45,6 +45,8 @@ Pylint:
 
 google-chrome:
   stage: browser_install
+  cache:
+    key: installed-browser
   script:
     - |
       wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -;
@@ -56,8 +58,8 @@ google-chrome:
 
 .job_template:
   allow_failure: true
-  dependencies:
-    - google-chrome
+  cache:
+    key: installed-browser
   before_script:
     - echo $HOME
     - pwd
