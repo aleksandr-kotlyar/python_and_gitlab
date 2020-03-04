@@ -52,7 +52,7 @@ google-chrome:
       apt-get update && apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*;
   only:
     variables:
-      - $BROWSER == chrome
+      - $BROWSER == 'chrome'
 
 .job_template:
   allow_failure: true
