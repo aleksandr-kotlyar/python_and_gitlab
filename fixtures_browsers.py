@@ -24,22 +24,23 @@ def browser_module(t_browser):
 
 def custom_driver(t_browser):
     """ Custom driver """
-    logging.debug('my_driver start')
-    driver = ''
+    logging.debug('custom driver config start')
     if t_browser == 'chrome':
-        driver = custom_chromedriver()
+        driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(),
+                                  chrome_options=headless_chrome_options())
     else:
         raise ValueError('t_browser does not set')
     driver.set_window_size(1376, 1200)
+    driver.set_page_load_timeout(10)
     config.timeout = 10
     config.poll_during_waits = 0.05
     config.hold_browser_open = False
-    logging.debug('my_driver finish')
+    logging.debug('custom driver config finish')
     return driver
 
 
-def custom_chromedriver():
-    """ Custom chromedriver """
+def headless_chrome_options():
+    """ Custom chrome options """
     logging.info('set chromedriver options start')
     chrome_options = Options()
     chrome_options.set_capability("pageLoadStrategy", "eager")
@@ -52,9 +53,5 @@ def custom_chromedriver():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-setuid-sandbox")
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(),
-                              chrome_options=chrome_options)
-    driver.set_page_load_timeout(10)
-
     logging.info('set chromedriver options finish')
-    return driver
+    return chrome_options
