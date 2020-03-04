@@ -56,6 +56,8 @@ google-chrome:
 
 .job_template:
   allow_failure: true
+  dependencies:
+    - google-chrome
   before_script:
     - echo $HOME
     - pwd
