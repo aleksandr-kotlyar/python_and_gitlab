@@ -10,10 +10,11 @@ import requests
 import urllib3
 from pytest import mark
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from webdriver_manager import utils
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.utils import OSType, os_name
+
+from fixtures_browsers import headless_chrome_options
 
 
 def test_os_name():
@@ -33,7 +34,9 @@ def test_platform_uname():
 
 
 def test_platform_distribution():
-    logging.info(platform.dist())
+    logging.info(platform._linux_distribution(distname='', version='', id='',
+                                              supported_dists=platform._supported_dists,
+                                              full_distribution_name=1))
 
 
 def chrome_version():
@@ -111,20 +114,11 @@ def test_chrome_manager_with_wrong_version():
                               '80.0.3987.106',
                               '81.0.4044.20',
                               'latest'])
-def test_chrome_manager_with_selenium(version):
+def test_chrome_manager_with_selenium_headless_chrome(version):
     logging.info('start')
     driver_path = ChromeDriverManager(version=version).install()
-    chrome_options = Options()
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--disable-notifications")
-    chrome_options.add_argument("--disable-extensions")
-    chrome_options.add_argument("--disable-infobars")
-    chrome_options.add_argument("--enable-automation")
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--disable-setuid-sandbox")
-    driver = webdriver.Chrome(driver_path, chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path=driver_path,
+                              options=headless_chrome_options())
     driver.get("http://automation-remarks.com")
     must_end = time.time() + 10
     while time.time() < must_end:
@@ -139,7 +133,8 @@ def test_chrome_manager_with_selenium(version):
 @pytest.mark.parametrize('path', [".", None])
 def test_chrome_manager_cached_driver_with_selenium(path):
     ChromeDriverManager(path=path).install()
-    webdriver.Chrome(ChromeDriverManager(path=path).install())
+    webdriver.Chrome(executable_path=ChromeDriverManager(path=path).install(),
+                     options=headless_chrome_options())
 
 
 @pytest.mark.parametrize('path', [".", None])

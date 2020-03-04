@@ -51,12 +51,13 @@ Pylint:
     - ls /root -la
     - whoami
     - echo $PATH
-  #    - su - apps
-  #    - whoami
-  #    - su - apps -c whoami
-  #    - echo ${CI_BUILDS_DIR}
-  #    - echo ${CI_PROJECT_NAME}
-  #    - echo ${CI_PROJECT_NAMESPACE}
+    #    - su - apps
+    #    - whoami
+    #    - su - apps -c whoami
+    #    - echo ${CI_BUILDS_DIR}
+    #    - echo ${CI_PROJECT_NAME}
+    #    - echo ${CI_PROJECT_NAMESPACE}
+    - google-chrome --version
   script:
     - pytest ${TEST_SCOPE}
   only:
