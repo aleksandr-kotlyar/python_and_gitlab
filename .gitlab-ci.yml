@@ -10,6 +10,7 @@ stages:
 variables:
   ENVIRONMENT: 'dev'
   REMOTE: 'False'
+  BROWSER: 'chrome'
   ## suits
   TEST_SCOPE: src/test
   ## Allure
@@ -61,7 +62,7 @@ Pylint:
     #    - echo ${CI_PROJECT_NAMESPACE}
     - google-chrome --version
   script:
-    - pytest ${TEST_SCOPE} --remote=${REMOTE}
+    - pytest ${TEST_SCOPE} --remote=${REMOTE} --browser=$BROWSER
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
@@ -164,19 +165,21 @@ e2e:chrome:
 e2e:remote:chrome:
   extends: .job_template
   variables:
-    TEST_SCOPE: src/test/remotedriver
+    TEST_SCOPE: src/test/ctc
   services:
     - name: selenium/standalone-chrome
   only:
     variables:
       - $REMOTE == 'True' || $REMOTE == 'true'
+      - $BROWSER == 'chrome'
 
 e2e:remote:firefox:
   extends: .job_template
   variables:
-    TEST_SCOPE: src/test/remotedriver
+    TEST_SCOPE: src/test/ctc
   services:
     - name: selenium/standalone-firefox
   only:
     variables:
       - $REMOTE == 'True' || $REMOTE == 'true'
+      - $BROWSER == 'firefox'
