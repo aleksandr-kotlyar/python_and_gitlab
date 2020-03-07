@@ -54,10 +54,10 @@ Pylint:
     - ls /root -la
     - whoami
     - echo $PATH
-    - BROWSER = $BROWSER | tr [:upper:] [:lower:]
-    - REMOTE = $REMOTE | tr [:upper:] [:lower:]
     - echo $REMOTE
     - echo $BROWSER
+    - echo "$REMOTE" | tr '[:upper:]' '[:lower:]'
+    - echo "$BROWSER" | tr '[:upper:]' '[:lower:]'
     #    - su - apps
     #    - whoami
     #    - su - apps -c whoami
@@ -66,7 +66,7 @@ Pylint:
     #    - echo ${CI_PROJECT_NAMESPACE}
     #    - google-chrome --version
   script:
-    - pytest ${TEST_SCOPE} --remote=${REMOTE,,} --browser=${BROWSER,,}
+    - pytest ${TEST_SCOPE} --remote=$(echo "$REMOTE" | tr '[:upper:]' '[:lower:]') --browser=$(echo "$BROWSER" | tr '[:upper:]' '[:lower:]')
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
