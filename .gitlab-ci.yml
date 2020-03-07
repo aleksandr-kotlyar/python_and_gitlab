@@ -61,7 +61,7 @@ Pylint:
     #    - echo ${CI_BUILDS_DIR}
     #    - echo ${CI_PROJECT_NAME}
     #    - echo ${CI_PROJECT_NAMESPACE}
-    - google-chrome --version
+    #    - google-chrome --version
   script:
     - pytest ${TEST_SCOPE} --remote=${REMOTE} --browser=$BROWSER
   only:
