@@ -9,8 +9,8 @@ stages:
 
 variables:
   ENVIRONMENT: 'dev'
-  REMOTE: 'False'
-  BROWSER: 'chrome'
+  REMOTE: 'TruE'
+  BROWSER: 'FiReFOX'
   ## suits
   TEST_SCOPE: src/test
   ## Allure
