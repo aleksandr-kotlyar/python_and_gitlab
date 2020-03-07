@@ -9,18 +9,18 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 @pytest.fixture(scope='function')
-def browser_func(t_browser):
-    config.driver = choose_driver(t_browser)
+def browser_func(choose_driver):
+    config.driver = choose_driver
 
 
 @pytest.fixture(scope='class')
-def browser_class(t_browser):
-    config.driver = choose_driver(t_browser)
+def browser_class(choose_driver):
+    config.driver = choose_driver
 
 
 @pytest.fixture(scope='module')
-def browser_module(t_browser):
-    config.driver = choose_driver(t_browser)
+def browser_module(choose_driver):
+    config.driver = choose_driver
 
 
 @pytest.fixture(scope='session')
