@@ -71,11 +71,11 @@ def remote_driver(t_browser, page_load_strategy=None):
     remote_mapping = {
         'chrome': {
             'command_executor': 'http://selenium__standalone-chrome:4444/wd/hub',
-            'options': None
+            'options': webdriver.ChromeOptions()
         },
         'firefox': {
             'command_executor': 'http://selenium__standalone-firefox:4444/wd/hub',
-            'options': None
+            'options': webdriver.FirefoxOptions()
         }
     }
     desired_capabilities = None
@@ -83,7 +83,8 @@ def remote_driver(t_browser, page_load_strategy=None):
         desired_capabilities = DesiredCapabilities().CHROME
         desired_capabilities["pageLoadStrategy"] = "eager"
 
-    driver = webdriver.Remote(command_executor=remote_mapping[t_browser]['command_executor'])
+    driver = webdriver.Remote(command_executor=remote_mapping[t_browser]['command_executor'],
+                              options=remote_mapping[t_browser]['options'])
     driver.set_window_size(1500, 1200)
     driver.set_page_load_timeout(20)
     config.timeout = 4
