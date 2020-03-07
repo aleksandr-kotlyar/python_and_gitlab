@@ -117,7 +117,6 @@ push_dev:
 
 manual_dev:
   extends: .job_web_ui
-  stage: dev
   variables:
     ENVIRONMENT: 'dev'
 
@@ -160,7 +159,6 @@ e2e:chrome:
   extends: .job_template
   variables:
     TEST_SCOPE: src/test/ctc
-  stage: dev
 
 e2e:remote:chrome:
   extends: .job_template
