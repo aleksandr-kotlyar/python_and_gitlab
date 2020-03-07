@@ -54,8 +54,8 @@ Pylint:
     - ls /root -la
     - whoami
     - echo $PATH
-    - export BROWSER = $BROWSER | tr [:upper:] [:lower:]
-    - export REMOTE = $REMOTE | tr [:upper:] [:lower:]
+    - BROWSER = $BROWSER | tr [:upper:] [:lower:]
+    - REMOTE = $REMOTE | tr [:upper:] [:lower:]
     - echo $REMOTE
     - echo $BROWSER
     #    - su - apps
