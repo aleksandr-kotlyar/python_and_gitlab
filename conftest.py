@@ -21,7 +21,7 @@ def pytest_addoption(parser):
     parser.addoption('--remote',
                      help=u'Is remote webdriver?',
                      choices=[r'(?i)true', r'(?i)false'],
-                     default='False')
+                     default='false')
 
 
 @pytest.fixture(scope='session')
