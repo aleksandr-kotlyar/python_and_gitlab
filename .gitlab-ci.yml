@@ -53,7 +53,7 @@ Pylint:
     - ls -la
     - ls /root -la
     - whoami
-    - lowercase() = {
+    - function lowercase() = {
                       arg1=$1
                       echo "$1" | tr '[:upper:]' '[:lower:]'}
     - echo $PATH
