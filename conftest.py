@@ -16,11 +16,11 @@ def pytest_addoption(parser):
     """ Pytest option variables"""
     parser.addoption('--browser',
                      help=u'Which test browser?',
-                     choices=['chrome', 'firefox'],
+                     choices=[r'(?i)chrome', r'(?i)firefox'],
                      default='chrome')
     parser.addoption('--remote',
                      help=u'Is remote webdriver?',
-                     choices=['True', 'true', 'False', 'false'],
+                     choices=[r'(?i)true', r'(?i)false'],
                      default='False')
 
 
