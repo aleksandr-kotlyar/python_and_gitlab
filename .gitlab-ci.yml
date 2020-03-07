@@ -9,8 +9,8 @@ stages:
 
 variables:
   ENVIRONMENT: 'dev'
-  REMOTE: 'TruE'
-  BROWSER: 'FiReFOX'
+  REMOTE: 'False'
+  BROWSER: 'ChroMe'
   ## suits
   TEST_SCOPE: src/test
   ## Allure
@@ -70,7 +70,7 @@ Pylint:
     #    - echo ${CI_PROJECT_NAMESPACE}
     #    - google-chrome --version
   script:
-    - pytest ${TEST_SCOPE} --remote=$(echo "$REMOTE" | tr '[:upper:]' '[:lower:]') --browser=$(echo "$BROWSER" | tr '[:upper:]' '[:lower:]')
+    - pytest ${TEST_SCOPE} --remote=$(lowercase $REMOTE) --browser=$(lowercase $BROWSER)
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
