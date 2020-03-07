@@ -53,9 +53,10 @@ Pylint:
     - ls -la
     - ls /root -la
     - whoami
-    - function lowercase() = {
-                      arg1=$1
-                      echo "$1" | tr '[:upper:]' '[:lower:]'}
+    - function lowercase =  {
+                              arg1=$1
+                              echo "$1" | tr '[:upper:]' '[:lower:]'
+                            }
     - echo $PATH
     - echo $REMOTE
     - echo $BROWSER
