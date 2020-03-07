@@ -183,4 +183,4 @@ e2e:remote:firefox:
     - name: selenium/standalone-firefox
   only:
     variables:
-      - $REMOTE == 'True' || $REMOTE == 'true' && $BROWSER == 'firefox'
+      [ $REMOTE == 'True' || $REMOTE == 'true' && $BROWSER == 'firefox' ]
