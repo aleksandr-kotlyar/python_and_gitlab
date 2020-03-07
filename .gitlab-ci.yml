@@ -160,9 +160,6 @@ e2e:chrome:
   variables:
     TEST_SCOPE: src/test/ctc
   stage: dev
-  only:
-    variables:
-      - $REMOTE == 'True' || $REMOTE == 'true'
 
 e2e:remote:chrome:
   extends: .job_template
@@ -170,6 +167,9 @@ e2e:remote:chrome:
     TEST_SCOPE: src/test/remotedriver
   services:
     - name: selenium/standalone-chrome
+  only:
+    variables:
+      - $REMOTE == 'True' || $REMOTE == 'true'
 
 e2e:remote:firefox:
   extends: .job_template
@@ -177,3 +177,6 @@ e2e:remote:firefox:
     TEST_SCOPE: src/test/remotedriver
   services:
     - name: selenium/standalone-firefox
+  only:
+    variables:
+      - $REMOTE == 'True' || $REMOTE == 'true'
