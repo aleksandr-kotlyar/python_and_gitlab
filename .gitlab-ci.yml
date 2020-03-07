@@ -57,8 +57,8 @@ Pylint:
     - echo $PATH
     - echo $REMOTE
     - echo $BROWSER
-    - echo ${lowercase $REMOTE}
-    - echo ${lowercase $BROWSER}
+    - lowercase $REMOTE
+    - lowercase $BROWSER
     #    - su - apps
     #    - whoami
     #    - su - apps -c whoami
