@@ -175,8 +175,7 @@ e2e:remote:chrome:
     - name: selenium/standalone-chrome
   only:
     variables:
-      - $REMOTE == 'True' && $BROWSER == 'chrome'
-      - $REMOTE == 'true' && $BROWSER == 'chrome'
+      - $REMOTE =~ 'true/i' && $BROWSER =~ 'chrome/i'
 
 e2e:remote:firefox:
   extends: .e2e:remote
@@ -184,5 +183,4 @@ e2e:remote:firefox:
     - name: selenium/standalone-firefox
   only:
     variables:
-      - $REMOTE == 'True' && $BROWSER == 'firefox'
-      - $REMOTE == 'true' && $BROWSER == 'firefox'
+      - $REMOTE =~ 'true/i' && $BROWSER =~ 'firefox/i'
