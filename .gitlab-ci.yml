@@ -54,8 +54,8 @@ Pylint:
     - ls /root -la
     - whoami
     - function lowercase =  {
-                              arg1=$1
-                              echo "$1" | tr '[:upper:]' '[:lower:]'
+                              arg1=$1;
+                              echo "$1" | tr '[:upper:]' '[:lower:]';
                             }
     - echo $PATH
     - echo $REMOTE
