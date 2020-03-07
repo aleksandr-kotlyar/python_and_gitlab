@@ -160,24 +160,28 @@ e2e:chrome:
   variables:
     TEST_SCOPE: src/test/ctc
 
-e2e:remote:chrome:
+
+.e2e:remote:
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:latest
   extends: .job_template
   variables:
     TEST_SCOPE: src/test/ctc
+  only:
+    variables:
+      - $REMOTE == 'True' || $REMOTE == 'true'
+
+e2e:remote:chrome:
+  extends: .e2e:remote
   services:
     - name: selenium/standalone-chrome
   only:
     variables:
-      - $REMOTE == 'True' || $REMOTE == 'true'
       - $BROWSER == 'chrome'
 
 e2e:remote:firefox:
-  extends: .job_template
-  variables:
-    TEST_SCOPE: src/test/ctc
+  extends: .e2e:remote
   services:
     - name: selenium/standalone-firefox
   only:
     variables:
-      - $REMOTE == 'True' || $REMOTE == 'true'
       - $BROWSER == 'firefox'
