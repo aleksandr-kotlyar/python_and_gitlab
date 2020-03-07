@@ -27,6 +27,11 @@ def t_browser(request):
     return request.config.getoption('--browser')
 
 
+@pytest.fixture(scope='session')
+def is_remote(request):
+    return request.config.getoption('--remote')
+
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_setup():
     """ Allure hook """
