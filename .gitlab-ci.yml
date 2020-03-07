@@ -175,7 +175,7 @@ e2e:remote:chrome:
     - name: selenium/standalone-chrome
   only:
     variables:
-      - $REMOTE == 'True' || $REMOTE == 'true' && $BROWSER == 'chrome'
+      [$REMOTE == 'True' || $REMOTE == 'true' && $BROWSER == 'chrome']
 
 e2e:remote:firefox:
   extends: .e2e:remote
