@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpine
 
 stages:
   - code_style
@@ -55,9 +55,8 @@ Pylint:
     - ls /root -la
     - whoami
     - echo $PATH
-    - export
-    - $BROWSER = $BROWSER | tr [:upper:] [:lower:]
-    - $REMOTE = $REMOTE | tr [:upper:] [:lower:]
+    - export BROWSER = $BROWSER | tr [:upper:] [:lower:]
+    - export REMOTE = $REMOTE | tr [:upper:] [:lower:]
     - echo $REMOTE
     - echo $BROWSER
     #    - su - apps
