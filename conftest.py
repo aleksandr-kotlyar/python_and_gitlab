@@ -21,8 +21,8 @@ def pytest_addoption(parser):
                      default='chrome')
     parser.addoption('--remote',
                      help=u'Test browser',
-                     choices=[True, 'true', False, 'false'],
-                     default=False)
+                     choices=['True', 'true', 'False', 'false'],
+                     default='False')
 
 
 @pytest.fixture(scope='session')
