@@ -15,12 +15,11 @@ def api_session() -> MySession:
 def pytest_addoption(parser):
     """ Pytest option variables"""
     parser.addoption('--browser',
-                     help=u'Test browser',
-                     choices=['chrome',
-                              ],
+                     help=u'Which test browser?',
+                     choices=['chrome', 'firefox'],
                      default='chrome')
     parser.addoption('--remote',
-                     help=u'Test browser',
+                     help=u'Is remote webdriver?',
                      choices=['True', 'true', 'False', 'false'],
                      default='False')
 
