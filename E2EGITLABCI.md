@@ -166,22 +166,7 @@ Return to ci. Now if you commit and push your files to gitlab, the e2e:remote:ch
 
 
 
-
-
-
-First of all: answer on the first question: what's the name of the job you will choose? Think...
-Okay. Now you know that it's e2e remote chrome job.
- $ function lowercase(){ arg1=$1; echo "$1" | tr '[:upper:]' '[:lower:]'; }
- $ echo $REMOTE
- TruE
- $ echo $BROWSER
- FireFOX
- $ lowercase $REMOTE
- true
- $ lowercase $BROWSER
- firefox
- $ pytest ${TEST_SCOPE} --remote=$(lowercase $REMOTE) --browser=$(lowercase $BROWSER)
-
+Full script will look like
 ```yaml
 variables:
   REMOTE: 'True'
