@@ -6,7 +6,6 @@ import requests
 import validictory
 
 from src.main import file
-from src.main.file import read_json
 from src.main.session import HttpbinApiSessionLevelOne as httpbin1
 
 
@@ -137,7 +136,7 @@ class TestApiLevelFour:
 
     @allure.title('GET "https://httpbin.org/get"')
     def test_get(self):
-        schema = read_json('get.json')
+        schema = file.read_json('get.json')
 
         body = self.httpbin('get', '/get')
 
@@ -145,7 +144,7 @@ class TestApiLevelFour:
 
     @allure.title('PATCH "https://httpbin.org/patch"')
     def test_patch(self):
-        schema = read_json('patch.json')
+        schema = file.read_json('patch.json')
 
         body = self.httpbin('patch', '/patch').json()
 
