@@ -1,0 +1,62 @@
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpine-req
+
+stages:
+  - code_style
+  - test
+  - slack-notification
+  - upload-allure-reports
+
+variables:
+  BROWSER: 'ChroMe'
+  REMOTE: 'True'
+  ## suits
+  TESTS: 'src/test --ignore=src/tests/ctc'
+  ## Allure
+  ALLURE_DIR: $CI_JOB_ID
+  ALLURE_REPORT_PATH: $CI_PROJECT_NAME!$ENVIRONMENT!$CI_COMMIT_REF_NAME!$CI_JOB_ID
+  ## Slack
+  SLACK_TEXT_START: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has started_  *$CI_PIPELINE_SOURCE* job <$CI_JOB_URL|$CI_JOB_ID> on *$ENVIRONMENT* _at branch <$CI_PROJECT_URL/commit/$CI_COMMIT_SHA|$CI_COMMIT_REF_NAME>_'
+  SLACK_TEXT_FINISH: 'Pipeline <$CI_PIPELINE_URL|$CI_PIPELINE_ID> _has finished_ *$CI_PIPELINE_SOURCE* job $CI_JOB_ID on *$ENVIRONMENT* _and generated_ *<$ALLURE_REPORTS_STORAGE/$CI_PROJECT_NAME/$ENVIRONMENT/$CI_COMMIT_REF_NAME/$CI_JOB_ID|Allure Reports>*'
+
+include:
+  - local: '.gitlab/linter.yml'
+  - local: '.gitlab/pytest.yml'
+  - local: '.gitlab/browser.yml'
+  - local: '.gitlab/browser-remote.yml'
+  - local: '.gitlab/manual.yml'
+
+  # .job_allure_reports_upload_template:
+  ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
+  # extends: .pytest_template
+  # stage: upload-allure-reports
+  # after_script:
+  # - tar czf "$ALLURE_REPORT_PATH.tgz" reports
+  # - curl -i -F "data=@$ALLURE_REPORT_PATH.tgz" $ALLURE_REPORTS_STORAGE/upload
+
+  # .job_slack_custom_notification_template:
+  ## Start and Stop notification to Slack of test execution status on ENVIRONMENT
+  # extends: .pytest_template
+  # stage: slack-notification
+  # before_script:
+  # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+  # after_script:
+  # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+
+schedule:
+  ## JOB ON SCHEDULE
+  extends: .pytest_template
+  only:
+    refs:
+      ## For scheduled pipelines.
+      - schedules
+
+merge:master:
+  ## JOB ON MERGE_REQUESTS
+  extends: .pytest_template
+  only:
+    refs:
+      - master
+      - merge_requests
+  except:
+    refs:
+      - pushes
