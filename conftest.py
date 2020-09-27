@@ -13,8 +13,7 @@ def pytest_addoption(parser):
                      default='chrome')
     parser.addoption('--remote',
                      help=u'Is remote webdriver?',
-                     choices=['true', 'false'],
-                     default='false')
+                     default='')
 
 
 @pytest.fixture(scope='session')
@@ -25,7 +24,8 @@ def t_browser(request):
 
 @pytest.fixture(scope='session')
 def is_remote(request):
-    return request.config.getoption('--remote')
+    """if browser is remote? Returns: True/False."""
+    return bool(request.config.getoption('--remote'))
 
 
 @pytest.hookimpl(hookwrapper=True)

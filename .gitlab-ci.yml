@@ -9,7 +9,6 @@ stages:
 
 variables:
   ENVIRONMENT: 'dev'
-  REMOTE: 'False'
   BROWSER: 'ChroMe'
   ## suits
   TEST_SCOPE: src/test
@@ -47,30 +46,13 @@ Pylint:
   allow_failure: true
   stage: test
   before_script:
-    - echo $HOME
-    - pwd
-    - ls /builds -la
-    - ls -la
-    - ls /root -la
-    - whoami
     - function lowercase(){
                            arg1=$1;
                            echo "$1" | tr '[:upper:]' '[:lower:]';
                           }
-    - echo $PATH
-    - echo $REMOTE
-    - echo $BROWSER
-    - lowercase $REMOTE
     - lowercase $BROWSER
-    #    - su - apps
-    #    - whoami
-    #    - su - apps -c whoami
-    #    - echo ${CI_BUILDS_DIR}
-    #    - echo ${CI_PROJECT_NAME}
-    #    - echo ${CI_PROJECT_NAMESPACE}
-    #    - google-chrome --version
   script:
-    - pytest ${TEST_SCOPE} --remote=$(lowercase $REMOTE) --browser=$(lowercase $BROWSER)
+    - pytest ${TEST_SCOPE} --remote=True --browser=$(lowercase $BROWSER)
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
@@ -109,6 +91,7 @@ Pylint:
 
 push_dev:
   extends: .job_push_template
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1
   stage: dev
   variables:
     ENVIRONMENT: 'dev'
@@ -128,12 +111,6 @@ manual_dev:
   variables:
     ENVIRONMENT: 'dev'
 
-manual_preprod:
-  extends: .job_web_ui
-  stage: test
-  variables:
-    ENVIRONMENT: 'preprod'
-
 .job_schedule_template:
   ## JOBS ON SCHEDULE: dev, preprod
   extends: .job_template
@@ -148,12 +125,6 @@ schedule_dev:
   variables:
     ENVIRONMENT: 'dev'
 
-schedule_preprod:
-  extends: .job_schedule_template
-  stage: test
-  variables:
-    ENVIRONMENT: 'preprod'
-
 .job_merges_template:
   ## JOBS ON MERGE_REQUESTS: dev, preprod
   extends: .job_push_template
@@ -167,7 +138,7 @@ e2e:chrome:
   extends: .job_template
   variables:
     TEST_SCOPE: src/test/ctc
-    ENV: 'dev'
+    ENVIRONMENT: 'dev'
 
 
 .e2e:remote:
@@ -181,7 +152,7 @@ e2e:remote:chrome:
     - name: selenium/standalone-chrome
   only:
     variables:
-      - $REMOTE =~ /true/i && $BROWSER =~ /chrome/i
+      - $BROWSER =~ /chrome/i
 
 e2e:remote:firefox:
   extends: .e2e:remote
@@ -189,4 +160,4 @@ e2e:remote:firefox:
     - name: selenium/standalone-firefox
   only:
     variables:
-      - $REMOTE =~ /true/i && $BROWSER =~ /firefox/i
+      - $BROWSER =~ /firefox/i
