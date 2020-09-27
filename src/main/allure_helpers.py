@@ -7,7 +7,7 @@ import curlify
 from allure_commons._allure import StepContext
 
 
-def step(title: str, action: str = None):
+def step(title, action: str = None):
     logging.info(msg=f'{action}: {title}')
     if callable(title):
         return StepContext(title.__name__, {})(title)
@@ -48,7 +48,7 @@ class AllureCatchLogs:
         self.rootlogger.removeHandler(self.allurehandler)
 
 
-def add_allure_request_logger(function):
+def allure_request_logger(function):
     """
     Allure/Logger decorator for logging information about request
     """

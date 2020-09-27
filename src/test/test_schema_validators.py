@@ -1,10 +1,12 @@
+import json
+import os
+
 import allure
 import validictory
 from pytest import mark
 from pytest_voluptuous import S
 from voluptuous import Schema, Optional, PREVENT_EXTRA
 
-from src.main import helpers
 from src.test.test_assertions import soft_schema_assert, assert_voluptuous
 
 
@@ -26,14 +28,18 @@ def test_validictory(method, url, json_schema, api_session):
             allure
             validictory
     """
-    json_schema = helpers.read_json(json_schema)
+    with open(os.path.join(os.path.dirname(__file__), 'resources', json_schema)) as file:
+        schema = json.loads(file.read())
+
+    allure.attach(body=json.dumps(schema, indent=2, ensure_ascii=False).encode('utf8'),
+                  name='Json schema', attachment_type=allure.attachment_type.JSON)
 
     allure.attach(body=url, name='Requested URI', attachment_type=allure.attachment_type.TEXT,
                   extension='txt')
 
     response = api_session.request(method=method, url=url)
 
-    validictory.validate(data=response.json(), schema=json_schema, fail_fast=False)
+    validictory.validate(data=response.json(), schema=schema, fail_fast=False)
 
 
 def test_voluptuous(api_session):

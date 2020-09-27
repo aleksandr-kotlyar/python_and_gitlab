@@ -26,7 +26,7 @@ def test_source_file_contains_desired_string(source_string, desired_part):
 
 
 @mark.parametrize('source_list, desired_part', [(STRING.split('\n'), 'm3u8')])
-def test_source_list_contains_desired_string(source_list, desired_part):
+def test_source_list_of_strings_contains_desired_string(source_list, desired_part):
     """
     Classic way to find string in list.
     Find first string in list contains desired part and print this string.
