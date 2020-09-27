@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpine-req
 
 stages:
   - code_style
@@ -9,6 +9,7 @@ stages:
 
 variables:
   ENVIRONMENT: 'dev'
+  BROWSER: 'ChroMe'
   ## suits
   TEST_SCOPE: src/test
   ## Allure
@@ -43,23 +44,15 @@ Pylint:
 
 .job_template:
   allow_failure: true
+  stage: test
   before_script:
-    - echo $HOME
-    - pwd
-    - ls /builds -la
-    - ls -la
-    - ls /root -la
-    - whoami
-    - echo $PATH
-    #    - su - apps
-    #    - whoami
-    #    - su - apps -c whoami
-    #    - echo ${CI_BUILDS_DIR}
-    #    - echo ${CI_PROJECT_NAME}
-    #    - echo ${CI_PROJECT_NAMESPACE}
-    - google-chrome --version
+    - function lowercase(){
+                           arg1=$1;
+                           echo "$1" | tr '[:upper:]' '[:lower:]';
+                          }
+    - lowercase $BROWSER
   script:
-    - pytest ${TEST_SCOPE}
+    - pytest ${TEST_SCOPE} --remote=True --browser=$(lowercase $BROWSER)
   only:
     variables:
       - $ENVIRONMENT == $CI_JOB_STAGE
@@ -98,6 +91,7 @@ Pylint:
 
 push_dev:
   extends: .job_push_template
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1-req
   stage: dev
   variables:
     ENVIRONMENT: 'dev'
@@ -118,12 +112,6 @@ manual_dev:
   variables:
     ENVIRONMENT: 'dev'
 
-manual_preprod:
-  extends: .job_web_ui
-  stage: test
-  variables:
-    ENVIRONMENT: 'preprod'
-
 .job_schedule_template:
   ## JOBS ON SCHEDULE: dev, preprod
   extends: .job_template
@@ -138,12 +126,6 @@ schedule_dev:
   variables:
     ENVIRONMENT: 'dev'
 
-schedule_preprod:
-  extends: .job_schedule_template
-  stage: test
-  variables:
-    ENVIRONMENT: 'preprod'
-
 .job_merges_template:
   ## JOBS ON MERGE_REQUESTS: dev, preprod
   extends: .job_push_template
@@ -155,6 +137,29 @@ schedule_preprod:
 
 e2e:chrome:
   extends: .job_template
+  stage: dev
   variables:
     TEST_SCOPE: src/test/ctc
-  stage: dev
+    ENVIRONMENT: 'dev'
+
+
+.e2e:remote:
+  extends: .job_template
+  variables:
+    TEST_SCOPE: src/test/ctc
+
+e2e:remote:chrome:
+  extends: .e2e:remote
+  services:
+    - name: selenium/standalone-chrome
+  only:
+    variables:
+      - $BROWSER =~ /chrome/i
+
+e2e:remote:firefox:
+  extends: .e2e:remote
+  services:
+    - name: selenium/standalone-firefox
+  only:
+    variables:
+      - $BROWSER =~ /firefox/i
