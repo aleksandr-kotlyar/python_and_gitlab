@@ -46,6 +46,7 @@ Pylint:
   allow_failure: true
   stage: test
   before_script:
+    - pip3 install -r requirements.txt
     - function lowercase(){
                            arg1=$1;
                            echo "$1" | tr '[:upper:]' '[:lower:]';
