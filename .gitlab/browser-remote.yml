@@ -1,6 +1,3 @@
-include:
-  local: '.gitlab/browser.yml'
-
 .remote:
   variables:
     REMOTE: 'True';

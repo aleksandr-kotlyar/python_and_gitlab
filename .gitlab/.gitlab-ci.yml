@@ -20,6 +20,7 @@ variables:
 
 include:
   - local: '.gitlab/linter.yml'
+  - local: '.gitlab/browser.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser-remote.yml'
   - local: '.gitlab/manual.yml'

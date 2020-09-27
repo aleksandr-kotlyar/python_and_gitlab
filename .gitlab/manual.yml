@@ -1,7 +1,3 @@
-include:
-  - local: '.gitlab/pytest.yml'
-  - local: '.gitlab/browser.yml'
-
 .manual:
   ## JOB ON WEB UI
   extends: .pytest_template
