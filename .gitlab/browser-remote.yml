@@ -1,6 +1,6 @@
 .remote:
   variables:
-    REMOTE: 'True';
+    REMOTE: 'True'
   extends:
     - .pytest_template
     - .browser
