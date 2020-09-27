@@ -91,7 +91,7 @@ Pylint:
 
 push_dev:
   extends: .job_push_template
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1-req
   stage: dev
   variables:
     ENVIRONMENT: 'dev'
