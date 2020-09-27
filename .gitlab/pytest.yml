@@ -1,7 +1,7 @@
 .pytest_template:
   stage: test
   before_script:
-    - BROWSER=(bash .bash/scripts.sh lowercase $BROWSER)
+    - BROWSER="$(bash .bash/scripts.sh lowercase $BROWSER)"
   script:
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
   only:
