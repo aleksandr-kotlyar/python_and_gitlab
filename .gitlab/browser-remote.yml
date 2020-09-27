@@ -4,6 +4,9 @@
   extends:
     - .pytest_template
     - .browser
+  only:
+    variables:
+      - $CI_JOB_NAME =~ /$BROWSER/i
 
 chrome:remote:
   variables:

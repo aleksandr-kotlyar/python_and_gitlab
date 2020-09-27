@@ -1,6 +1,3 @@
 .browser:
   variables:
     TESTS: 'src/test/ctc'
-  only:
-    variables:
-      - $CI_JOB_NAME =~ /$BROWSER/i
