@@ -8,9 +8,6 @@
     - BROWSER=$(lowercase $BROWSER)
   script:
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
-  only:
-    variables:
-      - $ENVIRONMENT == $CI_JOB_STAGE
   allow_failure: true
   artifacts:
     when: always

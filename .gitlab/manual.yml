@@ -1,0 +1,21 @@
+include:
+  - local: '.gitlab/pytest.yml'
+  - local: '.gitlab/browser.yml'
+
+.manual:
+  ## JOB ON WEB UI
+  extends: .pytest_template
+  when: manual
+  only:
+    refs:
+      ## For pipelines created using Run pipeline button in GitLab UI (under your project’s Pipelines)
+      - web
+
+chrome:local:manual:
+  variables:
+    BROWSER: 'chrome'
+    REMOTE: ''
+  extends:
+    - .manual
+    - .browser
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1-req
