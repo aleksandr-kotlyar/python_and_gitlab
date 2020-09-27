@@ -3,6 +3,8 @@
   only:
     refs:
       - pushes
+    changes:
+      - '**/*.py'
   except:
     refs:
       - web
