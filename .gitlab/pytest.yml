@@ -9,6 +9,10 @@
   script:
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
   allow_failure: true
+  trigger:
+    include:
+      - local: '.gitlab/allure.yml'
+    strategy: depend
   cache:
     key: allure
     paths:

@@ -26,6 +26,7 @@ include:
   - local: '.gitlab/browser.yml'
   - local: '.gitlab/browser-remote.yml'
   - local: '.gitlab/manual.yml'
+  - local: '.gitlab/allure.yml'
 
   # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
@@ -62,18 +63,3 @@ merge:master:
   except:
     refs:
       - pushes
-
-allure-reports:
-  stage: upload-allure-reports
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure:openjdk-14-allure-2.13.5
-  script:
-    - allure generate reports
-    - ls -la
-  cache:
-    key: allure
-    paths:
-      - reports
-    policy: pull
-  artifacts:
-    paths:
-      - allure-report
