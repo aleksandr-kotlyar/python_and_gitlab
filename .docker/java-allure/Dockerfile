@@ -6,4 +6,4 @@ RUN wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandlin
     && unzip allure-commandline-${ALLURE_VERSION}.zip \
     && rm -fv allure-commandline-${ALLURE_VERSION}.zip
 
-ENV PATH=/app/allure-${ALLURE_VERSION}/bin:$PATH
+ENV PATH=/allure-${ALLURE_VERSION}/bin:$PATH
