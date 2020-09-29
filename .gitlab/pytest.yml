@@ -13,5 +13,8 @@
     when: always
     paths:
       - reports
+  only:
+    changes:
+      - '**/*.py'
   tags:
     - gitlab-org
