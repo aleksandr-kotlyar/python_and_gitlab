@@ -4,6 +4,13 @@ allure-reports:
   script:
     - allure generate reports
     - ls -la
+  needs:
+    - job: chrome:remote
+      artifacts: true
+    - firefox:remote
+    - chrome:local:manual
+    - schedule
+    - merge:master
   cache:
     key: allure
     paths:
