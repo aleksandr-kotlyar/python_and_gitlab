@@ -69,9 +69,11 @@ allure-reports:
   script:
     - allure generate reports
     - ls -la
-  needs:
-    - job: .pytest_template
-      artifacts: true
+  cache:
+    key: allure
+    paths:
+      - reports
+    policy: pull
   artifacts:
     paths:
       - allure-report
