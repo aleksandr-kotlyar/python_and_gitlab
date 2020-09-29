@@ -9,12 +9,6 @@ allure-reports:
     paths:
       - reports
     policy: pull
-  dependencies:
-    - merge:master
-    - schedule
-    - chrome:remote
-    - firefox:remote
-    - chrome:local:manual
   artifacts:
     paths:
       - allure-report
