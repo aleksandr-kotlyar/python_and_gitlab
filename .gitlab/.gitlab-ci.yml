@@ -62,3 +62,16 @@ merge:master:
   except:
     refs:
       - pushes
+
+allure-reports:
+  stage: upload-allure-reports
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure:openjdk-14-allure-2.13.5
+  script:
+    - allure generate reports
+    - ls -la
+  needs:
+    - job: .pytest_template
+      artifacts: true
+  artifacts:
+    paths:
+      - allure-report
