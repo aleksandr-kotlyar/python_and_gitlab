@@ -4,15 +4,14 @@ from selene import be, have
 from selene.support.shared import browser
 
 from src.main import weekdays
+from src.main.allure_helpers import arrange, act, assertion
 
 
 def test_current_week_is_active(browser_module):
-    logging.info('step1/2: start')
-    browser.open('https://ctc.ru/programm')
-    logging.info('step1/2: finish')
-    logging.info('step2/2: start')
-    browser.element('.current_week').should(be.visible)
-    logging.info('step2/2: finish')
+    with act('step 1/2'):
+        browser.open('https://ctc.ru/programm')
+    with assertion('step 2/2'):
+        browser.element('.current_week').should(be.visible)
 
 
 def test_current_week_has_words_in_days(browser_module):
