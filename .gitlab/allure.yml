@@ -10,5 +10,5 @@
 
 allure-reports:chrome:remote:
   extends: .allure
-  depdendencies:
+  dependencies:
     - chrome:remote
