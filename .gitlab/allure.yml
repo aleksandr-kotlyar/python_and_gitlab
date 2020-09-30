@@ -10,4 +10,4 @@
 
 allure-reports:chrome:remote:
   extends: .allure
-  needs: [chrome:remote]
+  needs: ["chrome:remote"]
