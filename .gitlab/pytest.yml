@@ -9,10 +9,6 @@
   script:
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
   allow_failure: true
-  cache:
-    key: allure
-    paths:
-      - reports
   artifacts:
     when: always
     paths:
