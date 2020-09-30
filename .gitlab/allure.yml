@@ -3,6 +3,7 @@
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure:openjdk-14-allure-2.13.5
   script:
     - ls -la
+    - ls reports -la
     - allure generate reports
     - ls -la
   artifacts:
