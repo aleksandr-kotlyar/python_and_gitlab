@@ -8,12 +8,10 @@ from allure_commons._allure import StepContext
 
 
 def step(title, action: str = None):
-    logging.info(msg=f'{action} START: {title}')
+    logging.info(msg=f'{action}: {title}')
     if callable(title):
-        yield StepContext(title.__name__, {})(title)
-        logging.info(msg=f'{action} FINISH: {title}')
-    yield StepContext(title, {})
-    logging.info(msg=f'{action} FINISH: {title}')
+        return StepContext(title.__name__, {})(title)
+    return StepContext(title, {})
 
 
 def arrange(title):
