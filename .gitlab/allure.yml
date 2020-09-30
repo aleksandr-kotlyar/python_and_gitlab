@@ -2,6 +2,7 @@
   stage: upload-allure-reports
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure:openjdk-14-allure-2.13.5
   script:
+    - ls -la
     - allure generate reports
     - ls -la
   artifacts:
@@ -11,3 +12,11 @@
 allure-reports:chrome:remote:
   extends: .allure
   needs: ["chrome:remote"]
+
+allure-reports:firefox:remote:
+  extends: .allure
+  needs: ["firefox:remote"]
+
+allure-reports:chrome:local:manual:
+  extends: .allure
+  needs: ["chrome:local:manual"]
