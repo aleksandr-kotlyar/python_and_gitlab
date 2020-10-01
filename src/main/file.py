@@ -5,8 +5,7 @@ import allure
 
 
 def read_json(filename):
-    """ Combine file read and allure log in one method.
-        Read json and log as file."""
+    """Read json and attach to allure as file."""
     with open(os.path.join(os.path.dirname(__file__), 'resources', filename)) as file:
         schema = json.loads(file.read())
     allure.attach(body=json.dumps(schema, indent=2, ensure_ascii=False).encode('utf8'),
