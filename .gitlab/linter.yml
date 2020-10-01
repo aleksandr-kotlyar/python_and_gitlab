@@ -1,0 +1,24 @@
+.linter_template:
+  stage: code_style
+  only:
+    refs:
+      - pushes
+    changes:
+      - '**/*.py'
+  except:
+    refs:
+      - web
+      - triggers
+      - schedules
+  tags:
+    - gitlab-org
+
+Pylint:
+  allow_failure: true
+  extends: .linter_template
+  script:
+    - mkdir ./pylint
+    - >
+      touch __init__.py;
+      pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?;
+      rm __init__.py

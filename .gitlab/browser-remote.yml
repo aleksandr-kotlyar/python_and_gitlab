@@ -1,0 +1,20 @@
+.remote:
+  variables:
+    REMOTE: 'True'
+  extends:
+    - .pytest_template
+    - .browser
+
+chrome:remote:
+  variables:
+    BROWSER: 'chrome'
+  extends: .remote
+  services:
+    - name: selenium/standalone-chrome
+
+firefox:remote:
+  variables:
+    BROWSER: 'firefox'
+  extends: .remote
+  services:
+    - name: selenium/standalone-firefox
