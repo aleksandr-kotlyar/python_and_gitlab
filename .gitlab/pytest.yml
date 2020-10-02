@@ -1,0 +1,20 @@
+.pytest_template:
+  stage: test
+  before_script:
+    - echo $BROWSER
+    - function lowercase(){
+        echo "$1" | tr '[:upper:]' '[:lower:]';
+      }
+    - BROWSER=$(lowercase $BROWSER)
+  script:
+    - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
+  allow_failure: true
+  artifacts:
+    when: always
+    paths:
+      - reports
+  only:
+    changes:
+      - '**/*.py'
+  tags:
+    - gitlab-org

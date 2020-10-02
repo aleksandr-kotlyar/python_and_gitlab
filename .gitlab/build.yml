@@ -1,0 +1,31 @@
+.build:
+  image: docker
+  services:
+    - name: docker:dind
+      alias: docker
+  variables:
+     # Specify to Docker where to create the certificates, Docker will
+     # create them automatically on boot, and will create
+     # `/certs/client` that will be shared between the service and
+     # build container.
+    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_DRIVER: overlay2
+  before_script:
+    - docker info
+    - echo "$CI_REGISTRY_PASSWORD" | docker login --username $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+  script:
+    - docker build $BUILD_ARG -f $DOCKERFILE_PATH -t $IMAGE_NAME $BUILD_CONTEXT
+    - docker push $IMAGE_NAME
+  tags:
+    - gitlab-org-docker
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web" && $IMAGE_TAG && $IMAGE_CATEGORY'
+
+Build:
+  extends: .build
+  stage: build
+  variables:
+    IMAGE_NAME: "$CI_REGISTRY_IMAGE/$IMAGE_CATEGORY:$IMAGE_TAG"
+    DOCKERFILE_PATH: ".docker/$IMAGE_CATEGORY/Dockerfile"
+    BUILD_CONTEXT: "."
+    BUILD_ARG: "--build-arg ALLURE_VERSION=$ALLURE_VERSION"

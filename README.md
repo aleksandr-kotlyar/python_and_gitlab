@@ -1,19 +1,26 @@
-# Starting my python here. Here you can find examples of gitlab-ci pytest jobs, pylint-check jobs, storing artifacts in gitlab, parametrization-tests, multithread using inside test, sitemap checking for status codes.
+# Python and GitLabCI for test automation (QA)
+Hello! Here you can find examples of
+* Code quality checking jobs
+* GitLabCI: jobs with pytest execution
+* GitLabCI: slack integration
+* GitLabCI: Selenium in Docker test execution
+* Pytest: slack integration
+* Pytest: test parametrization
+* Allure: logger messages as steps
+* Allure: log each "requests" lib action
+* Multi-thread method execution examples
+* Sitemap checkers
+* Azure pipeline pytest execution
 
-To run tests you should have: 
-
-* python 3.7+
-
-After cloning, you should activate your virtual env and execute this command to install project's dependencies:
+## Installation 
+Must have `python 3.7+`
 
 `pip3 install -r requirements.txt`
 
+## Allure reports
+Type this in your project console:
 
-If you want to see Allure Report with attachments, try this in your project console:
+`pytest --alluredir=reports src\test`
 
-`pytest --alluredir=reports --allure-no-capture src\test\test_allure_api.py`
-
-and after tests execution try this and your browser with Allure Report will open:
-
-`allure serve reports`
+and after test execution type `allure serve reports` then your browser will open reports.
 

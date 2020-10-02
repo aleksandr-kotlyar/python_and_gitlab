@@ -1,0 +1,6 @@
+.browser:
+  variables:
+    TESTS: 'src/test/ctc'
+  only:
+    changes:
+      - src/test/ctc/**/*

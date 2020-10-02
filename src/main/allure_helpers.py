@@ -7,7 +7,7 @@ import curlify
 from allure_commons._allure import StepContext
 
 
-def step(title: str, action: str = None):
+def step(title, action: str = None):
     logging.info(msg=f'{action}: {title}')
     if callable(title):
         return StepContext(title.__name__, {})(title)
@@ -48,10 +48,8 @@ class AllureCatchLogs:
         self.rootlogger.removeHandler(self.allurehandler)
 
 
-def add_allure_request_logger(function):
-    """
-    Allure/Logger decorator for logging information about request
-    """
+def allure_request_logger(function):
+    """Allure/Logger decorator for logging information about request"""
 
     @wraps(function)
     def wrapper(*args, **kwargs):
@@ -68,7 +66,8 @@ def add_allure_request_logger(function):
             response.json()
             allure.attach(
                 body=json.dumps(response.json(), indent=4, ensure_ascii=False).encode('utf8'),
-                name=f'Response {response.status_code} {response.request.method} {response.request.url}',
+                name=f'Response {response.status_code} {response.request.method} '
+                     f'{response.request.url}',
                 attachment_type=allure.attachment_type.JSON,
                 extension='json')
 
@@ -76,7 +75,8 @@ def add_allure_request_logger(function):
             logging.error('RESPONSE IN NOT JSON FORMAT')
             allure.attach(
                 body=response.text.encode('utf8'),
-                name=f'NOT JSON Response {response.status_code} {response.request.method} {response.request.url}',
+                name=f'NOT JSON Response {response.status_code} {response.request.method} '
+                     f'{response.request.url}',
                 attachment_type=allure.attachment_type.TEXT,
                 extension='txt')
             raise error
