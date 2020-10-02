@@ -26,6 +26,7 @@ include:
   - local: '.gitlab/browser.yml'
   - local: '.gitlab/browser-remote.yml'
   - local: '.gitlab/manual.yml'
+  - local: '.gitlab/browser-install.yml'
 
   # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS

@@ -1,0 +1,27 @@
+.install_browser:
+  allow_failure: true
+  before_script:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -;
+    - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list';
+    - apt-get update && apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*;
+    - whoami
+    - su - apps
+    - whoami
+    - su - apps -c whoami
+  script:
+    - su apps -c "pytest ${TESTS}"
+  only:
+    variables:
+      - $ENVIRONMENT == $CI_JOB_STAGE
+  artifacts:
+    when: always
+    paths:
+      - reports
+  tags:
+    - gitlab-org
+
+chrome-buster:
+  extends: .install_browser
+  stage: dev
+  rules:
+    - if: $BUSTER == "1"
