@@ -49,9 +49,7 @@ class AllureCatchLogs:
 
 
 def allure_request_logger(function):
-    """
-    Allure/Logger decorator for logging information about request
-    """
+    """Allure/Logger decorator for logging information about request"""
 
     @wraps(function)
     def wrapper(*args, **kwargs):
