@@ -17,5 +17,6 @@ chrome-buster:
   extends: .install_browser
   stage: test
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster
-  rules:
-    - if: $BUSTER == "1"
+  only:
+    variables:
+      - $BUSTER == "1"
