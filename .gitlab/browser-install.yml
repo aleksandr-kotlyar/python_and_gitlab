@@ -10,9 +10,6 @@
     - su - apps -c whoami
   script:
     - su apps -c "pytest ${TESTS}"
-  only:
-    variables:
-      - $ENVIRONMENT == $CI_JOB_STAGE
   artifacts:
     when: always
     paths:
@@ -24,4 +21,4 @@ chrome-buster:
   extends: .install_browser
   stage: dev
   rules:
-    - if: $BUSTER == "1"
+    - if: $BUSTER == "1" && $ENVIRONMENT == $CI_JOB_STAGE
