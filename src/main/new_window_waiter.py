@@ -5,8 +5,7 @@ from selene.support.shared import browser, config
 
 
 def wait_until_browser_title_equals(title, timeout=config.timeout):
-    """ Wait for browser window title name to switch to and raise Timeout exception
-    if not found in time """
+    """Wait for browser window title to switch to. Raise Timeout exception if not found in time"""
     must_end = time.time() + timeout
     while time.time() < must_end:
         for handle in browser.driver().window_handles:
@@ -18,7 +17,7 @@ def wait_until_browser_title_equals(title, timeout=config.timeout):
 
 
 def switch_to_tab(title: str):
-    """ Same as method wait_until_browser_title_equals() but could fail sometimes """
+    """Same as method wait_until_browser_title_equals() but could fail sometimes."""
     if len(browser.driver().window_handles) > 1:
         browser.switch_to_next_tab()
         return match.browser_has_title(title)
