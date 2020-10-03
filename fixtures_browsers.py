@@ -38,7 +38,7 @@ def custom_driver(t_browser):
     logging.debug('custom driver config start')
     if t_browser == 'chrome':
         driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(),
-                                  chrome_options=headless_chrome_options())
+                                  options=headless_chrome_options())
     else:
         raise ValueError('t_browser does not set')
     driver.set_page_load_timeout(10)
