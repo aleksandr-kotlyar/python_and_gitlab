@@ -89,7 +89,7 @@ def remote_driver(t_browser, page_load_strategy=None):
 
     driver = webdriver.Remote(command_executor=remote_mapping[t_browser]['command_executor'],
                               options=remote_mapping[t_browser]['options'])
-    driver.set_page_load_timeout(10)
+    # driver.set_page_load_timeout(10)
     browser = Browser(Config(
         driver=driver,
         timeout=10,
