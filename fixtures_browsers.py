@@ -3,7 +3,6 @@ import logging
 import pytest
 from selene import Browser, Config
 from selenium import webdriver
-from selenium.webdriver import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -84,12 +83,12 @@ def remote_driver(t_browser, page_load_strategy=None):
         }
     }
     if page_load_strategy:
-        desired_capabilities = DesiredCapabilities().CHROME
+        desired_capabilities = webdriver.DesiredCapabilities().CHROME
         desired_capabilities["pageLoadStrategy"] = "eager"
 
     driver = webdriver.Remote(command_executor=remote_mapping[t_browser]['command_executor'],
                               options=remote_mapping[t_browser]['options'])
-    # driver.set_page_load_timeout(10)
+    driver.set_page_load_timeout(20)
     browser = Browser(Config(
         driver=driver,
         timeout=10,
