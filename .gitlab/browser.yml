@@ -1,6 +1,6 @@
 .browser:
   variables:
-    TESTS: 'src/test/ctc'
+    TESTS: 'src/test/moretv'
   only:
     changes:
-      - src/test/ctc/**/*
+      - src/test/moretv/**/*

@@ -11,7 +11,7 @@ variables:
   BROWSER: 'ChroMe'
   REMOTE: 'True'
   ## suits
-  TESTS: 'src/test --ignore=src/tests/ctc'
+  TESTS: 'src/test --ignore=src/test/old_ctc --ignore=src/test/moretv'
   ## Allure
   ALLURE_DIR: $CI_JOB_ID
   ALLURE_REPORT_PATH: $CI_PROJECT_NAME!$ENVIRONMENT!$CI_COMMIT_REF_NAME!$CI_JOB_ID
