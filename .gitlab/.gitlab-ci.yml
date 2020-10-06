@@ -6,6 +6,7 @@ stages:
   - test
   - slack-notification
   - upload-allure-reports
+  - deploy
 
 variables:
   BROWSER: 'ChroMe'
