@@ -10,7 +10,7 @@ RUN apk --no-cache add ca-certificates wget \
     && wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.zip \
     && unzip allure-commandline-${ALLURE_VERSION}.zip \
     && rm -fv allure-commandline-${ALLURE_VERSION}.zip
-ENV PATH=/allure-${ALLURE_VERSION}/bin:$PATHv
+ENV PATH=/allure-${ALLURE_VERSION}/bin:$PATH
 
 COPY --from=python:3.7-alpine / /
 COPY requirements.txt /app/requirements.txt
