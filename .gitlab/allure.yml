@@ -9,7 +9,7 @@ allure:
     - python3 artifacts.py
     - ls -la
     - pwd
-    - ls -la
+    - ls public/stage -la
     # copy last-reports/history to /reports
   script:
     - allure generate reports
