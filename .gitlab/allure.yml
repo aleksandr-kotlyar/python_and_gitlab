@@ -9,15 +9,15 @@ allure:
     - python3 artifacts.py
     - ls -la
     - pwd
-    - ls ./public/stage -la
+    - ls /public/stage -la
     # copy last-reports/history to /reports
-    - LAST=$("cd ./public/stage; ls -td -- */ | head -n 1")
-    - mkdir -p ./public/stage/${CI_JOB_ID}
+    - LAST=$("cd /public/stage; ls -td -- */ | head -n 1")
+    - mkdir -p /public/stage/${CI_JOB_ID}
     - cd ${LAST}; pwd; ls -la; cd ${LAST}history; pwd;
     - cd .
     - cp -r ${LAST}history reports/ || echo "No history"
     - allure generate reports
-    - cp -r allure-report/* ./public/stage/${CI_JOB_ID}/
+    - cp -r allure-report/* /public/stage/${CI_JOB_ID}/
   artifacts:
     paths:
       - public
