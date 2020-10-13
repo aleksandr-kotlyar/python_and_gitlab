@@ -9,7 +9,7 @@ allure:
     - python3 artifacts.py
     - ls -la
     - pwd
-    - ls public/stage -la
+    - ls ./public/stage -la
     # copy last-reports/history to /reports
     - LAST=$("cd ./public/stage; ls -td -- */ | head -n 1")
     - mkdir -p ./public/stage/${CI_JOB_ID}
