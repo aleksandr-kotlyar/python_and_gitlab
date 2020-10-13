@@ -16,6 +16,9 @@ payload = {
 }
 headers = {
     'PRIVATE-TOKEN': PRIVATE_TOKEN,
+    'Connection': 'keep-alive',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Cache-Control': 'no-cache'
 }
 
 response = requests.request("GET", url, headers=headers, params=payload)
