@@ -1,11 +1,11 @@
 .browser:
-  when: manual
   variables:
     TESTS: 'src/test/moretv'
   extends: .pytest_template
   rules:
     - changes:
         - src/test/moretv/**/*
+    - when: manual
 
 chrome:remote:
   variables:
