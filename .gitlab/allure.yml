@@ -11,8 +11,8 @@ allure:
     - pwd
     - ls public/stage -la
     # copy last-reports/history to /reports
-    - LAST=$("cd /public/stage; ls -td -- */ | head -n 1")
-    - mkdir -p /public/stage/${CI_JOB_ID}
+    - LAST=$("cd public/stage; ls -td -- */ | head -n 1")
+    - mkdir -p public/stage/${CI_JOB_ID}
     - cd ${LAST}; pwd; ls -la; cd ${LAST}history; pwd;
     - cd .
     - cp -r ${LAST}history reports/ || echo "No history"
