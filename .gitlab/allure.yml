@@ -5,7 +5,7 @@ allure:
   needs:
     - job: chrome:remote
       artifacts: true
-  before_script:
+  script:
     - python3 artifacts.py
     - ls -la
     - pwd
@@ -18,8 +18,6 @@ allure:
     - cp -r ${LAST}history reports/ || echo "No history"
     - allure generate reports
     - cp -r allure-report/* ./public/stage/${CI_JOB_ID}/
-  script:
-    - allure generate reports
   artifacts:
     paths:
       - public
