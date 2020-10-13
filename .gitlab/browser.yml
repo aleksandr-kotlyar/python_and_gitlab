@@ -3,9 +3,9 @@
   variables:
     TESTS: 'src/test/moretv'
   extends: .pytest_template
-  only:
-    changes:
-      - src/test/moretv/**/*
+  rules:
+    - changes:
+        - src/test/moretv/**/*
 
 chrome:remote:
   variables:
