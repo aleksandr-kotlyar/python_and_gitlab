@@ -1,12 +1,11 @@
 FROM openjdk:14-alpine
 
 ARG ALLURE_VERSION='2.13.6'
-RUN apk --no-cache add ca-certificates wget \
+RUN apk --no-cache add \
     curl \
     gcc \
     libc-dev \
     unzip \
-    && update-ca-certificates \
     && wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.zip \
     && unzip allure-commandline-${ALLURE_VERSION}.zip \
     && rm -fv allure-commandline-${ALLURE_VERSION}.zip
