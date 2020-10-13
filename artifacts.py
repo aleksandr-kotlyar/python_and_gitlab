@@ -15,10 +15,7 @@ payload = {
     'status': 'success'
 }
 headers = {
-    'PRIVATE-TOKEN': PRIVATE_TOKEN,
-    'Connection': 'keep-alive',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Cache-Control': 'no-cache'
+    'PRIVATE-TOKEN': PRIVATE_TOKEN
 }
 
 response = requests.request("GET", url, headers=headers, params=payload)
@@ -27,6 +24,10 @@ latest_job_id = response.json()[0]['id']
 
 url = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/' \
       f'{latest_job_id}/artifacts'
+
+headers.update({'Connection': 'keep-alive',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Cache-Control': 'no-cache'})
 
 response = requests.request("GET", url, headers=headers)
 
