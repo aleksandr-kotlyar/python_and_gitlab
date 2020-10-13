@@ -11,11 +11,18 @@ allure:
     - pwd
     - ls public/stage -la
     # copy last-reports/history to /reports
+    - LAST=$("cd /public/stage; ls -td -- */ | head -n 1")
+    - mkdir -p /public/stage/${CI_JOB_ID}
+    - cd ${LAST}; pwd; ls -la; cd ${LAST}history; pwd;
+    - cd .
+    - cp -r ${LAST}history reports/ || echo "No history"
+    - allure generate reports
+    - cp -r allure-report/* ./public/stage/${CI_JOB_ID}/
   script:
     - allure generate reports
   artifacts:
     paths:
-      - allure-report
+      - public
 
 pages:
   image: python:3.7-alpine
@@ -25,9 +32,6 @@ pages:
     - job: allure
       artifacts: true
   script:
-    - mkdir -p .public/stage/${CI_PIPELINE_ID}
-    - mv .public/* public/
-    - cp -r allure-report/* ./public/stage/${CI_PIPELINE_ID}/
     - python3 generate-index.py
   artifacts:
     paths:
