@@ -1,7 +1,7 @@
 allure:
   stage: Generate Reports
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure-python:openjdk-14-allure-2.13.6-python-3.7
-  when: always
+  when: on_success
   needs:
     - job: chrome:remote
       artifacts: true
