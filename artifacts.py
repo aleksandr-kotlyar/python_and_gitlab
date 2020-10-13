@@ -1,30 +1,27 @@
+import os
 import subprocess
+from pprint import pprint
 
 import requests
 
-CI_PROJECT_ID = '15098763'
-CI_COMMIT_REF_NAME = 'allure2'
-PRIVATE_TOKEN = 'fDdn2juchn3L8NwKKkCy'
-
-# CI_PROJECT_ID = os.environ.get('CI_PROJECT_ID')
-# CI_COMMIT_REF_NAME = os.environ.get('CI_COMMIT_REF_NAME')
-# PRIVATE_TOKEN = os.environ.get('PRIVATE_TOKEN')
+CI_PROJECT_ID = os.environ.get('CI_PROJECT_ID')
+CI_COMMIT_REF_NAME = os.environ.get('CI_COMMIT_REF_NAME')
+PRIVATE_TOKEN = os.environ.get('PRIVATE_TOKEN')
 
 url = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs'
 
 payload = {
-    'ref': CI_COMMIT_REF_NAME,
     'job': 'pages',
-    'status': 'success'
+    'scope': 'success'
 }
 headers = {
     'PRIVATE-TOKEN': PRIVATE_TOKEN
 }
 
 response = requests.request("GET", url, headers=headers, params=payload)
-
+pprint(response.json())
 latest_job_id = response.json()[0]['id']
-
+print(latest_job_id)
 url = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/' \
       f'{latest_job_id}/artifacts'
 
@@ -35,6 +32,3 @@ artifacts = open(file_name, 'wb')
 artifacts.write(response.content)
 artifacts.close()
 subprocess.Popen('unzip -o ' + file_name, shell=True).wait()
-
-# with ZipFile('artifacts.zip', 'r') as zip_obj:
-#     zip_obj.extractall()
