@@ -11,6 +11,7 @@ allure:
     - python3 artifacts.py
     - ls -la
     - pwd
+    - ls public -la
     - ls public/stage -la
     # copy last-reports/history to /reports
     - LAST=$("cd /public/stage; ls -td -- */ | head -n 1")
