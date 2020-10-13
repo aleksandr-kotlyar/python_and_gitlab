@@ -1,6 +1,6 @@
 FROM openjdk:14-alpine
 
-ARG ALLURE_VER=2.13.6
+ARG ALLURE_VER='2.13.6'
 COPY --from=python:3.7-alpine / /
 COPY requirements.txt /app/requirements.txt
 COPY allure-$ALLURE_VER /

@@ -4,8 +4,8 @@ stages:
   - build
   - code_style
   - test
-  - slack-notification
-  - upload-allure-reports
+  - Slack Notification
+  - Generate Reports
   - deploy
 
 variables:

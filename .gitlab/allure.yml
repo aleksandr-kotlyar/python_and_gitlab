@@ -1,7 +1,15 @@
 allure:
-  stage: upload-allure-reports
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure:openjdk-14-allure-2.13.6
+  stage: Generate Reports
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure-python:openjdk-14-allure-2.13.6-python-3.7
   when: always
+  needs:
+    - job: chrome:remote
+      artifacts: true
+  before_script:
+    - python3 artifacts.py
+    - unzip artifacts.zip
+    - ls -la
+    # copy last-reports/history to /reports
   script:
     - allure generate reports
   artifacts:
@@ -11,16 +19,10 @@ allure:
 pages:
   image: python:3.7-alpine
   stage: deploy
-  when: always
-#  before_script:
-#    - apk add curl unzip
-#    - 'curl
-#      --output artifacts.zip
-#      --header "PRIVATE-TOKEN: $CI_JOB_TOKEN"
-#      "https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/jobs/artifacts/${CI_COMMIT_REF_NAME}/download?job=pages"'
-#    - pwd
-#    - ls -la
-#    - unzip artifacts.zip
+  when: on_success
+  needs:
+    - job: allure
+      artifacts: true
   script:
     - mkdir -p .public/stage/${CI_PIPELINE_ID}
     - mv .public/* public/
