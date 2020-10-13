@@ -43,22 +43,3 @@ include:
   # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
   # after_script:
   # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
-
-schedule:
-  ## JOB ON SCHEDULE
-  extends: .pytest_template
-  only:
-    refs:
-      ## For scheduled pipelines.
-      - schedules
-
-merge:master:
-  ## JOB ON MERGE_REQUESTS
-  extends: .pytest_template
-  only:
-    refs:
-      - master
-      - merge_requests
-  except:
-    refs:
-      - pushes
