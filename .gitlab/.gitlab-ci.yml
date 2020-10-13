@@ -8,18 +8,6 @@ stages:
   - upload-allure-reports
   - deploy
 
-# You can override the included template(s) by including variable overrides
-# See https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ee/ci/variables/#priority-of-environment-variables
-sast:
-  variables:
-    SAST_DEFAULT_ANALYZERS: brakeman, bandit, eslint, flawfinder, kubesec, nodejs-scan,
-      gosec, phpcs-security-audit, pmd-apex, security-code-scan, sobelow, spotbugs
-  stage: test
-include:
-- template: Security/SAST.gitlab-ci.yml
-
 variables:
   BROWSER: 'ChroMe'
   REMOTE: 'True'
@@ -37,8 +25,6 @@ include:
   - local: '.gitlab/linter.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser.yml'
-  - local: '.gitlab/browser-remote.yml'
-  - local: '.gitlab/manual.yml'
   - local: '.gitlab/allure.yml'
 
   # .job_allure_reports_upload_template:

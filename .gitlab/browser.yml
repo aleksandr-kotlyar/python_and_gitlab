@@ -1,6 +1,31 @@
 .browser:
+  when: manual
   variables:
     TESTS: 'src/test/moretv'
+  extends: .pytest_template
   only:
     changes:
       - src/test/moretv/**/*
+
+chrome:remote:
+  variables:
+    BROWSER: 'chrome'
+    REMOTE: 'True'
+  extends: .browser
+  services:
+    - name: selenium/standalone-chrome
+
+firefox:remote:
+  variables:
+    BROWSER: 'firefox'
+    REMOTE: 'True'
+  extends: .browser
+  services:
+    - name: selenium/standalone-firefox
+
+chrome:local:manual:
+  variables:
+    BROWSER: 'chrome'
+    REMOTE: ''
+  extends: .browser
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1-req
