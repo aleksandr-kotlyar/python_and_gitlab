@@ -1,4 +1,5 @@
 import os
+from zipfile import ZipFile
 
 import requests
 
@@ -29,3 +30,6 @@ response = requests.request("GET", url, headers=headers)
 artifacts = open('artifacts.zip', 'wb')
 artifacts.write(response.content)
 artifacts.close()
+
+with ZipFile('artifacts.zip', 'r') as zip_obj:
+    zip_obj.extractall()

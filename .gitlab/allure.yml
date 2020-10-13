@@ -8,7 +8,7 @@ allure:
   before_script:
     - python3 artifacts.py
     - ls -la
-    - unzip artifacts.zip
+    - pwd
     - ls -la
     # copy last-reports/history to /reports
   script:
