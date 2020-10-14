@@ -31,4 +31,4 @@ file_name = 'artifacts.zip'
 artifacts = open(file_name, 'wb')
 artifacts.write(response.content)
 artifacts.close()
-subprocess.Popen('unzip -o ' + file_name, shell=True).wait()
+subprocess.Popen('unzip -o ' + file_name, shell=True, cwd='.public').wait()
