@@ -19,7 +19,6 @@ headers = {
 }
 
 response = requests.request("GET", url, headers=headers, params=payload)
-pprint(response.json())
 latest_job_id = response.json()[0]['id']
 print(latest_job_id)
 url = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/' \
