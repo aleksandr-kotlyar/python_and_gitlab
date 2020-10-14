@@ -5,7 +5,6 @@
   rules:
     - changes:
         - src/test/moretv/**/*
-    - when: manual
 
 chrome:remote:
   variables:
@@ -22,6 +21,8 @@ firefox:remote:
   extends: .browser
   services:
     - name: selenium/standalone-firefox
+  rules:
+    - when: manual
 
 chrome:local:manual:
   variables:
@@ -29,3 +30,5 @@ chrome:local:manual:
     REMOTE: ''
   extends: .browser
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1-req
+  rules:
+    - when: manual
