@@ -10,7 +10,7 @@ allure:
   script:
     - mkdir -p .public
     - python3 artifacts.py
-    - ls -la
+    - ls .public -la
     - pwd
     - ls public -la
     - ls public/stage -la
