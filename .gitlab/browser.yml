@@ -5,6 +5,7 @@
   rules:
     - changes:
         - src/test/moretv/**/*
+    - when: always
 
 chrome:remote:
   variables:
