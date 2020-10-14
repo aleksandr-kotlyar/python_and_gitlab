@@ -1,6 +1,6 @@
+import logging
 import os
 import subprocess
-from pprint import pprint
 
 import requests
 
@@ -20,7 +20,7 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, params=payload)
 latest_job_id = response.json()[0]['id']
-print(latest_job_id)
+logging.info(latest_job_id)
 url = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/' \
       f'{latest_job_id}/artifacts'
 
@@ -30,4 +30,7 @@ file_name = 'artifacts.zip'
 artifacts = open(file_name, 'wb')
 artifacts.write(response.content)
 artifacts.close()
-subprocess.Popen('unzip -o ' + file_name, shell=True, cwd='.public/').wait()
+pathToZip = file_name
+pathToOut = '.public'
+unzip = ['unzip', '-o', pathToZip, '-d', pathToOut]
+p = subprocess.call(unzip, shell=True)
