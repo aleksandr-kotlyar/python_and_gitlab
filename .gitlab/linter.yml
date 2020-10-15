@@ -17,11 +17,12 @@ Pylint:
   allow_failure: true
   extends: .linter_template
   script:
-    - mkdir ./pylint
     - >
+      mkdir ./pylint;
       touch __init__.py;
       pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?;
       rm __init__.py
   after_script:
     - PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint/pylint.log)
     - echo ${PYLINT_SCORE}
+    - echo $PYLINT_SCORE > ./pylint/score
