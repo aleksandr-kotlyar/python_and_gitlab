@@ -19,7 +19,7 @@ Pylint:
   after_script:
     - PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint/pylint.log)
     - echo ${PYLINT_SCORE}
-    - echo $PYLINT_SCORE > ./pylint/score
+    - echo $PYLINT_SCORE > ./pylint/score.log
   artifacts:
     when: always
     paths:
