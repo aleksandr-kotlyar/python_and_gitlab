@@ -1,8 +1,7 @@
 .linter_template:
   stage: code_style
-  only:
-    refs:
-      - pushes
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "pushes'
 #    changes:
 #      - '**/*.py'
   except:
@@ -30,3 +29,12 @@ Pylint:
     when: always
     paths:
       - ./pylint/
+
+Quality Control:
+  allow_failure: false
+  extends: .linter_template
+  needs:
+    - job: Pylint
+      artifacts: true
+  script:
+    - python3 quality_control.py
