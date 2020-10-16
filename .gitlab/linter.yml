@@ -30,9 +30,6 @@ Quality Control:
   stage: Merge Request
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
-  needs:
-    - job: Pylint
-      artifacts: true
   script:
     - python3 quality_control.py
   tags:
