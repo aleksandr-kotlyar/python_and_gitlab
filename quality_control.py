@@ -10,8 +10,8 @@ PRIVATE_TOKEN = os.getenv('PRIVATE_TOKEN')
 
 def get_opened_merge_requests_of_source_branch(project, branch):
     """Get list of opened merge requests for source branch"""
-    response = requests.request(method='get', url=f'https://gitlab.com/api/v4/projects'
-                                                  f'/{project}/merge_requests',
+    response = requests.request(method='get',
+                                url=f'https://gitlab.com/api/v4/projects/{project}/merge_requests',
                                 params={'source_branch': branch, 'state': 'opened'})
     assert response.status_code == 200
     return response.json()
@@ -22,11 +22,11 @@ def get_target_branch_of_merge_request(merge_request):
     return merge_request['target_branch']
 
 
-def get_latest_job_artifact_of_branch(branch):
+def get_latest_job_artifact_of_branch(project, branch):
     """Get latest score.log artifact for branch."""
-    result = requests.request(method='get', url=f'https://gitlab.com/api/v4/projects/'
-                                                f'{CI_PROJECT_ID}/jobs/artifacts/{branch}'
-                                                f'/raw/pylint/score.log?job=Pylint',
+    result = requests.request(method='get',
+                              url=f'https://gitlab.com/api/v4/projects/{project}/jobs/artifacts/'
+                                  f'{branch}/raw/pylint/score.log?job=Pylint',
                               headers={'PRIVATE-TOKEN': PRIVATE_TOKEN}).text
     print(f'{branch} score = {result}')
     return result
@@ -39,8 +39,8 @@ if not MERGE_REQUESTS:
 
 LAST_MERGE_REQUEST = MERGE_REQUESTS[0]
 TARGET_BRANCH = get_target_branch_of_merge_request(LAST_MERGE_REQUEST)
-TARGET_SCORE = get_latest_job_artifact_of_branch(TARGET_BRANCH)
-SOURCE_SCORE = get_latest_job_artifact_of_branch(SOURCE_BRANCH)
+TARGET_SCORE = get_latest_job_artifact_of_branch(CI_PROJECT_ID, TARGET_BRANCH)
+SOURCE_SCORE = get_latest_job_artifact_of_branch(CI_PROJECT_ID, SOURCE_BRANCH)
 
 if SOURCE_SCORE < TARGET_SCORE:
     print(f'Quality become lower: {SOURCE_SCORE} vs {TARGET_SCORE}')
