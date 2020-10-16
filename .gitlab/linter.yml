@@ -35,5 +35,5 @@ Quality Control:
       artifacts: true
   script:
     - python3 quality_control.py
- tags:
+  tags:
     - gitlab-org
