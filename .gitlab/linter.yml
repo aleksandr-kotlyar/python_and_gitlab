@@ -1,7 +1,7 @@
 .linter_template:
   stage: Linter
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "push"'
 #    changes:
 #      - '**/*.py'
   tags:
@@ -27,10 +27,13 @@ Pylint:
 
 Quality Control:
   allow_failure: false
-  extends: .linter_template
   stage: Merge Request
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   needs:
     - job: Pylint
       artifacts: true
   script:
     - python3 quality_control.py
+ tags:
+    - gitlab-org
