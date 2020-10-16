@@ -16,8 +16,8 @@ def get_opened_merge_requests_of_source_branch(project, branch):
 
 
 def get_target_branch_of_merge_request(merge_request):
-    print(merge_request[0]['target_branch'])
-    return merge_request[0]['target_branch']
+    print(merge_request['target_branch'])
+    return merge_request['target_branch']
 
 
 def get_latest_job_artifact_of_branch(branch):
