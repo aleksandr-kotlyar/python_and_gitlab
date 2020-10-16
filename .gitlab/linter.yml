@@ -1,7 +1,7 @@
 .linter_template:
   stage: code_style
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "pushes'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push'
 #    changes:
 #      - '**/*.py'
   tags:
