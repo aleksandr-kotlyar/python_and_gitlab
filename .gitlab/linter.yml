@@ -1,15 +1,9 @@
 .linter_template:
-  stage: code_style
-  only:
-    refs:
-      - pushes
+  stage: Linter
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
 #    changes:
 #      - '**/*.py'
-  except:
-    refs:
-      - web
-      - triggers
-      - schedules
   tags:
     - gitlab-org
 
@@ -30,3 +24,13 @@ Pylint:
     when: always
     paths:
       - ./pylint/
+
+Quality Control:
+  allow_failure: false
+  stage: Merge Request
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  script:
+    - python3 quality_control.py
+  tags:
+    - gitlab-org
