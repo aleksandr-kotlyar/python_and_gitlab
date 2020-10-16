@@ -26,7 +26,7 @@ def get_latest_job_artifact_of_branch(project, branch):
     """Get latest score.log artifact for branch."""
     result = requests.request(method='get',
                               url=f'https://gitlab.com/api/v4/projects/{project}/jobs/artifacts/'
-                                  f'{branch}/raw/pylint/score.log?job=Pylint',
+                                  f'{branch}/raw/pylint/score?job=Pylint',
                               headers={'PRIVATE-TOKEN': PRIVATE_TOKEN}).text
     print(f'{branch} score = {result}')
     return result
