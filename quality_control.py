@@ -21,13 +21,13 @@ def get_target_branch_of_merge_request(merge_request):
 
 
 def get_latest_job_artifact_of_branch(branch):
-    response = requests.request(
+    result = requests.request(
         method='get',
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/artifacts/{branch}/raw/pylint/score?job=Pylint',
-        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
+        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN}).text
 
-    print(response.text)
-    return response.text
+    print(f'{branch} score = {result}')
+    return result
 
 
 merge_requests = get_opened_merge_requests_of_source_branch(CI_PROJECT_ID, SOURCE_BRANCH)
@@ -35,11 +35,11 @@ merge_requests = get_opened_merge_requests_of_source_branch(CI_PROJECT_ID, SOURC
 if not merge_requests:
     exit(0)
 
-mr = merge_requests[0]
-target_branch = get_target_branch_of_merge_request(mr)
+last_merge_request = merge_requests[0]
+target_branch = get_target_branch_of_merge_request(last_merge_request)
 target_score = get_latest_job_artifact_of_branch(target_branch)
 source_score = get_latest_job_artifact_of_branch(SOURCE_BRANCH)
 
 if source_score < target_score:
-    print('Quality become lower:', source_score, '<', target_score)
+    print(f'Quality become lower: {source_score} < {target_score}')
     exit(1)
