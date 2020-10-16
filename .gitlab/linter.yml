@@ -1,5 +1,5 @@
 .linter_template:
-  stage: code_style
+  stage: Linter
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
 #    changes:
@@ -28,6 +28,7 @@ Pylint:
 Quality Control:
   allow_failure: false
   extends: .linter_template
+  stage: Merge Request
   needs:
     - job: Pylint
       artifacts: true
