@@ -1,4 +1,5 @@
 import os
+import sys
 
 import requests
 
@@ -8,38 +9,39 @@ PRIVATE_TOKEN = os.getenv('PRIVATE_TOKEN')
 
 
 def get_opened_merge_requests_of_source_branch(project, branch):
-    """Get last opened merge request for source branch"""
-    response = requests.request(method='get', url=f'https://gitlab.com/api/v4/projects/{project}/merge_requests',
+    """Get list of opened merge requests for source branch"""
+    response = requests.request(method='get', url=f'https://gitlab.com/api/v4/projects'
+                                                  f'/{project}/merge_requests',
                                 params={'source_branch': branch, 'state': 'opened'})
     assert response.status_code == 200
     return response.json()
 
 
 def get_target_branch_of_merge_request(merge_request):
-    print(merge_request['target_branch'])
+    """Get target_branch from merge_request."""
     return merge_request['target_branch']
 
 
 def get_latest_job_artifact_of_branch(branch):
-    result = requests.request(
-        method='get',
-        url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/artifacts/{branch}/raw/pylint/score?job=Pylint',
-        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN}).text
-
+    """Get latest score.log artifact for branch."""
+    result = requests.request(method='get', url=f'https://gitlab.com/api/v4/projects/'
+                                                f'{CI_PROJECT_ID}/jobs/artifacts/{branch}'
+                                                f'/raw/pylint/score.log?job=Pylint',
+                              headers={'PRIVATE-TOKEN': PRIVATE_TOKEN}).text
     print(f'{branch} score = {result}')
     return result
 
 
-merge_requests = get_opened_merge_requests_of_source_branch(CI_PROJECT_ID, SOURCE_BRANCH)
+MERGE_REQUESTS = get_opened_merge_requests_of_source_branch(CI_PROJECT_ID, SOURCE_BRANCH)
 
-if not merge_requests:
-    exit(0)
+if not MERGE_REQUESTS:
+    sys.exit(0)
 
-last_merge_request = merge_requests[0]
-target_branch = get_target_branch_of_merge_request(last_merge_request)
-target_score = get_latest_job_artifact_of_branch(target_branch)
-source_score = get_latest_job_artifact_of_branch(SOURCE_BRANCH)
+LAST_MERGE_REQUEST = MERGE_REQUESTS[0]
+TARGET_BRANCH = get_target_branch_of_merge_request(LAST_MERGE_REQUEST)
+TARGET_SCORE = get_latest_job_artifact_of_branch(TARGET_BRANCH)
+SOURCE_SCORE = get_latest_job_artifact_of_branch(SOURCE_BRANCH)
 
-if source_score < target_score:
-    print(f'Quality become lower: {source_score} < {target_score}')
-    exit(1)
+if SOURCE_SCORE < TARGET_SCORE:
+    print(f'Quality become lower: {SOURCE_SCORE} vs {TARGET_SCORE}')
+    sys.exit(1)
