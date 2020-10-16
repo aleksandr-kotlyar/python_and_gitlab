@@ -3,7 +3,7 @@ image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpi
 stages:
   - build
   - Linter
-  - Merge Request
+#  - Merge Request
   - test
   - slack-notification
   - upload-allure-reports
