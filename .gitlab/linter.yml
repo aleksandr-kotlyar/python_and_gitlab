@@ -1,15 +1,12 @@
 .linter_template:
-  stage: code_style
-  only:
-    refs:
-      - pushes
-    changes:
-      - '**/*.py'
-  except:
-    refs:
-      - web
-      - triggers
-      - schedules
+  stage: Linter
+  before_script:
+    - mkdir ./pylint;
+    - touch __init__.py;
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+      changes:
+        - '**/*.py'
   tags:
     - gitlab-org
 
@@ -17,8 +14,29 @@ Pylint:
   allow_failure: true
   extends: .linter_template
   script:
-    - mkdir ./pylint
-    - >
-      touch __init__.py;
-      pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?;
-      rm __init__.py
+    - pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?; rm __init__.py
+  after_script:
+    - PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint/pylint.log)
+    - echo $PYLINT_SCORE
+    - echo $PYLINT_SCORE > ./pylint/score.log
+    - echo $CI_JOB_URL > ./pylint/job_url.log
+    - anybadge --label="Pylint | ${CI_COMMIT_REF_NAME}" --file=pylint/pylint.svg --value=${PYLINT_SCORE} 2=red 4=orange 8=yellow 10=green
+  artifacts:
+    when: always
+    paths:
+      - ./pylint/
+
+Pylint Hard:
+  extends: .linter_template
+  script:
+    - pylint --rcfile=pylintrc $PWD --disable=missing-function-docstring,missing-class-docstring,useless-super-delegation,line-too-long,global-statement,arguments-differ,invalid-name
+
+#Quality Control:
+#  allow_failure: false
+#  stage: Merge Request
+#  rules:
+#    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+#  script:
+#    - python3 quality_control.py
+#  tags:
+#    - gitlab-org

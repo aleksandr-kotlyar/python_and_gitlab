@@ -2,7 +2,9 @@ image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpi
 
 stages:
   - build
-  - code_style
+  - Linter
+  - Badge
+  - Merge Request
   - test
   - Slack Notification
   - Generate Reports
@@ -22,6 +24,7 @@ variables:
 
 include:
   - local: '.gitlab/build.yml'
+  - local: '.gitlab/badge.yml'
   - local: '.gitlab/linter.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser.yml'
