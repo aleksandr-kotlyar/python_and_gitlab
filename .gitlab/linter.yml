@@ -1,9 +1,12 @@
 .linter_template:
   stage: Linter
+  before_script:
+    - mkdir ./pylint;
+    - touch __init__.py;
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
-#    changes:
-#      - '**/*.py'
+      changes:
+        - '**/*.py'
   tags:
     - gitlab-org
 
@@ -11,11 +14,7 @@ Pylint:
   allow_failure: true
   extends: .linter_template
   script:
-    - >
-      mkdir ./pylint;
-      touch __init__.py;
-      pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?;
-      rm __init__.py
+    - pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?; rm __init__.py
   after_script:
     - PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint/pylint.log)
     - echo $PYLINT_SCORE
@@ -26,6 +25,11 @@ Pylint:
     when: always
     paths:
       - ./pylint/
+
+Pylint Hard:
+  extends: .linter_template
+  script:
+    - pylint --rcfile=pylintrc $PWD --disable=missing-function-docstring,missing-class-docstring,useless-super-delegation,line-too-long,global-statement,arguments-differ,invalid-name
 
 #Quality Control:
 #  allow_failure: false
