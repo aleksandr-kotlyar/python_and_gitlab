@@ -35,7 +35,7 @@ def test_download_course():
 
 def test_leave_last_two_dots_part_of_filename():
     path = os.getcwd() + '/selenium-webdriver-java-dlya-nachinayushchih/'
-    for count, filename in enumerate(os.listdir(path)):
+    for _, filename in enumerate(os.listdir(path)):
         os.rename(
             src=path + filename,
             dst=path + filename.split('.')[-2] + '.' + filename.split('.')[-1]
