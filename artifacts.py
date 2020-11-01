@@ -8,29 +8,32 @@ CI_PROJECT_ID = os.environ.get('CI_PROJECT_ID')
 CI_COMMIT_REF_NAME = os.environ.get('CI_COMMIT_REF_NAME')
 PRIVATE_TOKEN = os.environ.get('PRIVATE_TOKEN')
 
-url = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs'
-
-payload = {
+PAYLOAD = {
     'job': 'pages',
     'scope': 'success'
 }
-headers = {
+HEADERS = {
     'PRIVATE-TOKEN': PRIVATE_TOKEN
 }
+URL = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs'
 
-response = requests.request("GET", url, headers=headers, params=payload)
-latest_job_id = response.json()[0]['id']
-logging.info(latest_job_id)
-url = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/' \
-      f'{latest_job_id}/artifacts'
+RESPONSE = requests.request("GET", URL, headers=HEADERS, params=PAYLOAD)
 
-response = requests.request("GET", url, headers=headers)
+LATEST_JOB_ID = RESPONSE.json()[0]['id']
+logging.info(LATEST_JOB_ID)
 
-file_name = 'artifacts.zip'
-artifacts = open(file_name, 'wb')
-artifacts.write(response.content)
-artifacts.close()
-pathToZip = file_name
-pathToOut = '.public'
-unzip = ['unzip', '-o', pathToZip, '-d', pathToOut]
-p = subprocess.call(unzip, shell=True)
+URL = f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/jobs/' \
+      f'{LATEST_JOB_ID}/artifacts'
+
+RESPONSE = requests.request("GET", URL, headers=HEADERS)
+
+FILE_NAME = 'artifacts.zip'
+ARTIFACTS = open(FILE_NAME, 'wb')
+ARTIFACTS.write(RESPONSE.content)
+ARTIFACTS.close()
+
+PATH_TO_ZIP = FILE_NAME
+PATH_TO_OUT = '.public'
+UNZIP = ['unzip', '-o', PATH_TO_ZIP, '-d', PATH_TO_OUT]
+
+subprocess.call(UNZIP, shell=True)

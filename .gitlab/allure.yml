@@ -33,7 +33,7 @@ pages:
     - job: allure
       artifacts: true
   script:
-    - python3 generate-index.py
+    - python3 generate_index.py
   artifacts:
     paths:
       - public
