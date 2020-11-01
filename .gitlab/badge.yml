@@ -1,0 +1,28 @@
+.badge:
+  stage: Badge
+  script:
+    - job_url=$(head -n 1 ./pylint/job_url.log)
+    - >
+      curl --request PUT
+      --header "PRIVATE-TOKEN: ${PRIVATE_TOKEN}"
+      --data "link_url=${job_url}&image_url=${job_url}/artifacts/raw/pylint/pylint.svg" https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/badges/${BADGE_ID}
+  tags:
+    - gitlab-org
+
+Badge:
+  extends: .badge
+  variables:
+    BADGE_ID: $LINTER_CUSTOM_BADGE_ID
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME != "master"'
+#      changes:
+#        - '**/*.py'
+
+Badge:master:
+  extends: .badge
+  variables:
+    BADGE_ID: $LINTER_MASTER_BADGE_ID
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == "master"'
+#      changes:
+#        - '**/*.py'
