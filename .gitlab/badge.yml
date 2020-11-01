@@ -15,8 +15,8 @@ Badge:
     BADGE_ID: $LINTER_CUSTOM_BADGE_ID
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME != "master"'
-#      changes:
-#        - '**/*.py'
+      changes:
+        - '**/*.py'
 
 Badge:master:
   extends: .badge
@@ -24,5 +24,5 @@ Badge:master:
     BADGE_ID: $LINTER_MASTER_BADGE_ID
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_REF_NAME == "master"'
-#      changes:
-#        - '**/*.py'
+      changes:
+        - '**/*.py'
