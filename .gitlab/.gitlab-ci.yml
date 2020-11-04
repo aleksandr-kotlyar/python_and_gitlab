@@ -1,9 +1,10 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpine-req
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-1-pylint-2.6.0
 
 stages:
   - build
   - Linter
   - Badge
+  - security
   - Merge Request
   - test
   - slack-notification
@@ -25,6 +26,7 @@ include:
   - local: '.gitlab/build.yml'
   - local: '.gitlab/badge.yml'
   - local: '.gitlab/linter.yml'
+  - local: '.gitlab/security.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser.yml'
   - local: '.gitlab/browser-remote.yml'
