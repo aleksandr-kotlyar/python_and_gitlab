@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpine-req
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-1-pylint-2.6.0
 
 stages:
   - build
