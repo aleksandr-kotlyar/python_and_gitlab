@@ -40,3 +40,16 @@ Pylint Hard:
 #    - python3 quality_control.py
 #  tags:
 #    - gitlab-org
+
+Safety:
+  extends: .linter_template
+  script:
+    - pip3 install safety
+    - safety check --full-report
+
+Safety stdin:
+  extends: .linter_template
+  script:
+    - pip3 install safety
+    - safety check --full-report
+    - pip3 freeze | safety check --stdin
