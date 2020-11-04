@@ -139,6 +139,7 @@ disable=print-statement,
         deprecated-sys-function,
         exception-escape,
         comprehension-escape,
+        logging-fstring-interpolation,
         R0201,W0621,W1202,C0114
 
 # Enable the message, report, category or checker with the given id(s). You can
