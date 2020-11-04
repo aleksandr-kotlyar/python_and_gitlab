@@ -16,3 +16,14 @@ Safety stdin:
   extends: .safety
   script:
     - pip3 freeze | safety check --stdin
+
+Trivy:
+  stage: security
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+  script:
+    - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
+    - apk -vv info|sort
+    - trivy filesystem --exit-code 1 --skip-dirs /builds/gitlab-org-forks/ --cache-dir .trivycache/ /
+  tags:
+    - gitlab-org
