@@ -4,6 +4,7 @@ stages:
   - build
   - Linter
   - Badge
+  - security
   - Merge Request
   - test
   - slack-notification
@@ -25,6 +26,7 @@ include:
   - local: '.gitlab/build.yml'
   - local: '.gitlab/badge.yml'
   - local: '.gitlab/linter.yml'
+  - local: '.gitlab/security.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser.yml'
   - local: '.gitlab/browser-remote.yml'

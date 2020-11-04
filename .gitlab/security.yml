@@ -1,0 +1,20 @@
+.safety:
+  stage: security
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+      changes:
+        - '**/*.py'
+  before_script:
+    - pip3 install safety
+  tags:
+    - gitlab-org
+
+Safety:
+  extends: .safety
+  script:
+    - safety check --full-report
+
+Safety stdin:
+  extends: .safety
+  script:
+    - pip3 freeze | safety check --stdin
