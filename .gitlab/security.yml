@@ -27,3 +27,13 @@ Trivy:
     - trivy filesystem --exit-code 1 --skip-dirs /builds/gitlab-org-forks/ --cache-dir .trivycache/ /
   tags:
     - gitlab-org
+
+Bandit:
+  stage: security
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+  script:
+    - pip3 install bandit
+    - bandit -x $(pwd)/.venv/ -r $(pwd) -s B101
+  tags:
+    - gitlab-org
