@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-13-ssl-fix
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-14-mimesis-4.1.2
 
 stages:
   - build
