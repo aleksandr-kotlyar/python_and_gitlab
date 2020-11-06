@@ -52,7 +52,7 @@ def test_list_doesnt_have_duplicates(some_list):
     2. Sorting set;
     3. Sorting list;
     4. List comprehension;
- 
+
     """
 
     some_list.sort()
