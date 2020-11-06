@@ -1,3 +1,4 @@
+# pylint: disable=arguments-differ
 import json
 
 import allure
