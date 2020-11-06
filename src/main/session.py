@@ -1,3 +1,4 @@
+# pylint: disable=arguments-differ
 import json
 
 import allure
@@ -6,22 +7,18 @@ from requests import Session, Response
 from src.main.allure_helpers import allure_request_logger
 
 
-class MySession(Session):
-    def __init__(self):
-        super().__init__()
+class ApiSession(Session):
+    """Requests api session which Log request/response to allure attachments and console."""
 
     @allure_request_logger
     def request(self, method, url, **kwargs) -> Response:
-        """ Log request/response to allure and info"""
-
         response = super().request(method=method, url=url, **kwargs)
 
         return response
 
 
 class HttpbinApiSessionLevelOne(Session):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    """Requests api session which has hardcoded base_url."""
 
     def request(self, method, url, **kwargs) -> Response:
         url = f'https://httpbin.org{url}'
@@ -30,8 +27,8 @@ class HttpbinApiSessionLevelOne(Session):
 
 
 class HttpbinApiSessionLevelTwo(Session):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    """Requests api session which has hardcoded base_url.
+    And logs request/response into allure attachments."""
 
     def request(self, method, url, **kwargs) -> Response:
         url = f'https://httpbin.org{url}'
@@ -40,19 +37,22 @@ class HttpbinApiSessionLevelTwo(Session):
         try:
             allure.attach(
                 body=url.encode('utf8'),
-                name=f'Request {response.status_code} {method} {url}',
+                name=f'Request {response.status_code} {response.request.method} '
+                     f'{response.request.url}',
                 attachment_type=allure.attachment_type.TEXT,
                 extension='txt')
             response.json()
             allure.attach(
                 body=json.dumps(response.json(), indent=4, ensure_ascii=False).encode('utf8'),
-                name=f'Response {response.status_code} {response.request.method} {response.request.url}',
+                name=f'Response {response.status_code} {response.request.method} '
+                     f'{response.request.url}',
                 attachment_type=allure.attachment_type.JSON,
                 extension='json')
         except ValueError as error:
             allure.attach(
                 body=response.text.encode('utf8'),
-                name=f'NOT JSON Response {response.status_code} {response.request.method} {response.request.url}',
+                name=f'NOT JSON Response {response.status_code} {response.request.method} '
+                     f'{response.request.url}',
                 attachment_type=allure.attachment_type.TEXT,
                 extension='txt')
             raise error

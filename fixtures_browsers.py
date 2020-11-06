@@ -9,24 +9,28 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 @pytest.fixture(scope='function')
 def browser_func(choose_driver):
+    """Browser that closes after each test function or method."""
     yield choose_driver
     choose_driver.quit()
 
 
 @pytest.fixture(scope='class')
 def browser_class(choose_driver):
+    """Browser that closes after each test class."""
     yield choose_driver
     choose_driver.quit()
 
 
 @pytest.fixture(scope='module')
 def browser_module(choose_driver):
+    """Browser that closes after each test module."""
     yield choose_driver
     choose_driver.quit()
 
 
 @pytest.fixture(scope='session')
 def choose_driver(is_remote, t_browser):
+    """Remote or local browser selector fixture."""
     if is_remote:
         return remote_driver(t_browser)
     return custom_driver(t_browser)
