@@ -1,11 +1,12 @@
+# pylint: disable=missing-function-docstring
 import pytest
 
-from src.main.session import MySession, HttpbinApiSessionLevelOne, HttpbinApiSessionLevelTwo
+from src.main.session import ApiSession, HttpbinApiSessionLevelOne, HttpbinApiSessionLevelTwo
 
 
 @pytest.fixture(scope='session', autouse=True)
-def api_session() -> MySession:
-    with MySession() as session:
+def api_session() -> ApiSession:
+    with ApiSession() as session:
         yield session
 
 

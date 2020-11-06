@@ -7,7 +7,7 @@ from requests import Session, Response
 from src.main.allure_helpers import allure_request_logger
 
 
-class MySession(Session):
+class ApiSession(Session):
 
     @allure_request_logger
     def request(self, method, url, **kwargs) -> Response:
