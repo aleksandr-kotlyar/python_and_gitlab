@@ -26,7 +26,8 @@ def test_download_course():
         logging.info(f'start download {content_url}')
 
         with open(course + '/' + content_url.split('.net/')[1].replace('/', '.'), 'wb') as file:
-            for chunk in requests.get(url=content_url, stream=True).iter_content(chunk_size=1024 * 1024):
+            for chunk in requests.get(url=content_url,
+                                      stream=True).iter_content(chunk_size=1024 * 1024):
                 if chunk:
                     file.write(chunk)
 

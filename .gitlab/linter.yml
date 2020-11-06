@@ -29,7 +29,7 @@ Pylint:
 Pylint Hard:
   extends: .linter_template
   script:
-    - pylint --rcfile=pylintrc $PWD --disable=missing-function-docstring,missing-class-docstring,line-too-long,invalid-name
+    - pylint --rcfile=pylintrc $PWD --disable=missing-function-docstring,missing-class-docstring,invalid-name
 
 #Quality Control:
 #  allow_failure: false
