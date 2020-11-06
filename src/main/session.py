@@ -7,8 +7,6 @@ from src.main.allure_helpers import allure_request_logger
 
 
 class MySession(Session):
-    def __init__(self):
-        super().__init__()
 
     @allure_request_logger
     def request(self, method, url, **kwargs) -> Response:
@@ -20,8 +18,6 @@ class MySession(Session):
 
 
 class HttpbinApiSessionLevelOne(Session):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
 
     def request(self, method, url, **kwargs) -> Response:
         url = f'https://httpbin.org{url}'
@@ -30,8 +26,6 @@ class HttpbinApiSessionLevelOne(Session):
 
 
 class HttpbinApiSessionLevelTwo(Session):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
 
     def request(self, method, url, **kwargs) -> Response:
         url = f'https://httpbin.org{url}'
