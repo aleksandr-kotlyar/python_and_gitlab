@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup, Tag
 
 
 def test_download_course():
+    """Video downloader script for sites that store mp4 urls in html."""
     course = 'selenium-webdriver-java-dlya-nachinayushchih'
     if not os.path.exists(course):
         os.makedirs(course)
@@ -35,6 +36,7 @@ def test_download_course():
 
 
 def test_leave_last_two_dots_part_of_filename():
+    """File renaming script for list of files in directory."""
     path = os.getcwd() + '/selenium-webdriver-java-dlya-nachinayushchih/'
     for _, filename in enumerate(os.listdir(path)):
         os.rename(

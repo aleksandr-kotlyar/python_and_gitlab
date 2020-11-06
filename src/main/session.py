@@ -8,17 +8,17 @@ from src.main.allure_helpers import allure_request_logger
 
 
 class ApiSession(Session):
+    """Requests api session which Log request/response to allure attachments and console."""
 
     @allure_request_logger
     def request(self, method, url, **kwargs) -> Response:
-        """ Log request/response to allure and info"""
-
         response = super().request(method=method, url=url, **kwargs)
 
         return response
 
 
 class HttpbinApiSessionLevelOne(Session):
+    """Requests api session which has hardcoded base_url."""
 
     def request(self, method, url, **kwargs) -> Response:
         url = f'https://httpbin.org{url}'
@@ -27,6 +27,8 @@ class HttpbinApiSessionLevelOne(Session):
 
 
 class HttpbinApiSessionLevelTwo(Session):
+    """Requests api session which has hardcoded base_url.
+    And logs request/response into allure attachments."""
 
     def request(self, method, url, **kwargs) -> Response:
         url = f'https://httpbin.org{url}'
