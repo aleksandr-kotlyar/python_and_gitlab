@@ -1,3 +1,4 @@
+# pylint: disable=global-statement
 import contextlib
 
 from pytest_voluptuous import S
