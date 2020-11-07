@@ -8,7 +8,7 @@ RUN apk --no-cache add \
     libc-dev \
     unzip \
     git \
-    && wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.zip \
+    && wget -4 https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.zip \
     && unzip allure-commandline-${ALLURE_VERSION}.zip \
     && rm -fv allure-commandline-${ALLURE_VERSION}.zip
 ENV PATH=/allure-${ALLURE_VERSION}/bin:$PATH
