@@ -41,6 +41,7 @@ pages:
       artifacts: true
   script:
     - ls -la
+    - ls public/stage -la
     - python3 generate_index.py
   artifacts:
     paths:
