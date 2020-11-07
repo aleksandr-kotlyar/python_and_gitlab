@@ -27,9 +27,10 @@ allure:
     - cp -r ${LAST}history reports/ || echo "Sorry, no reports/history"
     - allure generate reports
     - cp -r allure-report/* ./.public/stage/${CI_JOB_ID}/
+    - cp -r .public/* public/
   artifacts:
     paths:
-      - .public
+      - public
 
 pages:
   image: python:3.7-alpine
@@ -39,6 +40,7 @@ pages:
     - job: allure
       artifacts: true
   script:
+    - ls -la
     - python3 generate_index.py
   artifacts:
     paths:
