@@ -15,6 +15,7 @@ allure:
     - ls public -la
     # copy last-reports/history to /reports
     - LAST=$("cd /public/stage; ls -td -- */ | head -n 1") || echo "Sorry, latest build not found"
+    - echo "${LAST}"
     - mkdir -p /public/stage/${CI_JOB_ID}
     - cd ${LAST}; pwd; ls -la; cd ${LAST}history; pwd || echo "Sorry, latest build not found"
     - cd .
