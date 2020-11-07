@@ -1,0 +1,9 @@
+on:
+  [push]
+
+jobs:
+  pytest:
+    name: Pytest
+    runs-on: docker.pkg.github.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-14-mimesis-4.1.2
+    steps:
+    - run: pytest src/test/test_api.py
