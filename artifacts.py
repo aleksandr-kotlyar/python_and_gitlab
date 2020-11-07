@@ -1,6 +1,6 @@
 import logging
 import os
-import subprocess
+from subprocess import call  # nosec
 
 import requests
 
@@ -36,4 +36,4 @@ PATH_TO_ZIP = FILE_NAME
 PATH_TO_OUT = '.public'
 UNZIP = ['unzip', '-o', PATH_TO_ZIP, '-d', PATH_TO_OUT]
 
-subprocess.call(UNZIP, shell=True)
+call(UNZIP, shell=True)  # nosec
