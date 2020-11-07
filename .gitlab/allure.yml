@@ -21,12 +21,13 @@ allure:
     - mkdir -p /public/stage/${CI_JOB_ID}
     - cd ${LAST}; pwd; ls -la; cd ${LAST}history || echo "Sorry, latest build not found"; pwd;
     - cd .
+    - $pwd
     - cp -r ${LAST}history reports/ || echo "Sorry, no reports/history"
     - allure generate reports
-    - cp -r allure-report/* /public/stage/${CI_JOB_ID}/
+    - cp -r allure-report/* ./.public/stage/${CI_JOB_ID}/
   artifacts:
     paths:
-      - public
+      - .public
 
 pages:
   image: python:3.7-alpine
