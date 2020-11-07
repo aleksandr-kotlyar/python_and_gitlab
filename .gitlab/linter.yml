@@ -14,7 +14,7 @@ Pylint:
   allow_failure: true
   extends: .linter_template
   script:
-    - pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log || pylint-exit $?; rm __init__.py
+    - pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log
   after_script:
     - PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint/pylint.log)
     - echo $PYLINT_SCORE
@@ -25,11 +25,6 @@ Pylint:
     when: always
     paths:
       - ./pylint/
-
-Pylint Hard:
-  extends: .linter_template
-  script:
-    - pylint --rcfile=pylintrc $PWD --disable=missing-function-docstring,missing-class-docstring,useless-super-delegation,line-too-long,global-statement,arguments-differ,invalid-name
 
 #Quality Control:
 #  allow_failure: false

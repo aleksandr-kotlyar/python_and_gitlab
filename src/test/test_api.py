@@ -1,3 +1,4 @@
+# pylint: disable=missing-function-docstring
 import json
 import os
 
@@ -28,7 +29,7 @@ class TestApiLevelOne:
         with open(os.path.join(os.path.dirname(__file__), 'resources', 'patch.json')) as file:
             schema = json.loads(file.read())
 
-        body = requests.get('https://httpbin.org/patch').json()
+        body = requests.patch('https://httpbin.org/patch').json()
 
         validictory.validate(body, schema, fail_fast=False)
 
@@ -63,7 +64,7 @@ class TestApiLevelTwo:
                       name='Json schema', attachment_type=allure.attachment_type.JSON)
 
         allure.attach(url, 'Requested API', allure.attachment_type.URI_LIST)
-        body = requests.get(url).json()
+        body = requests.patch(url).json()
         allure.attach(body=json.dumps(body, indent=2, ensure_ascii=False).encode('utf8'),
                       name="Response", attachment_type=allure.attachment_type.JSON)
 
@@ -131,14 +132,14 @@ class TestApiLevelFour:
                       name="Response", attachment_type=allure.attachment_type.JSON)
         return body
 
-    def httpbin(self, method, url):
+    def http_bin(self, method, url):
         return self.request(method, f'https://httpbin.org{url}')
 
     @allure.title('GET "https://httpbin.org/get"')
     def test_get(self):
         schema = file.read_json('get.json')
 
-        body = self.httpbin('get', '/get')
+        body = self.http_bin('get', '/get')
 
         validictory.validate(body, schema, fail_fast=False)
 
@@ -146,7 +147,7 @@ class TestApiLevelFour:
     def test_patch(self):
         schema = file.read_json('patch.json')
 
-        body = self.httpbin('patch', '/patch').json()
+        body = self.http_bin('patch', '/patch')
 
         validictory.validate(body, schema, fail_fast=False)
 

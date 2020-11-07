@@ -1,3 +1,4 @@
+# pylint: disable=missing-function-docstring,missing-class-docstring
 import json
 import logging
 from functools import wraps
@@ -71,7 +72,7 @@ def allure_request_logger(function):
                 attachment_type=allure.attachment_type.JSON,
                 extension='json')
 
-        except ValueError as error:
+        except ValueError:
             logging.error('RESPONSE IN NOT JSON FORMAT')
             allure.attach(
                 body=response.text.encode('utf8'),
@@ -79,7 +80,6 @@ def allure_request_logger(function):
                      f'{response.request.url}',
                 attachment_type=allure.attachment_type.TEXT,
                 extension='txt')
-            raise error
         return response
 
     return wrapper

@@ -1,9 +1,10 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-alpine-req
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-14-mimesis-4.1.2
 
 stages:
   - build
   - Linter
   - Badge
+  - security
   - Merge Request
   - test
   - Slack Notification
@@ -26,6 +27,7 @@ include:
   - local: '.gitlab/build.yml'
   - local: '.gitlab/badge.yml'
   - local: '.gitlab/linter.yml'
+  - local: '.gitlab/security.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser.yml'
   - local: '.gitlab/allure.yml'
