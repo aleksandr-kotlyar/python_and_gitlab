@@ -14,11 +14,11 @@ allure:
     - pwd
     - ls public -la
     # copy last-reports/history to /reports
-    - LAST=$("cd /public/stage; ls -td -- */ | head -n 1 || None")
+    - LAST=$("cd /public/stage; ls -td -- */ | head -n 1") || echo "Sorry, latest build not found"
     - mkdir -p /public/stage/${CI_JOB_ID}
-    - cd ${LAST}; pwd; ls -la; cd ${LAST}history; pwd;
+    - cd ${LAST}; pwd; ls -la; cd ${LAST}history; pwd || echo "Sorry, latest build not found"
     - cd .
-    - cp -r ${LAST}history reports/ || echo "No history"
+    - cp -r ${LAST}history reports/ || echo "Sorry, no reports/history"
     - allure generate reports
     - cp -r allure-report/* /public/stage/${CI_JOB_ID}/
   artifacts:
