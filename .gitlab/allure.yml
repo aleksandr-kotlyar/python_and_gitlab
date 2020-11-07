@@ -10,6 +10,8 @@ allure:
   script:
     - mkdir -p ./.public
     - python3 artifacts.py
+    - $pwd
+    - ls -la
     - ls .public -la
     - pwd
     - ls public -la
@@ -17,7 +19,7 @@ allure:
     - LAST=$("cd /public/stage; ls -td -- */ | head -n 1") || echo "Sorry, latest build not found"
     - echo "${LAST}"
     - mkdir -p /public/stage/${CI_JOB_ID}
-    - cd ${LAST}; pwd; ls -la; cd ${LAST}history; pwd || echo "Sorry, latest build not found"
+    - cd ${LAST}; pwd; ls -la; cd ${LAST}history || echo "Sorry, latest build not found"; pwd;
     - cd .
     - cp -r ${LAST}history reports/ || echo "Sorry, no reports/history"
     - allure generate reports
