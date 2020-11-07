@@ -4,12 +4,12 @@ on:
 jobs:
   pytest:
     name: Pytest
+    uses: actions/checkout@v2
     runs-on: ubuntu-latest
     container:
       image: docker.pkg.github.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-14-mimesis-4.1.2
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.ghcr_token }}
-    uses: actions/checkout@v2
     steps:
     - run: pytest src/test/test_api.py
