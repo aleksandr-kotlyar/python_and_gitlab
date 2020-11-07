@@ -8,9 +8,10 @@ allure:
     - job: chrome:remote
       artifacts: true
   script:
+    - pwd
+    - CUR_DIR=$(pwd)
     - mkdir -p ./.public
     - python3 artifacts.py
-    - $pwd
     - ls -la
     - ls .public -la
     - pwd
@@ -20,8 +21,8 @@ allure:
     - echo "${LAST}"
     - mkdir -p /public/stage/${CI_JOB_ID}
     - cd ${LAST}; pwd; ls -la; cd ${LAST}history || echo "Sorry, latest build not found"; pwd;
-    - cd .
-    - $pwd
+    - cd $CUR_DIR
+    - pwd
     - cp -r ${LAST}history reports/ || echo "Sorry, no reports/history"
     - allure generate reports
     - cp -r allure-report/* ./.public/stage/${CI_JOB_ID}/
