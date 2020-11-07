@@ -29,6 +29,7 @@ allure:
     - cp -r allure-report/* ./.public/stage/${CI_JOB_ID}/
     - cp -r .public/* public/
   artifacts:
+    expires_in: 20d
     paths:
       - public
 
@@ -44,5 +45,6 @@ pages:
     - ls public/stage -la
     - python3 generate_index.py
   artifacts:
+    expires_in: 20d
     paths:
       - public

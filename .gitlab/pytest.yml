@@ -10,6 +10,7 @@
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
   allow_failure: true
   artifacts:
+    expires_in: 30d
     when: always
     paths:
       - reports
