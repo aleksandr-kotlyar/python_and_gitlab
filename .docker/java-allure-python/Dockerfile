@@ -1,6 +1,7 @@
 FROM openjdk:14-alpine
 
-ARG ALLURE_VERSION='2.13.6'
+ARG ALLURE_VERSION=2.13.6
+
 RUN apk --no-cache add \
     curl \
     gcc \
