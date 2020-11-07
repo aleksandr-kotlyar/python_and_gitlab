@@ -8,7 +8,7 @@ allure:
     - job: chrome:remote
       artifacts: true
   script:
-    - mkdir -p ~/.public
+    - mkdir -p ./.public
     - python3 artifacts.py
     - ls .public -la
     - pwd
