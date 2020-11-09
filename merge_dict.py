@@ -3,6 +3,9 @@ from pprint import pprint
 
 def merge_two_lists_of_dicts_by_key_condition(ld1, ld2):
     """Update dict with same timestamp by higher 'unique' key value."""
+    if ld2 == 0:
+        return ld1
+
     listdict: list = ld1 + ld2
     for i in range(len(listdict) - 1):
         for j in range(i + 1, len(listdict)):
