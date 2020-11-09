@@ -77,3 +77,4 @@ stats:github:unique:clones:
   artifacts:
     paths:
       - gh_unique_clones.svg
+      - gh_unique_clones.json
