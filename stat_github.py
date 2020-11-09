@@ -41,7 +41,7 @@ def get_archive_uniques_stat():
         return 0
 
     pprint(stat)
-    return int(stat.text)
+    return stat.text
 
 
 def sum_uniques_stats(stats):
