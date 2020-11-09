@@ -29,7 +29,7 @@ def get_current_uniques_stat():
 def get_archive_uniques_stat():
     stat = requests.get(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}'
-            f'/jobs/artifacts/master/raw/gh_unique_clones.log?job=github_stat')
+            f'/jobs/artifacts/master/raw/gh_unique_clones.log?job=stats:github:unique:clones')
 
     if stat.status_code != 200:
         return 0
