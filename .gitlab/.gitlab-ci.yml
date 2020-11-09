@@ -67,3 +67,10 @@ merge:master:
   except:
     refs:
       - pushes
+
+stats:github:unique:clones:
+  stage: Badge
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  script:
+    - python3 stat_github.py
