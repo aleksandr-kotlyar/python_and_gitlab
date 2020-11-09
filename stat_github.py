@@ -11,6 +11,7 @@ OWNER = os.environ.get('CI_PROJECT_NAMESPACE')
 REPO = os.environ.get('CI_PROJECT_NAME')
 CI_PROJECT_ID = os.environ.get('CI_PROJECT_ID')
 GH_UNIQUE_CLONES_BADGE = os.environ.get('GH_UNIQUE_CLONES_BADGE')
+CI_JOB_URL = os.environ.get('CI_JOB_URL')
 
 
 def get_current_uniques_stat():
@@ -61,7 +62,7 @@ def public_uniques_stats(stats):
 
     requests.put(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/badges/{GH_UNIQUE_CLONES_BADGE}',
-        json={'image_url': 'gh_unique_clones.svg'},
+        json={'image_url': f'{CI_JOB_URL}/artifacts/raw/gh_unique_clones.svg'},
         headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
     pprint('badge published')
 
