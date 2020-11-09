@@ -63,7 +63,7 @@ def save_uniques_stats(stats):
 def public_uniques_stats(stats):
     print('public_uniques_stats')
     badge = anybadge.Badge(label='downloads/unique',
-                           value=stats['unique'],
+                           value=stats['uniques'],
                            default_color='green',
                            num_padding_chars=1)
     badge.write_badge('gh_unique_clones.svg', overwrite=True)
