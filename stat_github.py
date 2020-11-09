@@ -49,7 +49,7 @@ def sum_uniques_stats(current, archive):
 
 def save_uniques_stats(stats):
     with open('gh_unique_clones.log', 'w') as file:
-        file.write(stats)
+        file.write(str(stats))
 
 
 def public_uniques_stats(stats):
