@@ -62,7 +62,7 @@ def public_uniques_stats(stats):
     requests.put(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/badges/{GH_UNIQUE_CLONES_BADGE}',
         json={'image_url': 'gh_unique_clones.svg'},
-        headers={'PRIVATE-TOKEN': {PRIVATE_TOKEN}})
+        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
     pprint('badge published')
 
 
