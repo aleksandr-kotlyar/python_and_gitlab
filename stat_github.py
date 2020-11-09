@@ -44,14 +44,12 @@ def get_archive_uniques_stat():
     return int(stat.text)
 
 
-def sum_uniques_stats(current, archive):
+def sum_uniques_stats(stats):
     print('sum_uniques_stats')
-    if archive == 0:
-        return current
 
-    stats = merge_dict.merge_two_lists_of_dicts_by_key_condition(current, archive)
-    pprint(stats)
-    return stats
+    summary = sum(s['uniques'] for s in stats['clones'])
+    pprint(summary)
+    return summary
 
 
 def save_uniques_stats(stats):
@@ -80,6 +78,7 @@ def public_uniques_stats(stats):
 
 CURRENT = get_current_uniques_stat()
 ARCHIVE = get_archive_uniques_stat()
-SUMMARY = sum_uniques_stats(CURRENT, ARCHIVE)
-save_uniques_stats(SUMMARY)
+MERGED = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
+SUMMARY = sum_uniques_stats(MERGED)
+save_uniques_stats(MERGED)
 public_uniques_stats(SUMMARY)
