@@ -1,6 +1,7 @@
 # pylint: disable=missing-function-docstring
 import os
 from pprint import pprint
+from typing import Optional
 
 import anybadge
 import requests
@@ -17,21 +18,18 @@ CI_JOB_URL = os.environ.get('CI_JOB_URL')
 LOG_FILE = 'gh_unique_clones.json'
 
 
-def get_current_uniques_stat():
+def get_current_uniques_stat() -> Optional[int, dict]:
     print('get_current_uniques_stat')
     stat = requests.get(
         url='https://api.github.com/repos/{0}/{1}/traffic/clones'.format(OWNER, REPO),
         headers={'Authorization': f'token {TOKEN}'},
         params={'per': 'day'})
 
-    if stat.status_code != 200:
-        return 0
-
     pprint(stat.json())
     return stat.json()
 
 
-def get_archive_uniques_stat():
+def get_archive_uniques_stat() -> Optional[int, dict]:
     print('get_archive_uniques_stat')
     stat = requests.get(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}'
@@ -41,10 +39,10 @@ def get_archive_uniques_stat():
         return 0
 
     pprint(stat)
-    return stat.text
+    return stat.json()
 
 
-def sum_uniques_stats(stats):
+def sum_uniques_stats(stats: dict) -> int:
     print('sum_uniques_stats')
 
     summary = sum(s['uniques'] for s in stats['clones'])
@@ -52,16 +50,16 @@ def sum_uniques_stats(stats):
     return summary
 
 
-def save_uniques_stats(stats):
+def save_uniques_stats(stats: dict):
     print('save_uniques_stats')
     with open(LOG_FILE, 'w') as file:
         file.write(str(stats))
 
 
-def public_uniques_stats(stats):
+def public_uniques_stats(summary: int):
     print('public_uniques_stats')
     badge = anybadge.Badge(label='downloads/unique',
-                           value=stats['uniques'],
+                           value=summary,
                            default_color='green',
                            num_padding_chars=1)
     badge.write_badge('gh_unique_clones.svg', overwrite=True)
@@ -76,9 +74,9 @@ def public_uniques_stats(stats):
         pprint('badge published')
 
 
-CURRENT = get_current_uniques_stat()
-ARCHIVE = get_archive_uniques_stat()
-MERGED = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
-SUMMARY = sum_uniques_stats(MERGED)
+CURRENT: dict = get_current_uniques_stat()
+ARCHIVE: dict = get_archive_uniques_stat()
+MERGED: dict = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
+SUMMARY: int = sum_uniques_stats(MERGED)
 save_uniques_stats(MERGED)
 public_uniques_stats(SUMMARY)
