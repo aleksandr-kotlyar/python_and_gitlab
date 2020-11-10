@@ -1,7 +1,7 @@
 # pylint: disable=missing-function-docstring
 import os
 from pprint import pprint
-from typing import Optional
+from typing import Union
 
 import anybadge
 import requests
@@ -18,7 +18,7 @@ CI_JOB_URL = os.environ.get('CI_JOB_URL')
 LOG_FILE = 'gh_unique_clones.json'
 
 
-def get_current_uniques_stat() -> Optional[int, dict]:
+def get_current_uniques_stat() -> dict:
     print('get_current_uniques_stat')
     stat = requests.get(
         url='https://api.github.com/repos/{0}/{1}/traffic/clones'.format(OWNER, REPO),
@@ -29,14 +29,14 @@ def get_current_uniques_stat() -> Optional[int, dict]:
     return stat.json()
 
 
-def get_archive_uniques_stat() -> Optional[int, dict]:
+def get_archive_uniques_stat() -> Union[list, dict]:
     print('get_archive_uniques_stat')
     stat = requests.get(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}'
             f'/jobs/artifacts/master/raw/{LOG_FILE}?job=stats:github:unique:clones')
 
     if stat.status_code != 200:
-        return 0
+        return []
 
     pprint(stat)
     return stat.json()
