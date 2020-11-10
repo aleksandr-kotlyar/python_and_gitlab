@@ -6,7 +6,7 @@ def merge_two_lists_of_dicts_by_key_condition(ld1, ld2):
     if not ld2:
         return ld1
 
-    listdict = ld1 + ld2
+    listdict = ld1['clones'] + ld2['clones']
     for i in range(len(listdict) - 1):
         for j in range(i + 1, len(listdict)):
             if listdict[i]['timestamp'] == listdict[j]['timestamp']:

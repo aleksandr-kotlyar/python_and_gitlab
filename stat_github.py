@@ -1,4 +1,5 @@
 # pylint: disable=missing-function-docstring
+import json
 import os
 from pprint import pprint
 
@@ -37,8 +38,9 @@ def get_archive_uniques_stat():
     if stat.status_code != 200:
         return []
 
-    pprint(stat.text)
-    return stat.text
+    stat = json.loads(stat.content)
+    pprint(stat)
+    return stat
 
 
 def sum_uniques_stats(stats) -> int:
