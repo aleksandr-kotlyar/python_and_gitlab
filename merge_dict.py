@@ -1,13 +1,12 @@
 from pprint import pprint
-from typing import Union
 
 
-def merge_two_lists_of_dicts_by_key_condition(ld1: Union[list, dict], ld2: Union[list, dict]):
+def merge_two_lists_of_dicts_by_key_condition(ld1, ld2):
     """Update dict with same timestamp by higher 'unique' key value."""
-    if ld2 == 0:
+    if not ld2:
         return ld1
 
-    listdict: list = ld1 + ld2
+    listdict = ld1 + ld2
     for i in range(len(listdict) - 1):
         for j in range(i + 1, len(listdict)):
             if listdict[i]['timestamp'] == listdict[j]['timestamp']:
