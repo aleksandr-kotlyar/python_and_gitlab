@@ -1,7 +1,8 @@
 from pprint import pprint
+from typing import Union
 
 
-def merge_two_lists_of_dicts_by_key_condition(ld1, ld2):
+def merge_two_lists_of_dicts_by_key_condition(ld1: Union[list, dict], ld2: Union[list, dict]):
     """Update dict with same timestamp by higher 'unique' key value."""
     if ld2 == 0:
         return ld1

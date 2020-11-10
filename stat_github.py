@@ -18,7 +18,7 @@ CI_JOB_URL = os.environ.get('CI_JOB_URL')
 LOG_FILE = 'gh_unique_clones.json'
 
 
-def get_current_uniques_stat() -> dict:
+def get_current_uniques_stat() -> Union[list, dict]:
     print('get_current_uniques_stat')
     stat = requests.get(
         url='https://api.github.com/repos/{0}/{1}/traffic/clones'.format(OWNER, REPO),
