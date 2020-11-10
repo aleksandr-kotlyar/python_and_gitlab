@@ -1,7 +1,6 @@
 # pylint: disable=missing-function-docstring
 import os
 from pprint import pprint
-from typing import Union
 
 import anybadge
 import requests
@@ -18,7 +17,7 @@ CI_JOB_URL = os.environ.get('CI_JOB_URL')
 LOG_FILE = 'gh_unique_clones.json'
 
 
-def get_current_uniques_stat() -> Union[list, dict]:
+def get_current_uniques_stat():
     print('get_current_uniques_stat')
     stat = requests.get(
         url='https://api.github.com/repos/{0}/{1}/traffic/clones'.format(OWNER, REPO),
@@ -29,7 +28,7 @@ def get_current_uniques_stat() -> Union[list, dict]:
     return stat.json()
 
 
-def get_archive_uniques_stat() -> Union[list, dict]:
+def get_archive_uniques_stat():
     print('get_archive_uniques_stat')
     stat = requests.get(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}'
@@ -38,11 +37,11 @@ def get_archive_uniques_stat() -> Union[list, dict]:
     if stat.status_code != 200:
         return []
 
-    pprint(stat)
-    return stat.json()
+    pprint(stat.text)
+    return stat.text
 
 
-def sum_uniques_stats(stats: dict) -> int:
+def sum_uniques_stats(stats) -> int:
     print('sum_uniques_stats')
 
     summary = sum(s['uniques'] for s in stats['clones'])
@@ -50,7 +49,7 @@ def sum_uniques_stats(stats: dict) -> int:
     return summary
 
 
-def save_uniques_stats(stats: dict):
+def save_uniques_stats(stats):
     print('save_uniques_stats')
     with open(LOG_FILE, 'w') as file:
         file.write(str(stats))
@@ -74,9 +73,9 @@ def public_uniques_stats(summary: int):
         pprint('badge published')
 
 
-CURRENT: dict = get_current_uniques_stat()
-ARCHIVE: dict = get_archive_uniques_stat()
-MERGED: dict = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
+CURRENT = get_current_uniques_stat()
+ARCHIVE = get_archive_uniques_stat()
+MERGED = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
 SUMMARY: int = sum_uniques_stats(MERGED)
 save_uniques_stats(MERGED)
 public_uniques_stats(SUMMARY)
