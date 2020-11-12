@@ -38,7 +38,7 @@ def get_archive_uniques_stat():
     if stat.status_code != 200:
         return []
 
-    stat = stat.text
+    stat = stat.text[1:-1]
     pprint(stat)
 
     stat = json.loads(stat)
