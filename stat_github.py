@@ -39,9 +39,9 @@ def get_archive_uniques_stat():
         return []
 
     stat = stat.text
-    print(stat)
+    pprint(stat)
 
-    stat = json.loads(stat)
+    stat = json.dumps(stat)
     pprint(stat)
     return stat
 
