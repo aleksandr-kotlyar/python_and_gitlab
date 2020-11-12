@@ -38,7 +38,7 @@ def get_archive_uniques_stat():
     if stat.status_code != 200:
         return []
 
-    stat = stat.text[1:-1]
+    stat = stat.text.replace("'", '"')
     pprint(stat)
 
     stat = json.loads(stat)
