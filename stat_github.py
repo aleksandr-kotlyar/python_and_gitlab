@@ -49,7 +49,7 @@ def get_archive_uniques_stat():
 def sum_uniques_stats(stats) -> int:
     print('sum_uniques_stats')
 
-    summary = sum(s['uniques'] for s in stats['clones'])
+    summary = sum(s['uniques'] for s in stats)
     pprint(summary)
     return summary
 
