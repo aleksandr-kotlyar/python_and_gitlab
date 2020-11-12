@@ -1,5 +1,5 @@
 from pprint import pprint
-
+from collections import OrderedDict
 
 def merge_two_lists_of_dicts_by_key_condition(ld1, ld2):
     """Update dict with same timestamp by higher 'unique' key value."""
@@ -7,7 +7,7 @@ def merge_two_lists_of_dicts_by_key_condition(ld1, ld2):
         return ld1
 
     listdict = ld1['clones'] + ld2['clones']
-    listdict = sorted(listdict)
+    listdict = list(OrderedDict(sorted(listdict.items())))
     for i in range(len(listdict) - 1):
         for j in range(i + 1, len(listdict)):
             if listdict[i]['timestamp'] == listdict[j]['timestamp']:
