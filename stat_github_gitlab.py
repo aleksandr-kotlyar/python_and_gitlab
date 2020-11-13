@@ -1,6 +1,7 @@
 # pylint: disable=missing-function-docstring
 import json
 import os
+import sys
 from operator import itemgetter
 from pprint import pprint
 
@@ -46,7 +47,7 @@ def get_archive_stat(job, logfile):
             .format(CI_PROJECT_ID, CI_COMMIT_BRANCH, logfile, job))
 
     if stat.status_code != 200:
-        return []
+        sys.exit(1)
 
     stat = stat.text.replace("'", '"')
     stat = json.loads(stat)
