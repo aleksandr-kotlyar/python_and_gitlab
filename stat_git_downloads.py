@@ -102,3 +102,6 @@ def public_stats(summary: int, label, badgesvg, badgeid, logfile):
 
     if badge_put.status_code in [200, 201]:
         pprint('badge published')
+    else:
+        pprint('badge publish failed')
+        sys.exit(1)
