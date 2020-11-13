@@ -70,8 +70,8 @@ merge:master:
 
 stats:github:unique:clones:
   stage: Badge
-#  rules:
-#    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
   script:
     - python3 stat_github_uniques.py
   artifacts:
@@ -82,6 +82,8 @@ stats:github:unique:clones:
 
 stats:github:clones:
   stage: Badge
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
   script:
     - python3 stat_github_clones.py
   artifacts:
@@ -91,6 +93,8 @@ stats:github:clones:
 
 stats:gitlab:fetches:
   stage: Badge
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
   script:
     - python3 stat_gitlab_fetches.py
   artifacts:
