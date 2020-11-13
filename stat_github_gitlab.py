@@ -29,6 +29,16 @@ def get_current_github_stat():
     return stat.json()
 
 
+def get_current_gitlab_stat():
+    print('get_current_stat')
+    stat = requests.get(
+        url='https://gitlab.com/api/v4/projects/{0}/statistics'.format(CI_PROJECT_ID),
+        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
+
+    pprint(stat.json())
+    return stat.json()
+
+
 def get_archive_stat(job, logfile):
     print('get_archive_stat')
     stat = requests.get(
