@@ -13,6 +13,7 @@ TOKEN = os.environ.get('TOKEN')
 OWNER = os.environ.get('CI_PROJECT_NAMESPACE')
 REPO = os.environ.get('CI_PROJECT_NAME')
 CI_PROJECT_ID = os.environ.get('CI_PROJECT_ID')
+CI_COMMIT_BRANCH = os.environ.get('CI_COMMIT_BRANCH')
 GH_UNIQUE_CLONES_BADGE = os.environ.get('GH_UNIQUE_CLONES_BADGE')
 CI_JOB_URL = os.environ.get('CI_JOB_URL')
 LOG_FILE = 'gh_unique_clones.json'
@@ -33,7 +34,7 @@ def get_archive_uniques_stat():
     print('get_archive_uniques_stat')
     stat = requests.get(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}'
-            f'/jobs/artifacts/giithub_download_statistic/raw/{LOG_FILE}'
+            f'/jobs/artifacts/{CI_COMMIT_BRANCH}/raw/{LOG_FILE}'
             f'?job=stats:github:unique:clones')
 
     if stat.status_code != 200:
