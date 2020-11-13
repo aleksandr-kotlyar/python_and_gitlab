@@ -6,17 +6,15 @@ from pprint import pprint
 import anybadge
 import requests
 
-import merge_dict
+CI_COMMIT_BRANCH = os.environ.get('CI_COMMIT_BRANCH')
+CI_PROJECT_ID = os.environ.get('CI_PROJECT_ID')
+CI_JOB_URL = os.environ.get('CI_JOB_URL')
+
+OWNER = os.environ.get('CI_PROJECT_NAMESPACE')
+REPO = os.environ.get('CI_PROJECT_NAME')
 
 PRIVATE_TOKEN = os.environ.get('PRIVATE_TOKEN')
 TOKEN = os.environ.get('TOKEN')
-OWNER = os.environ.get('CI_PROJECT_NAMESPACE')
-REPO = os.environ.get('CI_PROJECT_NAME')
-CI_PROJECT_ID = os.environ.get('CI_PROJECT_ID')
-CI_COMMIT_BRANCH = os.environ.get('CI_COMMIT_BRANCH')
-GH_UNIQUE_CLONES_BADGE = os.environ.get('GH_UNIQUE_CLONES_BADGE')
-CI_JOB_URL = os.environ.get('CI_JOB_URL')
-LOG_FILE = 'gh_unique_clones.json'
 
 
 def get_current_stat():
@@ -33,56 +31,37 @@ def get_current_stat():
 def get_archive_stat(job, logfile):
     print('get_archive_stat')
     stat = requests.get(
-        url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}'
-            f'/jobs/artifacts/{CI_COMMIT_BRANCH}/raw/{logfile}'
-            f'?job={job}')
+        url='https://gitlab.com/api/v4/projects/{0}/jobs/artifacts/{1}/raw/{2}?job={3}'
+            .format(CI_PROJECT_ID, CI_COMMIT_BRANCH, logfile, job))
 
     if stat.status_code != 200:
         return []
 
     stat = stat.text.replace("'", '"')
-    pprint(stat)
-
     stat = json.loads(stat)
     pprint(stat)
     return stat
 
 
-def sum_uniques_stats(stats) -> int:
-    print('sum_uniques_stats')
-
-    summary = sum(s['uniques'] for s in stats)
-    pprint(summary)
-    return summary
-
-
-def save_uniques_stats(stats):
-    print('save_uniques_stats')
-    with open(LOG_FILE, 'w') as file:
+def save_stats(stats, logfile):
+    print('save_stats')
+    with open(logfile, 'w') as file:
         file.write(str(stats))
 
 
-def public_uniques_stats(summary: int):
-    print('public_uniques_stats')
-    badge = anybadge.Badge(label='downloads/unique',
+def public_stats(summary: int, label, badgesvg, badgeid, logfile):
+    print('public_stats')
+    badge = anybadge.Badge(label=label,
                            value=summary,
                            default_color='green',
                            num_padding_chars=1)
-    badge.write_badge('gh_unique_clones.svg', overwrite=True)
+    badge.write_badge(badgesvg, overwrite=True)
 
     badge_put = requests.put(
-        url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/badges/{GH_UNIQUE_CLONES_BADGE}',
-        json={'link_url': f'{CI_JOB_URL}/artifacts/raw/{LOG_FILE}',
+        url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/badges/{badgeid}',
+        json={'link_url': f'{CI_JOB_URL}/artifacts/raw/{logfile}',
               'image_url': f'{CI_JOB_URL}/artifacts/raw/gh_unique_clones.svg'},
         headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
 
     if badge_put.status_code in [200, 201]:
         pprint('badge published')
-
-
-CURRENT = get_current_stat()['clones']
-ARCHIVE = get_archive_stat('stats:github:unique:clones', LOG_FILE)
-MERGED = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
-SUMMARY: int = sum_uniques_stats(MERGED)
-save_uniques_stats(MERGED)
-public_uniques_stats(SUMMARY)
