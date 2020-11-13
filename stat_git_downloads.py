@@ -50,7 +50,10 @@ def get_archive_stat(badgeid):
         sys.exit(1)
 
     stat = stat.json()['link_url']
-    stat = requests.get(stat).json()
+    stat = requests.get(stat)
+    pprint(stat.text)
+    pprint(stat.json())
+    stat = stat.json()
     pprint(stat)
     return stat
 
