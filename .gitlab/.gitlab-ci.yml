@@ -92,7 +92,7 @@ stats:github:clones:
 stats:gitlab:fetches:
   stage: Badge
   script:
-    - python3 stat_github_clones.py
+    - python3 stat_gitlab_fetches.py
   artifacts:
     paths:
       - gl_fetches.json
