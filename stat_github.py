@@ -79,7 +79,7 @@ def public_uniques_stats(summary: int):
         pprint('badge published')
 
 
-CURRENT = get_current_uniques_stat()
+CURRENT = get_current_uniques_stat()['clones']
 ARCHIVE = get_archive_uniques_stat()
 MERGED = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
 SUMMARY: int = sum_uniques_stats(MERGED)
