@@ -90,6 +90,7 @@ stats:github:clones:
     paths:
       - gh_clones.json
       - gh_clones.svg
+    expire_in: 9 mos
 
 stats:gitlab:fetches:
   stage: Badge
@@ -101,3 +102,4 @@ stats:gitlab:fetches:
     paths:
       - gl_fetches.json
       - gl_fetches.svg
+    expire_in: 9 mos
