@@ -19,8 +19,8 @@ CI_JOB_URL = os.environ.get('CI_JOB_URL')
 LOG_FILE = 'gh_unique_clones.json'
 
 
-def get_current_uniques_stat():
-    print('get_current_uniques_stat')
+def get_current_stat():
+    print('get_current_stat')
     stat = requests.get(
         url='https://api.github.com/repos/{0}/{1}/traffic/clones'.format(OWNER, REPO),
         headers={'Authorization': f'token {TOKEN}'},
@@ -30,12 +30,12 @@ def get_current_uniques_stat():
     return stat.json()
 
 
-def get_archive_uniques_stat():
-    print('get_archive_uniques_stat')
+def get_archive_stat(job, logfile):
+    print('get_archive_stat')
     stat = requests.get(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}'
-            f'/jobs/artifacts/{CI_COMMIT_BRANCH}/raw/{LOG_FILE}'
-            f'?job=stats:github:unique:clones')
+            f'/jobs/artifacts/{CI_COMMIT_BRANCH}/raw/{logfile}'
+            f'?job={job}')
 
     if stat.status_code != 200:
         return []
@@ -80,8 +80,8 @@ def public_uniques_stats(summary: int):
         pprint('badge published')
 
 
-CURRENT = get_current_uniques_stat()['clones']
-ARCHIVE = get_archive_uniques_stat()
+CURRENT = get_current_stat()['clones']
+ARCHIVE = get_archive_stat('stats:github:unique:clones', LOG_FILE)
 MERGED = merge_dict.merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE)
 SUMMARY: int = sum_uniques_stats(MERGED)
 save_uniques_stats(MERGED)
