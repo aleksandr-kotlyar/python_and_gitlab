@@ -79,3 +79,12 @@ stats:github:unique:clones:
       - gh_unique_clones.svg
       - gh_unique_clones.json
     expire_in: 9 mos
+
+stats:github:clones:
+  stage: Badge
+  script:
+    - python3 stat_github_clones.py
+  artifacts:
+    paths:
+      - gh_clones.json
+      - gh_clones.svg
