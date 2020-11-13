@@ -17,7 +17,7 @@ PRIVATE_TOKEN = os.environ.get('PRIVATE_TOKEN')
 TOKEN = os.environ.get('TOKEN')
 
 
-def get_current_stat():
+def get_current_github_stat():
     print('get_current_stat')
     stat = requests.get(
         url='https://api.github.com/repos/{0}/{1}/traffic/clones'.format(OWNER, REPO),
