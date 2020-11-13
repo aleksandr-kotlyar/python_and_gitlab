@@ -2,7 +2,7 @@
 import os
 from pprint import pprint
 
-from stat_github_gitlab import get_current_gitlab_stat, get_archive_stat, save_stats, \
+from stat_git_downloads import get_current_gitlab_stat, get_archive_stat, save_stats, \
     public_stats, merge_two_lists_of_dicts_by_key_condition
 
 GL_COUNT_CLONES_BADGE = os.environ.get('GL_COUNT_CLONES_BADGE')
@@ -19,7 +19,7 @@ def sum_clones_stats(stats) -> int:
 
 
 CURRENT = get_current_gitlab_stat()['fetches']['days']
-ARCHIVE = get_archive_stat('stats:gitlab:fetches', LOG_FILE)
+ARCHIVE = get_archive_stat(GL_COUNT_CLONES_BADGE)
 MERGED = merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE, key1='date', key2='count')
 SUMMARY: int = sum_clones_stats(MERGED)
 save_stats(MERGED, LOG_FILE)

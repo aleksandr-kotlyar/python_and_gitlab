@@ -2,7 +2,7 @@
 import os
 from pprint import pprint
 
-from stat_github_gitlab import get_current_github_stat, get_archive_stat, save_stats, \
+from stat_git_downloads import get_current_github_stat, get_archive_stat, save_stats, \
     public_stats, merge_two_lists_of_dicts_by_key_condition
 
 GH_UNIQUE_CLONES_BADGE = os.environ.get('GH_UNIQUE_CLONES_BADGE')
@@ -19,7 +19,7 @@ def sum_uniques_stats(stats) -> int:
 
 
 CURRENT = get_current_github_stat()['clones']
-ARCHIVE = get_archive_stat('stats:github:unique:clones', LOG_FILE)
+ARCHIVE = get_archive_stat(GH_UNIQUE_CLONES_BADGE)
 MERGED = merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE, 'timestamp', 'uniques')
 SUMMARY: int = sum_uniques_stats(MERGED)
 save_stats(MERGED, LOG_FILE)

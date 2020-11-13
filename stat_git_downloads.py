@@ -1,5 +1,4 @@
 # pylint: disable=missing-function-docstring
-import json
 import os
 import sys
 from operator import itemgetter
@@ -40,17 +39,18 @@ def get_current_gitlab_stat():
     return stat.json()
 
 
-def get_archive_stat(job, logfile):
+def get_archive_stat(badgeid):
     print('get_archive_stat')
     stat = requests.get(
-        url='https://gitlab.com/api/v4/projects/{0}/jobs/artifacts/{1}/raw/{2}?job={3}'
-            .format(CI_PROJECT_ID, CI_COMMIT_BRANCH, logfile, job))
-
-    if stat.status_code != 200:
+        url='https://gitlab.com/api/v4/projects/{0}/badges/{1}'.format(CI_PROJECT_ID, badgeid))
+    code = stat.status_code
+    print(code)
+    if code != 200:
+        print('stat.status_code is', code)
         sys.exit(1)
 
-    stat = stat.text.replace("'", '"')
-    stat = json.loads(stat)
+    stat = stat.json()['link_url']
+    stat = requests.get(stat).json()
     pprint(stat)
     return stat
 
