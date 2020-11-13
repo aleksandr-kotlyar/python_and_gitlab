@@ -2,8 +2,8 @@
 import os
 from pprint import pprint
 
-from stat_github import get_current_github_stat, get_archive_stat, save_stats, public_stats, \
-    merge_two_lists_of_dicts_by_key_condition
+from stat_github_gitlab import get_current_github_stat, get_archive_stat, save_stats, \
+    public_stats, merge_two_lists_of_dicts_by_key_condition
 
 GH_COUNT_CLONES_BADGE = os.environ.get('GH_COUNT_CLONES_BADGE')
 LOG_FILE = 'gh_clones.json'
