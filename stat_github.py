@@ -1,6 +1,7 @@
 # pylint: disable=missing-function-docstring
 import json
 import os
+from operator import itemgetter
 from pprint import pprint
 
 import anybadge
@@ -41,6 +42,29 @@ def get_archive_stat(job, logfile):
     stat = json.loads(stat)
     pprint(stat)
     return stat
+
+
+def merge_two_lists_of_dicts_by_key_condition(ld1, ld2, key1, key2):
+    """Update dict with same timestamp by higher 'unique' key value."""
+    if not ld2:
+        return ld1
+
+    listdict = ld1 + ld2
+    listdict = sorted(listdict, key=itemgetter(key1))
+    for i in range(len(listdict) - 1):
+        for j in range(i + 1, len(listdict)):
+            if listdict[i][key1] == listdict[j][key1]:
+                if listdict[i][key2] < listdict[j][key2]:
+                    listdict.remove(listdict[i])
+                else:
+                    listdict.remove(listdict[j])
+                break
+
+    print(f'list1: {len(ld1)}')
+    print(f'list2: {len(ld2)}')
+    pprint(f'merged_list\n{listdict}')
+    print(f'merged_list: {len(listdict)}')
+    return listdict
 
 
 def save_stats(stats, logfile):
