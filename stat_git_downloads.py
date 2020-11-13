@@ -1,4 +1,5 @@
 # pylint: disable=missing-function-docstring
+import json
 import os
 import sys
 from operator import itemgetter
@@ -50,10 +51,8 @@ def get_archive_stat(badgeid):
         sys.exit(1)
 
     stat = stat.json()['link_url']
-    stat = requests.get(stat)
-    pprint(stat.text)
-    pprint(stat.json())
-    stat = stat.json()
+    stat = requests.get(stat).text.replace("'", '"')
+    stat = json.loads(stat)
     pprint(stat)
     return stat
 
