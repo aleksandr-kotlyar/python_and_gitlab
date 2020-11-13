@@ -73,7 +73,7 @@ stats:github:unique:clones:
 #  rules:
 #    - if: '$CI_PIPELINE_SOURCE == "schedule"'
   script:
-    - python3 stat_github.py
+    - python3 stat_github_uniques.py
   artifacts:
     paths:
       - gh_unique_clones.svg
