@@ -89,11 +89,11 @@ stats:github:clones:
       - gh_clones.json
       - gh_clones.svg
 
-stats:gitlab:fetches
+stats:gitlab:fetches:
   stage: Badge
-    script:
-      - python3 stat_github_clones.py
-    artifacts:
-      paths:
-        - gl_fetches.json
-        - gl_fetches.svg
+  script:
+    - python3 stat_github_clones.py
+  artifacts:
+    paths:
+      - gl_fetches.json
+      - gl_fetches.svg
