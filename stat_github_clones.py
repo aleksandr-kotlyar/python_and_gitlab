@@ -20,7 +20,7 @@ def sum_clones_stats(stats) -> int:
 
 CURRENT = get_current_github_stat()['clones']
 ARCHIVE = get_archive_stat('stats:github:clones', LOG_FILE)
-MERGED = merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE, 'timestamp', 'uniques')
+MERGED = merge_two_lists_of_dicts_by_key_condition(CURRENT, ARCHIVE, 'timestamp', 'count')
 SUMMARY: int = sum_clones_stats(MERGED)
 save_stats(MERGED, LOG_FILE)
 public_stats(SUMMARY, 'downloads/github/clones', BADGE_SVG, GH_COUNT_CLONES_BADGE, LOG_FILE)
