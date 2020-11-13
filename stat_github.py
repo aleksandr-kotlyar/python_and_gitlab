@@ -60,7 +60,7 @@ def public_stats(summary: int, label, badgesvg, badgeid, logfile):
     badge_put = requests.put(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/badges/{badgeid}',
         json={'link_url': f'{CI_JOB_URL}/artifacts/raw/{logfile}',
-              'image_url': f'{CI_JOB_URL}/artifacts/raw/gh_unique_clones.svg'},
+              'image_url': f'{CI_JOB_URL}/artifacts/raw/{badgesvg}'},
         headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
 
     if badge_put.status_code in [200, 201]:
