@@ -4,11 +4,14 @@ stages:
   - build
   - Linter
   - Badge
+  - scan
   - security
   - Merge Request
   - test
   - slack-notification
   - upload-allure-reports
+  - report
+  - publish
 
 variables:
   BROWSER: 'ChroMe'
