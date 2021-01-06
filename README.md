@@ -1,10 +1,10 @@
 # Python and GitLabCI for test automation (QA)
 
-![GitHub stats in](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic/traffic-python_and_gitlab/in_2021.svg)
-![GitHub views](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic/traffic-python_and_gitlab/views.svg)
-![GitHub views per week](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic/traffic-python_and_gitlab/views_per_week.svg)
-![GitHub clones](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic/traffic-python_and_gitlab/clones.svg)
-![GitHub clones per week](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic/traffic-python_and_gitlab/clones_per_week.svg)
+![GitHub statistics](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/in_2021.svg)
+![GitHub views](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/views.svg)
+![GitHub views per week](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/views_per_week.svg)
+![GitHub clones](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/clones.svg)
+![GitHub clones per week](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/clones_per_week.svg)
 
 Hello! Here you can find examples of
 * Code quality checking jobs
