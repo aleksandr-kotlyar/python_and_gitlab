@@ -2,7 +2,7 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
-    "count": 7,
+    "count": 22,
     "uniques": 3
   },
   {
@@ -18,21 +18,27 @@
     "uniques": 2
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/packages/492492",
-    "title": "Package python-3.7.6-alpine-req · aleksandr-kotlyar/python_and_gitlab · GitHub",
-    "count": 2,
-    "uniques": 2
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
     "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 2,
     "uniques": 2
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
+    "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 1
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/main",
     "title": "python_and_gitlab/src/main at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/actions",
+    "title": "Actions · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
     "uniques": 1
   },
   {
@@ -50,12 +56,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/file.py",
     "title": "python_and_gitlab/file.py at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/new_window_waiter.py",
-    "title": "python_and_gitlab/new_window_waiter.py at master · aleksandr-kotlyar/python_a...",
     "count": 1,
     "uniques": 1
   }
