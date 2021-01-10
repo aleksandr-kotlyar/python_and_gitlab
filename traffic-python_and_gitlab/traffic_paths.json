@@ -1,31 +1,19 @@
 [
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
-    "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
+    "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
     "count": 30,
-    "uniques": 4
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 3,
-    "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_multiprocessor.py",
-    "title": "python_and_gitlab/test_multiprocessor.py at master · aleksandr-kotlyar/python...",
-    "count": 2,
-    "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
-    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 2
+    "uniques": 5
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
     "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
+    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 2,
     "uniques": 1
   },
@@ -48,6 +36,12 @@
     "uniques": 1
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/.gitlab-ci.yml",
+    "title": "python_and_gitlab/.gitlab-ci.yml at master · aleksandr-kotlyar/python_and_git...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/allure_helpers.py",
     "title": "python_and_gitlab/allure_helpers.py at master · aleksandr-kotlyar/python_and_...",
     "count": 1,
@@ -56,6 +50,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/file.py",
     "title": "python_and_gitlab/file.py at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/new_window_waiter.py",
+    "title": "python_and_gitlab/new_window_waiter.py at master · aleksandr-kotlyar/python_a...",
     "count": 1,
     "uniques": 1
   }
