@@ -2,24 +2,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 36,
-    "uniques": 5
+    "count": 35,
+    "uniques": 4
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
     "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/main",
-    "title": "python_and_gitlab/src/main at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 2,
     "uniques": 1
   },
@@ -30,32 +18,44 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/conftest.py",
-    "title": "python_and_gitlab/conftest.py at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/.gitlab-ci.yml",
     "title": "python_and_gitlab/.gitlab-ci.yml at master · aleksandr-kotlyar/python_and_git...",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/allure_helpers.py",
-    "title": "python_and_gitlab/allure_helpers.py at master · aleksandr-kotlyar/python_and_...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/compare/traffic2badge",
+    "title": "Comparing master...traffic2badge · aleksandr-kotlyar/python_and_gitlab",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/file.py",
-    "title": "python_and_gitlab/file.py at master · aleksandr-kotlyar/python_and_gitlab",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/new/master/.github/workflows",
+    "title": "New File",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/main/new_window_waiter.py",
-    "title": "python_and_gitlab/new_window_waiter.py at master · aleksandr-kotlyar/python_a...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/packages/492492",
+    "title": "Package python-3.7.6-alpine-req · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/pull/16",
+    "title": "add traffic to badge by aleksandr-kotlyar · Pull Request #16 · aleksandr-kotl...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.github/workflows",
+    "title": "python_and_gitlab/.github/workflows at master · aleksandr-kotlyar/python_and_...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
+    "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
     "count": 1,
     "uniques": 1
   }
