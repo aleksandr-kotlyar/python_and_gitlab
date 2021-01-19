@@ -2,7 +2,7 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 35,
+    "count": 38,
     "uniques": 3
   },
   {
@@ -14,6 +14,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/actions",
     "title": "Actions · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/E2EGITLABCI.md",
+    "title": "python_and_gitlab/E2EGITLABCI.md at master · aleksandr-kotlyar/python_and_git...",
     "count": 1,
     "uniques": 1
   },
@@ -36,6 +42,12 @@
     "uniques": 1
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/projects",
+    "title": "Projects · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/pull/16",
     "title": "add traffic to badge by aleksandr-kotlyar · Pull Request #16 · aleksandr-kotl...",
     "count": 1,
@@ -44,18 +56,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.github/workflows",
     "title": "python_and_gitlab/.github/workflows at master · aleksandr-kotlyar/python_and_...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
-    "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/traffic-2021",
-    "title": "aleksandr-kotlyar/python_and_gitlab at traffic-2021",
     "count": 1,
     "uniques": 1
   }
