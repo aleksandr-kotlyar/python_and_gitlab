@@ -2,18 +2,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 38,
+    "count": 22,
     "uniques": 3
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
-    "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/actions",
-    "title": "Actions · aleksandr-kotlyar/python_and_gitlab",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/efdc6b2677810bfd81f158c33093f3dab4280d8a/.github/workflows/traffic2badge.yml",
+    "title": "python_and_gitlab/traffic2badge.yml at efdc6b2677810bfd81f158c33093f3dab4280d...",
     "count": 1,
     "uniques": 1
   },
@@ -30,14 +24,8 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/compare/traffic2badge",
-    "title": "Comparing master...traffic2badge · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/new/master/.github/workflows",
-    "title": "New File",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/packages/492492",
+    "title": "Package python-3.7.6-alpine-req · aleksandr-kotlyar/python_and_gitlab · GitHub",
     "count": 1,
     "uniques": 1
   },
@@ -48,14 +36,8 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/pull/16",
-    "title": "add traffic to badge by aleksandr-kotlyar · Pull Request #16 · aleksandr-kotl...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.github/workflows",
-    "title": "python_and_gitlab/.github/workflows at master · aleksandr-kotlyar/python_and_...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
+    "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
     "count": 1,
     "uniques": 1
   }
