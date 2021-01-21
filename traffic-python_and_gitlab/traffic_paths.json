@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 22,
-    "uniques": 3
+    "count": 16,
+    "uniques": 4
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/efdc6b2677810bfd81f158c33093f3dab4280d8a/.github/workflows/traffic2badge.yml",
@@ -14,6 +14,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/E2EGITLABCI.md",
     "title": "python_and_gitlab/E2EGITLABCI.md at master · aleksandr-kotlyar/python_and_git...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/fixtures_session.py",
+    "title": "python_and_gitlab/fixtures_session.py at master · aleksandr-kotlyar/python_an...",
     "count": 1,
     "uniques": 1
   },
