@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 10,
-    "uniques": 4
+    "count": 9,
+    "uniques": 5
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.github/workflows",
@@ -36,14 +36,26 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/packages/492492",
-    "title": "Package python-3.7.6-alpine-req · aleksandr-kotlyar/python_and_gitlab · GitHub",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/browser-remote.yml",
+    "title": "python_and_gitlab/browser-remote.yml at master · aleksandr-kotlyar/python_and...",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/projects",
-    "title": "Projects · aleksandr-kotlyar/python_and_gitlab",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/pytest.yml",
+    "title": "python_and_gitlab/pytest.yml at master · aleksandr-kotlyar/python_and_gitlab ...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/security.yml",
+    "title": "python_and_gitlab/security.yml at master · aleksandr-kotlyar/python_and_gitla...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/quality_control.py",
+    "title": "python_and_gitlab/quality_control.py at master · aleksandr-kotlyar/python_and...",
     "count": 1,
     "uniques": 1
   }
