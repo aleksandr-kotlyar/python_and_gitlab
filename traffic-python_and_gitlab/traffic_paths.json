@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 9,
-    "uniques": 6
+    "count": 6,
+    "uniques": 5
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.github/workflows",
@@ -20,12 +20,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/azure-pipelines.yml",
     "title": "python_and_gitlab/azure-pipelines.yml at master · aleksandr-kotlyar/python_an...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/E2EGITLABCI.md",
-    "title": "python_and_gitlab/E2EGITLABCI.md at master · aleksandr-kotlyar/python_and_git...",
     "count": 1,
     "uniques": 1
   },
@@ -56,6 +50,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/quality_control.py",
     "title": "python_and_gitlab/quality_control.py at master · aleksandr-kotlyar/python_and...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_api.py",
+    "title": "python_and_gitlab/test_api.py at master · aleksandr-kotlyar/python_and_gitlab...",
     "count": 1,
     "uniques": 1
   }
