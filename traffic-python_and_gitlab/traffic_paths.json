@@ -12,12 +12,6 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/efdc6b2677810bfd81f158c33093f3dab4280d8a/.github/workflows/traffic2badge.yml",
-    "title": "python_and_gitlab/traffic2badge.yml at efdc6b2677810bfd81f158c33093f3dab4280d...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/azure-pipelines.yml",
     "title": "python_and_gitlab/azure-pipelines.yml at master · aleksandr-kotlyar/python_an...",
     "count": 1,
@@ -56,6 +50,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_api.py",
     "title": "python_and_gitlab/test_api.py at master · aleksandr-kotlyar/python_and_gitlab...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
+    "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
     "count": 1,
     "uniques": 1
   }
