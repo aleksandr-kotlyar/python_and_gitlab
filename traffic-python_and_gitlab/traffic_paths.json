@@ -18,12 +18,6 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/fixtures_session.py",
-    "title": "python_and_gitlab/fixtures_session.py at master · aleksandr-kotlyar/python_an...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/browser-remote.yml",
     "title": "python_and_gitlab/browser-remote.yml at master · aleksandr-kotlyar/python_and...",
     "count": 1,
@@ -56,6 +50,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
     "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
+    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab · GitHub",
     "count": 1,
     "uniques": 1
   }
