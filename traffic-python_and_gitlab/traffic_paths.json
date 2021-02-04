@@ -2,8 +2,20 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 4,
+    "count": 5,
     "uniques": 4
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
+    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab · GitHub",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
+    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab · ...",
+    "count": 2,
+    "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/browser-remote.yml",
@@ -42,20 +54,8 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab · GitHub",
-    "count": 1,
-    "uniques": 1
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/main",
     "title": "python_and_gitlab/src/main at master · aleksandr-kotlyar/python_and_gitlab · ...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
-    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab · ...",
     "count": 1,
     "uniques": 1
   }
