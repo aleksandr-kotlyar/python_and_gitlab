@@ -2,24 +2,60 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 5,
-    "uniques": 5
+    "count": 12,
+    "uniques": 6
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
+    "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 6,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/.gitlab-ci.yml",
+    "title": "python_and_gitlab/.gitlab-ci.yml at master · aleksandr-kotlyar/python_and_git...",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.docker",
+    "title": "python_and_gitlab/.docker at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.docker/python",
+    "title": "python_and_gitlab/.docker/python at master · aleksandr-kotlyar/python_and_git...",
+    "count": 3,
+    "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/stat_gitlab_fetches.py",
     "title": "python_and_gitlab/stat_gitlab_fetches.py at master · aleksandr-kotlyar/python...",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.docker/python/Dockerfile",
+    "title": "python_and_gitlab/Dockerfile at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/pytest.yml",
+    "title": "python_and_gitlab/pytest.yml at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.docker/java-allure/Dockerfile",
+    "title": "python_and_gitlab/Dockerfile at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 1,
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab · GitHub",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
-    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab · ...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/pytest.ini",
+    "title": "python_and_gitlab/pytest.ini at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 1,
     "uniques": 1
   }
