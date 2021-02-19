@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 18,
-    "uniques": 4
+    "count": 17,
+    "uniques": 3
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.docker",
@@ -54,9 +54,9 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/stat_gitlab_fetches.py",
-    "title": "python_and_gitlab/stat_gitlab_fetches.py at master · aleksandr-kotlyar/python...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/pytest.ini",
+    "title": "python_and_gitlab/pytest.ini at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 2,
-    "uniques": 2
+    "uniques": 1
   }
 ]
