@@ -2,31 +2,61 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
+    "count": 7,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
+    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 5,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
+    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 5,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test/moretv",
+    "title": "python_and_gitlab/src/test/moretv at master · aleksandr-kotlyar/python_and_gi...",
     "count": 3,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test/moretv/main_page",
+    "title": "python_and_gitlab/src/test/moretv/main_page at master · aleksandr-kotlyar/pyt...",
+    "count": 3,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/stat_git_downloads.py",
+    "title": "python_and_gitlab/stat_git_downloads.py at master · aleksandr-kotlyar/python_...",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/requirements.txt",
+    "title": "python_and_gitlab/requirements.txt at master · aleksandr-kotlyar/python_and_g...",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/moretv/main_page/test_slider.py",
+    "title": "python_and_gitlab/test_slider.py at master · aleksandr-kotlyar/python_and_git...",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/quality_control.py",
+    "title": "python_and_gitlab/quality_control.py at master · aleksandr-kotlyar/python_and...",
+    "count": 2,
     "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/packages",
     "title": "Packages · aleksandr-kotlyar/python_and_gitlab",
     "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_multiprocessor.py",
-    "title": "python_and_gitlab/test_multiprocessor.py at master · aleksandr-kotlyar/python...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
-    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
     "uniques": 1
   }
 ]
