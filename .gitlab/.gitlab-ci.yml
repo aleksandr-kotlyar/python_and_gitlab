@@ -12,7 +12,7 @@ stages:
   - deploy
 
 variables:
-  BROWSER: 'ChroMe'
+  BROWSER: 'chrome'
   REMOTE: 'True'
   ## suits
   TESTS: 'src/test --ignore=src/test/old_ctc --ignore=src/test/moretv'
