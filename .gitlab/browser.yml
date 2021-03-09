@@ -9,27 +9,31 @@
 
 chrome:remote:
   variables:
-    BROWSER: 'chrome'
+#    BROWSER: 'chrome'
     REMOTE: 'True'
   extends: .browser
   services:
     - name: selenium/standalone-chrome
+  rules:
+    - if: $BROWSER == "chrome"
 
 firefox:remote:
   variables:
-    BROWSER: 'firefox'
+#    BROWSER: 'firefox'
     REMOTE: 'True'
   extends: .browser
   services:
     - name: selenium/standalone-firefox
   rules:
-    - when: manual
+    - if: $BROWSER == "firefox"
+      when: manual
 
 chrome:local:manual:
-  variables:
-    BROWSER: 'chrome'
-    REMOTE: ''
+#  variables:
+#    BROWSER: 'chrome'
+#    REMOTE: ''
   extends: .browser
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab:python-3.7.6-slim-buster-chrome-85.0.4183.121-1-req
   rules:
-    - when: manual
+    - if: $BROWSER == "chrome" && $REMOTE==""
+      when: manual
