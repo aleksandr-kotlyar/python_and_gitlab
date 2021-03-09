@@ -2,7 +2,7 @@ stages:
     - deploy
 
 pages:
-  image: registry.gitlab.com/aleksandr-kotlyar/gitlab-allure-history:v3
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7-allure2-openjdk8:v13
   stage: deploy
   script:
     - python3 generate_index.py public
