@@ -1,4 +1,6 @@
 allure:
+  variables:
+    INPUT_ALLURE_HISTORY: reports
   stage: Generate Reports
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7-allure2-openjdk8:v13
   script:
@@ -6,7 +8,7 @@ allure:
     - JOB_ID=$(cat jobid)
     - REPORT=job_${JOB_ID}
     - CURRENT_BRANCH=${CI_PROJECT_NAME}/public/${CI_COMMIT_REF_NAME}
-    - cp -r ./${CURRENT_BRANCH}/history allure-results || echo "No history"
+    - cp -r ./${CURRENT_BRANCH}/history ${INPUT_ALLURE_HISTORY} || echo "No history"
 
     #echo "executor.json"
     - echo '{"name":"GitLabCI","type":"gitlab","reportName":"Allure Report with history",' > executor.json
@@ -14,9 +16,9 @@ allure:
     - echo "\"buildUrl\":\"${CI_PIPELINE_URL}\"," >> executor.json
     - echo "\"buildName\":\"GitLab Job Run ${JOB_ID}\",\"buildOrder\":\"${JOB_ID}\"}" >> executor.json
     #cat executor.json
-    - mv ./executor.json ./allure-results
+    - mv ./executor.json ./${INPUT_ALLURE_HISTORY}
 
-    - allure generate reports -o $REPORT
+    - allure generate ${INPUT_ALLURE_HISTORY} -o ${REPORT}
 
     - mkdir -p $CURRENT_BRANCH
     - cp -r $REPORT $CURRENT_BRANCH
