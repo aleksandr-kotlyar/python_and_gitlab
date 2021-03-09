@@ -9,13 +9,11 @@
 
 chrome:remote:
   variables:
-#    BROWSER: 'chrome'
+    BROWSER: 'chrome'
     REMOTE: 'True'
   extends: .browser
   services:
     - name: selenium/standalone-chrome
-  rules:
-    - if: $BROWSER == "chrome"
 
 firefox:remote:
   variables:
