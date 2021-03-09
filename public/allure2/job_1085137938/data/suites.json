@@ -1,0 +1,26 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "children" : [ {
+    "name" : "src.test.moretv.main_page",
+    "children" : [ {
+      "name" : "test_slider",
+      "children" : [ {
+        "name" : "test_arrows_are_visible",
+        "uid" : "37aefdc20f1abbf9",
+        "parentUid" : "8e32640cca805cb1945a2ffa392d752e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1615334102619,
+          "stop" : 1615334110395,
+          "duration" : 7776
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "8e32640cca805cb1945a2ffa392d752e"
+    } ],
+    "uid" : "f06ac0d3dacecd96b520ded67c3cb4f4"
+  } ],
+  "name" : "suites"
+}
