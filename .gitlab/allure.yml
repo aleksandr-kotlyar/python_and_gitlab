@@ -32,7 +32,7 @@ allure:
     - git config user.email ${CI_EMAIL}
     - >
       git remote add $CI_PROJECT_NAME
-      https://oauth2:${ALLURE_GITLAB_PAGES}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
+      https://oauth2:${PRIVATE_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
     - git add ./public
     - git commit -m "pipeline_${CI_PIPELINE_ID}_job_${CI_JOB_ID}"
     - git push -u $CI_PROJECT_NAME
