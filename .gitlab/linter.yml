@@ -23,7 +23,7 @@ Pylint:
     - anybadge --label="Pylint | ${CI_COMMIT_REF_NAME}" --file=pylint/pylint.svg --value=${PYLINT_SCORE} 2=red 4=orange 8=yellow 10=green
   artifacts:
     when: always
-    expires_in: 30d
+    expire_in: 30d
     paths:
       - ./pylint/
 
