@@ -1,0 +1,12 @@
+stages:
+    - deploy
+
+pages:
+  image: registry.gitlab.com/aleksandr-kotlyar/gitlab-allure-history:v3
+  stage: deploy
+  script:
+    - python3 generate_index.py public
+    - echo "Publish to GitLab Pages"
+  artifacts:
+    paths:
+      - public
