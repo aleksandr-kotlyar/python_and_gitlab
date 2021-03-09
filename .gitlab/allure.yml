@@ -3,6 +3,7 @@ allure:
     INPUT_ALLURE_HISTORY: reports
   stage: Generate Reports
   image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7-allure2-openjdk8:v13
+  when: on_success
   script:
     - git clone --single-branch --branch gl-pages $CI_PROJECT_URL
     - JOB_ID=$(cat jobid)
