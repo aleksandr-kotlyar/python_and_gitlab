@@ -1,0 +1,180 @@
+{
+  "uid" : "e2f2e1d15adad532",
+  "name" : "test_arrows_are_visible",
+  "fullName" : "src.test.moretv.main_page.test_slider#test_arrows_are_visible",
+  "historyId" : "c5ba943eddfb07bde10209a094bc2f25",
+  "time" : {
+    "start" : 1615334068572,
+    "stop" : 1615334076010,
+    "duration" : 7438
+  },
+  "description" : "Main Page Slider should have 2 arrows. Arrows should be visible.",
+  "descriptionHtml" : "<p>Main Page Slider should have 2 arrows. Arrows should be visible.</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "api_session",
+    "time" : {
+      "start" : 1615334067486,
+      "stop" : 1615334067486,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "choose_driver",
+    "time" : {
+      "start" : 1615334067487,
+      "stop" : 1615334068567,
+      "duration" : 1080
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "is_remote",
+    "time" : {
+      "start" : 1615334067487,
+      "stop" : 1615334067487,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "t_browser",
+    "time" : {
+      "start" : 1615334067487,
+      "stop" : 1615334067487,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "browser_module",
+    "time" : {
+      "start" : 1615334068568,
+      "stop" : 1615334068568,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "afterStages" : [ {
+    "name" : "api_session::0",
+    "time" : {
+      "start" : 1615334076121,
+      "stop" : 1615334076121,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "browser_module::0",
+    "time" : {
+      "start" : 1615334076011,
+      "stop" : 1615334076118,
+      "duration" : 107
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "src.test.moretv.main_page"
+  }, {
+    "name" : "suite",
+    "value" : "test_slider"
+  }, {
+    "name" : "host",
+    "value" : "runner-9538b0ab-project-12874939-concurrent-0"
+  }, {
+    "name" : "thread",
+    "value" : "13-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "src.test.moretv.main_page.test_slider"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "history" : {
+      "statistic" : {
+        "failed" : 0,
+        "broken" : 0,
+        "skipped" : 0,
+        "passed" : 2,
+        "unknown" : 0,
+        "total" : 2
+      },
+      "items" : [ {
+        "uid" : "f0f5997c1f06218c",
+        "reportUrl" : "https://aleksandr-kotlyar.gitlab.io/python_and_gitlab/allure2/job_1085121018//#testresult/f0f5997c1f06218c",
+        "status" : "passed",
+        "time" : {
+          "start" : 1615333421249,
+          "stop" : 1615333431277,
+          "duration" : 10028
+        }
+      } ]
+    },
+    "tags" : [ ]
+  },
+  "source" : "e2f2e1d15adad532.json",
+  "parameterValues" : [ ]
+}

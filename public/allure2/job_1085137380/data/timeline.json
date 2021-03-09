@@ -1,0 +1,26 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "children" : [ {
+    "name" : "runner-9538b0ab-project-12874939-concurrent-0",
+    "children" : [ {
+      "name" : "13-MainThread",
+      "children" : [ {
+        "name" : "test_arrows_are_visible",
+        "uid" : "e2f2e1d15adad532",
+        "parentUid" : "c848bbcf3ae285b4ed3b45f4834aba1d",
+        "status" : "passed",
+        "time" : {
+          "start" : 1615334068572,
+          "stop" : 1615334076010,
+          "duration" : 7438
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "c848bbcf3ae285b4ed3b45f4834aba1d"
+    } ],
+    "uid" : "f8aeb0bab9cc8f217fd6214f31fe1886"
+  } ],
+  "name" : "timeline"
+}
