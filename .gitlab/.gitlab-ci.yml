@@ -48,3 +48,39 @@ include:
   # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
   # after_script:
   # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
+
+stats:github:unique:clones:
+  stage: Badge
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  script:
+    - python3 stat_github_uniques.py
+  artifacts:
+    paths:
+      - gh_unique_clones.svg
+      - gh_unique_clones.json
+    expire_in: 9 mos
+
+stats:github:clones:
+  stage: Badge
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  script:
+    - python3 stat_github_clones.py
+  artifacts:
+    paths:
+      - gh_clones.json
+      - gh_clones.svg
+    expire_in: 9 mos
+
+stats:gitlab:fetches:
+  stage: Badge
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+  script:
+    - python3 stat_gitlab_fetches.py
+  artifacts:
+    paths:
+      - gl_fetches.json
+      - gl_fetches.svg
+    expire_in: 9 mos
