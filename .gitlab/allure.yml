@@ -1,6 +1,6 @@
 allure:
   stage: Generate Reports
-  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/java-allure-python:openjdk-14-allure-2.13.6-python-3.7
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7-allure2-openjdk8:v13
   script:
     - git clone --single-branch --branch gl-pages $CI_PROJECT_URL
     - JOB_ID=$(cat jobid)
