@@ -2,7 +2,7 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
-    "count": 12,
+    "count": 16,
     "uniques": 4
   },
   {
@@ -36,6 +36,12 @@
     "uniques": 1
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/17",
+    "title": "Article: Organize api tests in GitLab CI/CD. · Issue #17 · aleksandr-kotlyar/...",
+    "count": 3,
+    "uniques": 1
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/requirements.txt",
     "title": "python_and_gitlab/requirements.txt at master · aleksandr-kotlyar/python_and_g...",
     "count": 2,
@@ -50,12 +56,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/quality_control.py",
     "title": "python_and_gitlab/quality_control.py at master · aleksandr-kotlyar/python_and...",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_api.py",
-    "title": "python_and_gitlab/test_api.py at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 2,
     "uniques": 1
   }
