@@ -1,5 +1,6 @@
 .safety:
   stage: security
+  allow_failure: true
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   before_script:
@@ -19,6 +20,7 @@ Safety stdin:
 
 Trivy:
   stage: security
+  allow_failure: true
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
@@ -30,6 +32,7 @@ Trivy:
 
 Bandit:
   stage: security
+  allow_failure: true
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
