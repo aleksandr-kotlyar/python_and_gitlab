@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Mar 09 23:52:47 GMT 2021","Tue Mar 09 23:52:55 GMT 2021","7557","src.test.moretv.main_page","test_slider","","","","test_arrows_are_visible","Main Page Slider should have 2 arrows. Arrows should be visible."

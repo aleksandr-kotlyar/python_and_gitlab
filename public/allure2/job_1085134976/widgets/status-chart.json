@@ -1,0 +1,11 @@
+[ {
+  "uid" : "4f7dd0cbe71dcfc",
+  "name" : "test_arrows_are_visible",
+  "time" : {
+    "start" : 1615333967447,
+    "stop" : 1615333975004,
+    "duration" : 7557
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
