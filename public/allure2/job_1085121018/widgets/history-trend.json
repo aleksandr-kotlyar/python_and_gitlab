@@ -1,0 +1,13 @@
+[ {
+  "buildOrder" : 1085121018,
+  "reportUrl" : "https://aleksandr-kotlyar.gitlab.io/python_and_gitlab/allure2/job_1085121018/",
+  "reportName" : "Allure Report with history",
+  "data" : {
+    "failed" : 0,
+    "broken" : 0,
+    "skipped" : 0,
+    "passed" : 1,
+    "unknown" : 0,
+    "total" : 1
+  }
+} ]
