@@ -1,0 +1,22 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "children" : [ {
+    "name" : "src.test.moretv.main_page.test_slider",
+    "children" : [ {
+      "name" : "test_arrows_are_visible",
+      "uid" : "21cee792587968eb",
+      "parentUid" : "80092a66e220569eb8bcd0dc0e259519",
+      "status" : "passed",
+      "time" : {
+        "start" : 1615334484228,
+        "stop" : 1615334499061,
+        "duration" : 14833
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "src.test.moretv.main_page.test_slider"
+  } ],
+  "name" : "packages"
+}
