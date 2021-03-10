@@ -1,0 +1,160 @@
+{
+  "uid" : "65684a2e16b9431d",
+  "name" : "test_arrows_are_visible",
+  "fullName" : "src.test.moretv.main_page.test_slider#test_arrows_are_visible",
+  "historyId" : "c5ba943eddfb07bde10209a094bc2f25",
+  "time" : {
+    "start" : 1615334689925,
+    "stop" : 1615334700267,
+    "duration" : 10342
+  },
+  "description" : "Main Page Slider should have 2 arrows. Arrows should be visible.",
+  "descriptionHtml" : "<p>Main Page Slider should have 2 arrows. Arrows should be visible.</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "api_session",
+    "time" : {
+      "start" : 1615334688669,
+      "stop" : 1615334688669,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "choose_driver",
+    "time" : {
+      "start" : 1615334688670,
+      "stop" : 1615334689920,
+      "duration" : 1250
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "browser_module",
+    "time" : {
+      "start" : 1615334689921,
+      "stop" : 1615334689921,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "t_browser",
+    "time" : {
+      "start" : 1615334688670,
+      "stop" : 1615334688670,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "is_remote",
+    "time" : {
+      "start" : 1615334688670,
+      "stop" : 1615334688670,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false
+  } ],
+  "afterStages" : [ {
+    "name" : "api_session::0",
+    "time" : {
+      "start" : 1615334700328,
+      "stop" : 1615334700329,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "browser_module::0",
+    "time" : {
+      "start" : 1615334700269,
+      "stop" : 1615334700326,
+      "duration" : 57
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "src.test.moretv.main_page"
+  }, {
+    "name" : "suite",
+    "value" : "test_slider"
+  }, {
+    "name" : "host",
+    "value" : "runner-8a6210b8-project-12874939-concurrent-0"
+  }, {
+    "name" : "thread",
+    "value" : "13-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "src.test.moretv.main_page.test_slider"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "65684a2e16b9431d.json",
+  "parameterValues" : [ ]
+}
