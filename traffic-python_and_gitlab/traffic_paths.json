@@ -2,20 +2,32 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
-    "count": 16,
+    "count": 21,
     "uniques": 4
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
     "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 5,
+    "count": 4,
     "uniques": 2
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
     "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 5,
+    "count": 4,
     "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/17",
+    "title": "Article: Organize api tests in GitLab CI/CD. · Issue #17 · aleksandr-kotlyar/...",
+    "count": 4,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
+    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
+    "count": 4,
+    "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test/moretv",
@@ -36,8 +48,8 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/17",
-    "title": "Article: Organize api tests in GitLab CI/CD. · Issue #17 · aleksandr-kotlyar/...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
+    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
     "count": 3,
     "uniques": 1
   },
@@ -46,17 +58,5 @@
     "title": "python_and_gitlab/requirements.txt at master · aleksandr-kotlyar/python_and_g...",
     "count": 2,
     "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/moretv/main_page/test_slider.py",
-    "title": "python_and_gitlab/test_slider.py at master · aleksandr-kotlyar/python_and_git...",
-    "count": 2,
-    "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/quality_control.py",
-    "title": "python_and_gitlab/quality_control.py at master · aleksandr-kotlyar/python_and...",
-    "count": 2,
-    "uniques": 1
   }
 ]
