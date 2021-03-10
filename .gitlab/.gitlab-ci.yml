@@ -1,4 +1,4 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7.6-alpine-req:ver-19-docker-security-update
+image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7-allure2-openjdk8:v13
 
 stages:
   - build
@@ -7,11 +7,12 @@ stages:
   - security
   - Merge Request
   - test
-  - slack-notification
-  - upload-allure-reports
+  - Slack Notification
+  - Generate Reports
+  - deploy
 
 variables:
-  BROWSER: 'ChroMe'
+  BROWSER: 'chrome'
   REMOTE: 'True'
   ## suits
   TESTS: 'src/test --ignore=src/test/old_ctc --ignore=src/test/moretv'
@@ -29,8 +30,7 @@ include:
   - local: '.gitlab/security.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser.yml'
-  - local: '.gitlab/browser-remote.yml'
-  - local: '.gitlab/manual.yml'
+  - local: '.gitlab/allure.yml'
 
   # .job_allure_reports_upload_template:
   ## JOB TEMPLATES WITH NO_SLACK_ AND SLACK_ NOTIFICATIONS
@@ -48,25 +48,6 @@ include:
   # - curl --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_START\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
   # after_script:
   # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
-
-schedule:
-  ## JOB ON SCHEDULE
-  extends: .pytest_template
-  only:
-    refs:
-      ## For scheduled pipelines.
-      - schedules
-
-merge:master:
-  ## JOB ON MERGE_REQUESTS
-  extends: .pytest_template
-  only:
-    refs:
-      - master
-      - merge_requests
-  except:
-    refs:
-      - pushes
 
 stats:github:unique:clones:
   stage: Badge

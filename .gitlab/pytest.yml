@@ -2,6 +2,7 @@
   stage: test
   before_script:
     - echo $BROWSER
+    - echo "${CI_JOB_ID}" > jobid  # for allure report directory name in allure job
     - function lowercase(){
         echo "$1" | tr '[:upper:]' '[:lower:]';
       }
@@ -10,11 +11,13 @@
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
   allow_failure: true
   artifacts:
+    expire_in: 2 hours
     when: always
     paths:
       - reports
-  only:
-    changes:
-      - '**/*.py'
+      - jobid
+  rules:
+    - changes:
+        - '**/*.py'
   tags:
     - gitlab-org

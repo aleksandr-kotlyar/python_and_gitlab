@@ -3,16 +3,15 @@ import logging
 from selene import be, have
 
 from src.main import weekdays
+from src.main.allure_helpers import act, assertion
 
 
 def test_current_week_is_active(browser_module):
     """Assert that /programm page opens tv-program schedule on current week."""
-    logging.info('step1/2: start')
-    browser_module.open('https://ctc.ru/programm')
-    logging.info('step1/2: finish')
-    logging.info('step2/2: start')
-    browser_module.element('.current_week').should(be.visible)
-    logging.info('step2/2: finish')
+    with act('step 1/2'):
+        browser_module.open('https://ctc.ru/programm')
+    with assertion('step 2/2'):
+        browser_module.element('.current_week').should(be.visible)
 
 
 def test_current_week_has_words_in_days(browser_module):

@@ -1,0 +1,39 @@
+allure:
+  variables:
+    INPUT_ALLURE_HISTORY: reports
+  stage: Generate Reports
+  image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7-allure2-openjdk8:v13
+  when: on_success
+  script:
+    - git clone --single-branch --branch gl-pages $CI_PROJECT_URL
+    - JOB_ID=$(cat jobid)
+    - REPORT=job_${JOB_ID}
+    - CURRENT_BRANCH=${CI_PROJECT_NAME}/public/${CI_COMMIT_REF_NAME}
+    - cp -r ./${CURRENT_BRANCH}/history ${INPUT_ALLURE_HISTORY} || echo "No history"
+
+    #echo "executor.json"
+    - echo '{"name":"GitLabCI","type":"gitlab","reportName":"Allure Report with history",' > executor.json
+    - echo "\"reportUrl\":\"${CI_PAGES_URL}/${CI_COMMIT_REF_NAME}/${REPORT}/\"," >> executor.json
+    - echo "\"buildUrl\":\"${CI_PIPELINE_URL}\"," >> executor.json
+    - echo "\"buildName\":\"GitLab Job Run ${JOB_ID}\",\"buildOrder\":\"${JOB_ID}\"}" >> executor.json
+    #cat executor.json
+    - mv ./executor.json ./${INPUT_ALLURE_HISTORY}
+
+    - allure generate ${INPUT_ALLURE_HISTORY} -o ${REPORT}
+
+    - mkdir -p $CURRENT_BRANCH
+    - cp -r $REPORT $CURRENT_BRANCH
+    - cp -r ${REPORT}/history $CURRENT_BRANCH
+    - cp -r generate_index.py $CI_PROJECT_NAME
+    - cd $CI_PROJECT_NAME
+    - python3 generate_index.py public
+    - python3 generate_index.py public/${CI_COMMIT_REF_NAME}
+
+    - git config user.name "Gitlab Runner"
+    - git config user.email ${CI_EMAIL}
+    - >
+      git remote add $CI_PROJECT_NAME
+      https://oauth2:${PRIVATE_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git
+    - git add ./public
+    - git commit -m "pipeline_${CI_PIPELINE_ID}_job_${CI_JOB_ID}"
+    - git push -u $CI_PROJECT_NAME

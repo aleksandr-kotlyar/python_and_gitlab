@@ -1,7 +1,8 @@
 .safety:
   stage: security
+  allow_failure: true
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   before_script:
     - pip3 install safety
   tags:
@@ -19,8 +20,9 @@ Safety stdin:
 
 Trivy:
   stage: security
+  allow_failure: true
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
     - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
     - apk -vv info|sort
@@ -30,8 +32,9 @@ Trivy:
 
 Bandit:
   stage: security
+  allow_failure: true
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
     - pip3 install bandit
     - bandit -x $(pwd)/.venv/ -r $(pwd) -s B101
