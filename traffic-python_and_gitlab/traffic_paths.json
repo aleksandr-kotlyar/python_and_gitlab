@@ -2,8 +2,26 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
-    "count": 24,
+    "count": 38,
     "uniques": 4
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
+    "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
+    "count": 9,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
+    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
+    "count": 7,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
+    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
+    "count": 5,
+    "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
@@ -24,8 +42,14 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
-    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/projects",
+    "title": "Projects · aleksandr-kotlyar/python_and_gitlab",
+    "count": 4,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/pulls",
+    "title": "Pull requests · aleksandr-kotlyar/python_and_gitlab",
     "count": 4,
     "uniques": 1
   },
@@ -33,30 +57,6 @@
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test/moretv",
     "title": "python_and_gitlab/src/test/moretv at master · aleksandr-kotlyar/python_and_gi...",
     "count": 3,
-    "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test/moretv/main_page",
-    "title": "python_and_gitlab/src/test/moretv/main_page at master · aleksandr-kotlyar/pyt...",
-    "count": 3,
-    "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/stat_git_downloads.py",
-    "title": "python_and_gitlab/stat_git_downloads.py at master · aleksandr-kotlyar/python_...",
-    "count": 3,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
-    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
-    "count": 3,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/requirements.txt",
-    "title": "python_and_gitlab/requirements.txt at master · aleksandr-kotlyar/python_and_g...",
-    "count": 2,
     "uniques": 2
   }
 ]
