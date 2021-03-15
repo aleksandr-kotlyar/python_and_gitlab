@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
-    "count": 38,
-    "uniques": 4
+    "count": 34,
+    "uniques": 3
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
@@ -24,18 +24,6 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 4,
-    "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
-    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 4,
-    "uniques": 2
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/17",
     "title": "Article: Organize api tests in GitLab CI/CD. · Issue #17 · aleksandr-kotlyar/...",
     "count": 4,
@@ -54,9 +42,21 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test/moretv",
-    "title": "python_and_gitlab/src/test/moretv at master · aleksandr-kotlyar/python_and_gi...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
+    "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
     "count": 3,
-    "uniques": 2
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/projects/1",
+    "title": "python_and_gitlab",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/actions",
+    "title": "Actions · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 1
   }
 ]
