@@ -60,8 +60,8 @@ def allure_attachment_sources():
     """From each collected "passed" test-case find all "attachments.source" in steps."""
     attachment_sources = []
     for test_case in ALLURE_SUCCESS_TEST_CASES:
-        with open(os.path.join(ALLURE_TEST_CASES_PATH, test_case), 'r') as tc:
-            attachment_sources.append(find('attachments', json.load(tc)))
+        with open(os.path.join(ALLURE_TEST_CASES_PATH, test_case), 'r') as json_file:
+            attachment_sources.append(find('attachments', json.load(json_file)))
     attachment_sources = list(flatten(flatten(attachment_sources)))
     attachment_sources = [attachment['source'] for attachment in attachment_sources]
     return attachment_sources
@@ -98,13 +98,13 @@ def rewrite(key, data):
 def rewrite_all_test_cases_with_empty_attachments():
     """Rewrite all test-cases with empty "attachments": [ ]."""
     for test_case in ALLURE_SUCCESS_TEST_CASES:
-        with open(os.path.join(ALLURE_TEST_CASES_PATH, test_case), 'r') as tc:
-            data = json.load(tc)
+        with open(os.path.join(ALLURE_TEST_CASES_PATH, test_case), 'r') as json_file:
+            data = json.load(json_file)
 
         data = rewrite('attachments', data)
 
-        with open(os.path.join(ALLURE_TEST_CASES_PATH, test_case), "w") as tc:
-            json.dump(data, tc)
+        with open(os.path.join(ALLURE_TEST_CASES_PATH, test_case), "w") as json_file:
+            json.dump(data, json_file)
 
 
 rewrite_all_test_cases_with_empty_attachments()
