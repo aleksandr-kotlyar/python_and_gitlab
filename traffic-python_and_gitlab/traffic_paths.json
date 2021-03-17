@@ -2,25 +2,25 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pytest slack...",
-    "count": 36,
+    "count": 51,
     "uniques": 4
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
     "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
-    "count": 9,
+    "count": 11,
     "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
     "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
-    "count": 7,
+    "count": 8,
     "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
     "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
-    "count": 5,
+    "count": 6,
     "uniques": 1
   },
   {
@@ -42,21 +42,21 @@
     "uniques": 1
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/allure_clean_attachments.py",
+    "title": "python_and_gitlab/allure_clean_attachments.py at master · aleksandr-kotlyar/p...",
+    "count": 3,
+    "uniques": 1
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
     "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
     "count": 3,
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/projects/1",
-    "title": "python_and_gitlab",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/18",
+    "title": "Clean allure attachments of \"passed\" tests [python] · Issue #18 · aleksandr-k...",
     "count": 3,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/actions",
-    "title": "Actions · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
     "uniques": 1
   }
 ]
