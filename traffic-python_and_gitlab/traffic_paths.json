@@ -2,13 +2,13 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 50,
-    "uniques": 3
+    "count": 48,
+    "uniques": 4
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
     "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
-    "count": 11,
+    "count": 10,
     "uniques": 1
   },
   {
@@ -21,12 +21,6 @@
     "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
     "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
     "count": 6,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/17",
-    "title": "Article: Organize api tests in GitLab CI/CD. · Issue #17 · aleksandr-kotlyar/...",
-    "count": 4,
     "uniques": 1
   },
   {
@@ -50,6 +44,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
     "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/17",
+    "title": "Article: Organize api tests in GitLab CI/CD. · Issue #17 · aleksandr-kotlyar/...",
     "count": 3,
     "uniques": 1
   },
