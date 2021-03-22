@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 44,
-    "uniques": 4
+    "count": 41,
+    "uniques": 6
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
@@ -12,20 +12,20 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
-    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
-    "count": 6,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
-    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/18",
+    "title": "Clean allure attachments of \"passed\" tests [python] · Issue #18 · aleksandr-k...",
     "count": 4,
     "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/projects",
     "title": "Projects · aleksandr-kotlyar/python_and_gitlab",
+    "count": 4,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
+    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
     "count": 4,
     "uniques": 1
   },
@@ -42,8 +42,8 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/18",
-    "title": "Clean allure attachments of \"passed\" tests [python] · Issue #18 · aleksandr-k...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
+    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
     "count": 3,
     "uniques": 1
   },
