@@ -2,13 +2,13 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 41,
+    "count": 39,
     "uniques": 6
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
     "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
-    "count": 10,
+    "count": 9,
     "uniques": 1
   },
   {
@@ -36,12 +36,6 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/branches",
-    "title": "Branches · aleksandr-kotlyar/python_and_gitlab",
-    "count": 3,
-    "uniques": 1
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
     "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
     "count": 3,
@@ -57,6 +51,12 @@
     "path": "/aleksandr-kotlyar/python_and_gitlab/pulls",
     "title": "Pull requests · aleksandr-kotlyar/python_and_gitlab",
     "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.github/workflows/traffic2badge.yml",
+    "title": "python_and_gitlab/traffic2badge.yml at master · aleksandr-kotlyar/python_and_...",
+    "count": 2,
     "uniques": 1
   }
 ]
