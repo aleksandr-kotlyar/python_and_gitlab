@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 30,
-    "uniques": 8
+    "count": 28,
+    "uniques": 7
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/18",
@@ -24,12 +24,6 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 2
-  },
-  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.github/workflows/traffic2badge.yml",
     "title": "python_and_gitlab/traffic2badge.yml at master · aleksandr-kotlyar/python_and_...",
     "count": 2,
@@ -38,6 +32,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
     "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/20",
+    "title": "Auto-rebuild and auto-update dockerimage · Issue #20 · aleksandr-kotlyar/pyth...",
     "count": 2,
     "uniques": 1
   },
