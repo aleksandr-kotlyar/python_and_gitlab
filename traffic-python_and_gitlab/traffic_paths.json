@@ -2,38 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 28,
+    "count": 14,
     "uniques": 7
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/18",
-    "title": "Clean allure attachments of \"passed\" tests [python] · Issue #18 · aleksandr-k...",
-    "count": 4,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/allure_clean_attachments.py",
-    "title": "python_and_gitlab/allure_clean_attachments.py at master · aleksandr-kotlyar/p...",
-    "count": 3,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
-    "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
-    "count": 3,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.github/workflows/traffic2badge.yml",
-    "title": "python_and_gitlab/traffic2badge.yml at master · aleksandr-kotlyar/python_and_...",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
-    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/20",
@@ -42,21 +12,51 @@
     "uniques": 1
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/d7a682cb6c7db348d3e5b3c952fd805109aa9ce1/.gitlab/.gitlab-ci.yml",
+    "title": "python_and_gitlab/.gitlab-ci.yml at d7a682cb6c7db348d3e5b3c952fd805109aa9ce1 ...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/artifacts.py",
+    "title": "python_and_gitlab/artifacts.py at master · aleksandr-kotlyar/python_and_gitla...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/pytest.yml",
+    "title": "python_and_gitlab/pytest.yml at master · aleksandr-kotlyar/python_and_gitlab ...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/commit/d09bf1b03b5c988f69d7cbf604f9f8a52566bc11",
+    "title": "Merge branch 'moretv' into 'master' · aleksandr-kotlyar/python_and_gitlab@d09...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
+    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
+    "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/18",
+    "title": "Clean allure attachments of \"passed\" tests [python] · Issue #18 · aleksandr-k...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/new",
     "title": "New Issue · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/pull/19",
-    "title": "clean allure attachments of passed tests from AllureReport by aleksandr-kotly...",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
-    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
+    "count": 1,
     "uniques": 1
   }
 ]
