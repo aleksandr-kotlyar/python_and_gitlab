@@ -2,8 +2,8 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 14,
-    "uniques": 7
+    "count": 13,
+    "uniques": 6
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/20",
@@ -20,12 +20,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/artifacts.py",
     "title": "python_and_gitlab/artifacts.py at master · aleksandr-kotlyar/python_and_gitla...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/pytest.yml",
-    "title": "python_and_gitlab/pytest.yml at master · aleksandr-kotlyar/python_and_gitlab ...",
     "count": 1,
     "uniques": 1
   },
@@ -56,6 +50,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/new",
     "title": "New Issue · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
+    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
     "count": 1,
     "uniques": 1
   }
