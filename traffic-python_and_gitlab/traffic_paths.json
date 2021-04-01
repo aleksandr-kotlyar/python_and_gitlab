@@ -3,7 +3,7 @@
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
     "count": 13,
-    "uniques": 6
+    "uniques": 5
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/20",
@@ -20,12 +20,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/artifacts.py",
     "title": "python_and_gitlab/artifacts.py at master · aleksandr-kotlyar/python_and_gitla...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/commit/d09bf1b03b5c988f69d7cbf604f9f8a52566bc11",
-    "title": "Merge branch 'moretv' into 'master' · aleksandr-kotlyar/python_and_gitlab@d09...",
     "count": 1,
     "uniques": 1
   },
@@ -56,6 +50,12 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
     "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/search",
+    "title": "Search · slack",
     "count": 1,
     "uniques": 1
   }
