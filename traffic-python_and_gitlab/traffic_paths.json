@@ -2,19 +2,13 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 8,
-    "uniques": 4
+    "count": 6,
+    "uniques": 3
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/20",
     "title": "Auto-rebuild and auto-update dockerimage · Issue #20 · aleksandr-kotlyar/pyth...",
     "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/d7a682cb6c7db348d3e5b3c952fd805109aa9ce1/.gitlab/.gitlab-ci.yml",
-    "title": "python_and_gitlab/.gitlab-ci.yml at d7a682cb6c7db348d3e5b3c952fd805109aa9ce1 ...",
-    "count": 1,
     "uniques": 1
   },
   {
@@ -44,18 +38,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
     "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/search",
-    "title": "Search · slack",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 1,
     "uniques": 1
   }
