@@ -6,6 +6,12 @@
     "uniques": 3
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
+    "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 1
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/20",
     "title": "Auto-rebuild and auto-update dockerimage · Issue #20 · aleksandr-kotlyar/pyth...",
     "count": 2,
@@ -20,12 +26,6 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
     "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
-    "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
     "count": 1,
     "uniques": 1
   },
