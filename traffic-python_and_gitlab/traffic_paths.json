@@ -2,36 +2,30 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 6,
-    "uniques": 3
+    "count": 5,
+    "uniques": 4
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/badge.yml",
+    "title": "python_and_gitlab/badge.yml at master · aleksandr-kotlyar/python_and_gitlab ·...",
+    "count": 1,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/linter.yml",
+    "title": "python_and_gitlab/linter.yml at master · aleksandr-kotlyar/python_and_gitlab ...",
+    "count": 1,
+    "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues",
     "title": "Issues · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
+    "count": 1,
     "uniques": 1
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/issues/20",
     "title": "Auto-rebuild and auto-update dockerimage · Issue #20 · aleksandr-kotlyar/pyth...",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/artifacts.py",
-    "title": "python_and_gitlab/artifacts.py at master · aleksandr-kotlyar/python_and_gitla...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/graphs/traffic",
-    "title": "Traffic · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/issues/new",
-    "title": "New Issue · aleksandr-kotlyar/python_and_gitlab",
     "count": 1,
     "uniques": 1
   },
@@ -48,8 +42,8 @@
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/pulse",
-    "title": "Pulse · aleksandr-kotlyar/python_and_gitlab",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
+    "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
     "count": 1,
     "uniques": 1
   }
