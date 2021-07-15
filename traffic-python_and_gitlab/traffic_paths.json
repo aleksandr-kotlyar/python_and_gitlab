@@ -4,23 +4,5 @@
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
     "count": 2,
     "uniques": 2
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/artifacts.py",
-    "title": "python_and_gitlab/artifacts.py at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/quality_control.py",
-    "title": "python_and_gitlab/quality_control.py at master · aleksandr-kotlyar/python_and...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/stat_git_downloads.py",
-    "title": "python_and_gitlab/stat_git_downloads.py at master · aleksandr-kotlyar/python_...",
-    "count": 1,
-    "uniques": 1
   }
 ]
