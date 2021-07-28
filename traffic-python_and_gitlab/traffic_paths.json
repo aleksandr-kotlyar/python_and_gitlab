@@ -2,25 +2,31 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 11,
-    "uniques": 8
+    "count": 15,
+    "uniques": 11
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/.gitlab-ci.yml",
     "title": "python_and_gitlab/.gitlab-ci.yml at master · aleksandr-kotlyar/python_and_git...",
-    "count": 5,
-    "uniques": 5
+    "count": 6,
+    "uniques": 6
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
     "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
-    "count": 4,
-    "uniques": 4
+    "count": 6,
+    "uniques": 6
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/build.yml",
     "title": "python_and_gitlab/build.yml at master · aleksandr-kotlyar/python_and_gitlab",
     "count": 3,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/azure-pipelines.yml",
+    "title": "python_and_gitlab/azure-pipelines.yml at master · aleksandr-kotlyar/python_an...",
+    "count": 2,
     "uniques": 2
   },
   {
@@ -30,33 +36,27 @@
     "uniques": 2
   },
   {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/linter.yml",
+    "title": "python_and_gitlab/linter.yml at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/pytest.yml",
+    "title": "python_and_gitlab/pytest.yml at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/security.yml",
+    "title": "python_and_gitlab/security.yml at master · aleksandr-kotlyar/python_and_gitlab",
+    "count": 2,
+    "uniques": 2
+  },
+  {
     "path": "/aleksandr-kotlyar/python_and_gitlab/commit/058ee6f21a0e345746737ed31076ad6e36fb9a2e",
     "title": "new docker image python-3.7-allure2-openjdk8:v13 · aleksandr-kotlyar/python_a...",
     "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
-    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/main",
-    "title": "python_and_gitlab/src/main at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 2,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/azure-pipelines.yml",
-    "title": "python_and_gitlab/azure-pipelines.yml at master · aleksandr-kotlyar/python_an...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitignore",
-    "title": "python_and_gitlab/.gitignore at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
     "uniques": 1
   }
 ]
