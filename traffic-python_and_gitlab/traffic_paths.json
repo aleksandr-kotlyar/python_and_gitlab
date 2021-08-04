@@ -2,14 +2,32 @@
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab",
     "title": "GitHub - aleksandr-kotlyar/python_and_gitlab: Examples of gitlab-ci jobs, pyt...",
-    "count": 9,
-    "uniques": 8
+    "count": 20,
+    "uniques": 11
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/.gitlab",
     "title": "python_and_gitlab/.gitlab at master · aleksandr-kotlyar/python_and_gitlab · G...",
-    "count": 5,
-    "uniques": 5
+    "count": 6,
+    "uniques": 6
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src",
+    "title": "python_and_gitlab/src at master · aleksandr-kotlyar/python_and_gitlab · GitHub",
+    "count": 6,
+    "uniques": 2
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/tree/master/src/test",
+    "title": "python_and_gitlab/src/test at master · aleksandr-kotlyar/python_and_gitlab · ...",
+    "count": 4,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/.gitlab-ci.yml",
+    "title": "python_and_gitlab/.gitlab-ci.yml at master · aleksandr-kotlyar/python_and_git...",
+    "count": 3,
+    "uniques": 3
   },
   {
     "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/linter.yml",
@@ -18,45 +36,27 @@
     "uniques": 3
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/.gitlab-ci.yml",
-    "title": "python_and_gitlab/.gitlab-ci.yml at master · aleksandr-kotlyar/python_and_git...",
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_strings.py",
+    "title": "python_and_gitlab/test_strings.py at master · aleksandr-kotlyar/python_and_gi...",
+    "count": 3,
+    "uniques": 1
+  },
+  {
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/pytest.ini",
+    "title": "python_and_gitlab/pytest.ini at master · aleksandr-kotlyar/python_and_gitlab ...",
     "count": 2,
     "uniques": 2
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/azure-pipelines.yml",
-    "title": "python_and_gitlab/azure-pipelines.yml at master · aleksandr-kotlyar/python_an...",
-    "count": 1,
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_api.py",
+    "title": "python_and_gitlab/test_api.py at master · aleksandr-kotlyar/python_and_gitlab...",
+    "count": 2,
     "uniques": 1
   },
   {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitignore",
-    "title": "python_and_gitlab/.gitignore at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/badge.yml",
-    "title": "python_and_gitlab/badge.yml at master · aleksandr-kotlyar/python_and_gitlab ·...",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/build.yml",
-    "title": "python_and_gitlab/build.yml at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/pytest.yml",
-    "title": "python_and_gitlab/pytest.yml at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
-    "uniques": 1
-  },
-  {
-    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/.gitlab/security.yml",
-    "title": "python_and_gitlab/security.yml at master · aleksandr-kotlyar/python_and_gitlab",
-    "count": 1,
+    "path": "/aleksandr-kotlyar/python_and_gitlab/blob/master/src/test/test_duplicates.py",
+    "title": "python_and_gitlab/test_duplicates.py at master · aleksandr-kotlyar/python_and...",
+    "count": 2,
     "uniques": 1
   }
 ]
