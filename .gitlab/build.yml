@@ -29,3 +29,29 @@ Build:
     DOCKERFILE_PATH: ".docker/$IMAGE_CATEGORY/Dockerfile"
     BUILD_CONTEXT: "."
     BUILD_ARG: "--build-arg ALLURE_VERSION=$ALLURE_VERSION"
+
+Auto:docker:rebuild:test:publish:
+  extends: .build
+  stage: build
+  variables:
+    DOCKERFILE_PATH: "Dockerfile"
+    BUILD_CONTEXT: "."
+    BUILD_ARG: ""
+    IMAGE_NAME_SHA: "$CI_REGISTRY_IMAGE:sha-$CI_COMMIT_SHORT_SHA"
+    IMAGE_NAME_LATEST: "$CI_REGISTRY_IMAGE:latest"
+    TEST_PATH: "src/test/test_api.py"
+  script:
+    - docker build $BUILD_ARG -f $DOCKERFILE_PATH -t $IMAGE_NAME_SHA $BUILD_CONTEXT
+    - docker run --rm -v "$CI_PROJECT_DIR:/app" -w /app $IMAGE_NAME_SHA pytest $TEST_PATH
+    - docker tag $IMAGE_NAME_SHA $IMAGE_NAME_LATEST
+    - docker push $IMAGE_NAME_SHA
+    - docker push $IMAGE_NAME_LATEST
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      changes:
+        - Dockerfile
+        - requirements.txt
+        - Pipfile
+        - Pipfile.lock
+        - .gitlab/.gitlab-ci.yml
+        - .gitlab/build.yml
