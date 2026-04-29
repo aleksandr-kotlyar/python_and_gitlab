@@ -20,3 +20,9 @@ def httpbin2() -> HttpbinApiSessionLevelOne:
 def httpbin3() -> HttpbinApiSessionLevelTwo:
     with HttpbinApiSessionLevelTwo() as session:
         yield session
+
+
+@pytest.fixture(scope='session')
+def httpbin() -> HttpbinApiSessionLevelTwo:
+    with HttpbinApiSessionLevelTwo() as session:
+        yield session

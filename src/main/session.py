@@ -1,7 +1,4 @@
 # pylint: disable=arguments-differ
-import json
-
-import allure
 from requests import Session, Response
 
 from src.main.allure_helpers import allure_request_logger
@@ -13,47 +10,30 @@ class ApiSession(Session):
     @allure_request_logger
     def request(self, method, url, **kwargs) -> Response:
         response = super().request(method=method, url=url, **kwargs)
-
         return response
 
 
-class HttpbinApiSessionLevelOne(Session):
-    """Requests api session which has hardcoded base_url."""
+class BaseUrlApiSession(ApiSession):
+    """API session with configurable base_url and Allure logging."""
+
+    def __init__(self, base_url: str, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.base_url = base_url.rstrip('/')
 
     def request(self, method, url, **kwargs) -> Response:
-        url = f'https://httpbin.org{url}'
-        response = super().request(method=method, url=url, **kwargs)
-        return response
+        full_url = url if url.startswith('http') else f'{self.base_url}/{url.lstrip("/")}'
+        return super().request(method=method, url=full_url, **kwargs)
 
 
-class HttpbinApiSessionLevelTwo(Session):
-    """Requests api session which has hardcoded base_url.
-    And logs request/response into allure attachments."""
+class HttpbinApiSessionLevelOne(BaseUrlApiSession):
+    """Backward-compatible session with hardcoded httpbin base_url."""
 
-    def request(self, method, url, **kwargs) -> Response:
-        url = f'https://httpbin.org{url}'
-        response = super().request(method=method, url=url, **kwargs)
+    def __init__(self):
+        super().__init__(base_url='https://httpbin.org')
 
-        try:
-            allure.attach(
-                body=url.encode('utf8'),
-                name=f'Request {response.status_code} {response.request.method} '
-                     f'{response.request.url}',
-                attachment_type=allure.attachment_type.TEXT,
-                extension='txt')
-            response.json()
-            allure.attach(
-                body=json.dumps(response.json(), indent=4, ensure_ascii=False).encode('utf8'),
-                name=f'Response {response.status_code} {response.request.method} '
-                     f'{response.request.url}',
-                attachment_type=allure.attachment_type.JSON,
-                extension='json')
-        except ValueError as error:
-            allure.attach(
-                body=response.text.encode('utf8'),
-                name=f'NOT JSON Response {response.status_code} {response.request.method} '
-                     f'{response.request.url}',
-                attachment_type=allure.attachment_type.TEXT,
-                extension='txt')
-            raise error
-        return response
+
+class HttpbinApiSessionLevelTwo(BaseUrlApiSession):
+    """Backward-compatible session with hardcoded httpbin base_url."""
+
+    def __init__(self):
+        super().__init__(base_url='https://httpbin.org')
