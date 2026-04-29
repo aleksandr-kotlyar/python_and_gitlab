@@ -6,19 +6,19 @@ pytest_plugins = ['fixtures_browsers', 'fixtures_session']
 
 
 def pytest_addoption(parser):
-    """ Pytest option variables"""
-    parser.addoption('--browser',
-                     help=u'Which test browser?',
-                     choices=['chrome', 'firefox'],
-                     default='chrome')
-    parser.addoption('--remote',
-                     help=u'Is remote webdriver?',
-                     default='')
+    """Pytest option variables"""
+    parser.addoption(
+        '--browser',
+        help=u'Which test browser?',
+        choices=['chrome', 'firefox'],
+        default='chrome',
+    )
+    parser.addoption('--remote', help=u'Is remote webdriver?', default='')
 
 
 @pytest.fixture(scope='session')
 def t_browser(request):
-    """  Test browser. Params: [chrome, opera, firefox].  """
+    """Test browser. Params: [chrome, opera, firefox]."""
     return request.config.getoption('--browser')
 
 
@@ -30,20 +30,20 @@ def is_remote(request):
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_setup():
-    """ Allure hook """
+    """Allure hook"""
     with AllureCatchLogs():
         yield
 
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_call():
-    """ Allure hook """
+    """Allure hook"""
     with AllureCatchLogs():
         yield
 
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_teardown():
-    """ Allure hook """
+    """Allure hook"""
     with AllureCatchLogs():
         yield
