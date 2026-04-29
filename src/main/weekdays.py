@@ -3,8 +3,16 @@ import logging
 
 
 def in_words():
-    """ Insert [Yesterday, Today, Tomorrow] into weekdays of current week """
-    week_days = ['ПОНЕДЕЛЬНИК', 'ВТОРНИК', 'СРЕДА', 'ЧЕТВЕРГ', 'ПЯТНИЦА', 'СУББОТА', 'ВОСКРЕСЕНЬЕ']
+    """Insert [Yesterday, Today, Tomorrow] into weekdays of current week"""
+    week_days = [
+        'ПОНЕДЕЛЬНИК',
+        'ВТОРНИК',
+        'СРЕДА',
+        'ЧЕТВЕРГ',
+        'ПЯТНИЦА',
+        'СУББОТА',
+        'ВОСКРЕСЕНЬЕ',
+    ]
     current_day = datetime.datetime.today().weekday()
     week_days[current_day] = 'СЕГОДНЯ'
     if current_day > 0:

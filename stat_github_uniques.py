@@ -2,8 +2,13 @@
 import os
 from pprint import pprint
 
-from stat_git_downloads import get_current_github_stat, get_archive_stat, save_stats, \
-    public_stats, merge_two_lists_of_dicts_by_key_condition
+from stat_git_downloads import (
+    get_current_github_stat,
+    get_archive_stat,
+    save_stats,
+    public_stats,
+    merge_two_lists_of_dicts_by_key_condition,
+)
 
 GH_UNIQUE_CLONES_BADGE = os.environ.get('GH_UNIQUE_CLONES_BADGE')
 LOG_FILE = 'gh_unique_clones.json'

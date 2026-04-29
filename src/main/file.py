@@ -12,6 +12,6 @@ def read_json(filename):
     allure.attach(
         body=json.dumps(body, indent=2, ensure_ascii=False).encode('utf8'),
         name=f'JSON resource: {filename}',
-        attachment_type=allure.attachment_type.JSON
+        attachment_type=allure.attachment_type.JSON,
     )
     return body

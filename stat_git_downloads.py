@@ -24,7 +24,8 @@ def get_current_github_stat():
     stat = requests.get(
         url='https://api.github.com/repos/{0}/{1}/traffic/clones'.format(OWNER, REPO),
         headers={'Authorization': f'token {TOKEN}'},
-        params={'per': 'day'})
+        params={'per': 'day'},
+    )
 
     pprint(stat.json())
     return stat.json()
@@ -34,7 +35,8 @@ def get_current_gitlab_stat():
     print('get_current_stat')
     stat = requests.get(
         url='https://gitlab.com/api/v4/projects/{0}/statistics'.format(CI_PROJECT_ID),
-        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
+        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN},
+    )
 
     pprint(stat.json())
     return stat.json()
@@ -42,8 +44,7 @@ def get_current_gitlab_stat():
 
 def get_archive_stat(badgeid):
     print('get_archive_stat')
-    stat = requests.get(
-        url='https://gitlab.com/api/v4/projects/{0}/badges/{1}'.format(CI_PROJECT_ID, badgeid))
+    stat = requests.get(url='https://gitlab.com/api/v4/projects/{0}/badges/{1}'.format(CI_PROJECT_ID, badgeid))
     code = stat.status_code
     print(code)
     if code != 200:
@@ -88,17 +89,17 @@ def save_stats(stats, logfile):
 
 def public_stats(summary: int, label, badgesvg, badgeid, logfile):
     print('public_stats')
-    badge = anybadge.Badge(label=label,
-                           value=summary,
-                           default_color='green',
-                           num_padding_chars=1)
+    badge = anybadge.Badge(label=label, value=summary, default_color='green', num_padding_chars=1)
     badge.write_badge(badgesvg, overwrite=True)
 
     badge_put = requests.put(
         url=f'https://gitlab.com/api/v4/projects/{CI_PROJECT_ID}/badges/{badgeid}',
-        json={'link_url': f'{CI_JOB_URL}/artifacts/raw/{logfile}',
-              'image_url': f'{CI_JOB_URL}/artifacts/raw/{badgesvg}'},
-        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN})
+        json={
+            'link_url': f'{CI_JOB_URL}/artifacts/raw/{logfile}',
+            'image_url': f'{CI_JOB_URL}/artifacts/raw/{badgesvg}',
+        },
+        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN},
+    )
 
     if badge_put.status_code in [200, 201]:
         pprint('badge published')
