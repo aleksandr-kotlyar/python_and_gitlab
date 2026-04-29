@@ -1,6 +1,7 @@
 .linter_template:
   stage: Linter
   before_script:
+    - pip3 install pylint==3.3.3 anybadge==1.16.0;
     - mkdir ./pylint;
     - touch __init__.py;
   rules:
@@ -13,7 +14,7 @@
 Pylint:
   extends: .linter_template
   script:
-    - pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log
+    - pylint --rcfile=.pylintrc $PWD | tee ./pylint/pylint.log
   after_script:
     - PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint/pylint.log)
     - echo $PYLINT_SCORE

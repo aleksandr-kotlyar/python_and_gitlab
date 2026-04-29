@@ -59,7 +59,7 @@ jobs:
           python-version: '3.12'
       - name: Pylint
         run: |
-          pip install pylint
+          pip install pylint==3.3.3
           touch __init__.py
           pylint $(pwd) --rcfile=.pylintrc --disable="$(cat .pylint-disabled-rules)" --ignore-patterns=.venv,venv
           rm __init__.py
@@ -76,7 +76,7 @@ jobs:
           python-version: '3.12'
       - name: Pylint Full Report
         run: |
-          pip install pylint
+          pip install pylint==3.3.3
           touch __init__.py
           pylint $(pwd) --rcfile=.pylintrc --disable="" --ignore-patterns=.venv,venv --exit-zero
           rm __init__.py

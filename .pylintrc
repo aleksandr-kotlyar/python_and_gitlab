@@ -36,8 +36,7 @@ persistent=no
 # Specify a configuration file.
 #rcfile=
 
-# When enabled, pylint would attempt to guess common misconfiguration and emit
-# user-friendly hints instead of false-positive error messages.
+# When enabled, pylint attempts to suggest common misconfiguration fixes.
 suggestion-mode=yes
 
 # Allow loading of arbitrary C extensions. Extensions are imported into the
@@ -273,7 +272,7 @@ indent-after-paren=4
 indent-string='    '
 
 # Maximum number of characters on a single line.
-max-line-length=100
+max-line-length=120
 
 # Maximum number of lines in a module.
 max-module-lines=1000
