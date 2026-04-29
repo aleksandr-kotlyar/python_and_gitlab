@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 import allure
-import validictory
+import jsonschema
 
 RESOURCES_DIR = Path(__file__).resolve().parent / 'resources'
 
@@ -20,4 +20,4 @@ def load_json_resource(filename: str) -> dict:
 
 def validate_json_schema(data: dict, schema_filename: str) -> None:
     schema = load_json_resource(schema_filename)
-    validictory.validate(data=data, schema=schema, fail_fast=False)
+    jsonschema.validate(data=data, schema=schema)

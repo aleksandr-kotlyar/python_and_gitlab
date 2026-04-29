@@ -4,7 +4,7 @@ from pathlib import Path
 
 import allure
 import requests
-import validictory
+import jsonschema
 from pytest import mark
 
 from src.main.session import HttpbinApiSessionLevelOne as httpbin1
@@ -19,13 +19,13 @@ class TestApiLevelOne:
         with open(RESOURCES_DIR / 'get.json', encoding='utf-8') as resource_file:
             schema = json.load(resource_file)
         body = requests.get('https://httpbin.org/get', timeout=30).json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)
 
     def test_patch(self):
         with open(RESOURCES_DIR / 'patch.json', encoding='utf-8') as resource_file:
             schema = json.load(resource_file)
         body = requests.patch('https://httpbin.org/patch', timeout=30).json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)
 
 
 class TestApiLevelFive:
@@ -33,13 +33,13 @@ class TestApiLevelFive:
     def test_get(self):
         schema = load_json_resource('get.json')
         body = httpbin1().get('/get').json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)
 
     @allure.title('PATCH "https://httpbin.org/patch"')
     def test_patch(self):
         schema = load_json_resource('patch.json')
         body = httpbin1().patch('/patch').json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)
 
 
 class TestApiLevelSix:
@@ -47,13 +47,13 @@ class TestApiLevelSix:
     def test_get(self, httpbin2):
         schema = load_json_resource('get.json')
         body = httpbin2.get('/get').json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)
 
     @allure.title('PATCH "https://httpbin.org/patch"')
     def test_patch(self, httpbin2):
         schema = load_json_resource('patch.json')
         body = httpbin2.patch('/patch').json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)
 
 
 class TestApiLevelSeven:
@@ -61,10 +61,10 @@ class TestApiLevelSeven:
     def test_get(self, httpbin3):
         schema = load_json_resource('get.json')
         body = httpbin3.get('/get').json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)
 
     @allure.title('PATCH "https://httpbin.org/patch"')
     def test_patch(self, httpbin3):
         schema = load_json_resource('patch.json')
         body = httpbin3.patch('/patch').json()
-        validictory.validate(body, schema, fail_fast=False)
+        jsonschema.validate(body, schema)

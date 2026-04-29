@@ -4,6 +4,7 @@ import pytest
 from selene import Browser, Config
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -40,8 +41,10 @@ def custom_driver(t_browser):
     """ Custom driver """
     logging.debug('custom driver config start')
     if t_browser == 'chrome':
-        driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(),
-                                  options=headless_chrome_options())
+        driver = webdriver.Chrome(
+            service=ChromeService(ChromeDriverManager().install()),
+            options=headless_chrome_options()
+        )
     else:
         raise ValueError('t_browser does not set')
     driver.set_page_load_timeout(10)
