@@ -9,7 +9,6 @@
     - BROWSER=$(lowercase $BROWSER)
   script:
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
-  allow_failure: true
   artifacts:
     expire_in: 2 hours
     when: always
