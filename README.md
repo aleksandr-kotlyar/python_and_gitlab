@@ -1,33 +1,77 @@
-# Python and GitLabCI for test automation (QA)
+# Python and GitLab CI/CD Testing Cookbook
 
-![GitHub statistics](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/in_2021.svg)
-![GitHub views](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/views.svg)
-![GitHub views per week](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/views_per_week.svg)
-![GitHub clones](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/clones.svg)
-![GitHub clones per week](https://raw.githubusercontent.com/aleksandr-kotlyar/python_and_gitlab/traffic-2021/traffic-python_and_gitlab/clones_per_week.svg)
+Practical examples for building CI/CD-based QA automation workflows with Python, pytest, GitLab CI, Docker, Allure, Slack notifications, and Azure Pipelines.
 
-Hello! Here you can find examples of
-* Code quality checking jobs
-* GitLabCI: jobs with pytest execution
-* GitLabCI: slack integration
-* GitLabCI: Selenium in Docker test execution
-* Pytest: slack integration
-* Pytest: test parametrization
-* Allure: logger messages as steps
-* Allure: log each "requests" lib action
-* Multi-thread method execution examples
-* Sitemap checkers
-* Azure pipeline pytest execution
+This repository is a cookbook of reusable examples and patterns for QA engineers, SDETs, and QA leads who want to integrate automated tests, quality checks, reports, and notifications into delivery pipelines.
 
-## Installation 
-Must have `python 3.7+`
+## What this project covers
 
-`pip3 install -r requirements.txt`
+- Python test execution with pytest
+- GitLab CI jobs for automated test runs
+- Dockerized Selenium execution
+- Slack notifications from CI and pytest
+- Allure reporting and logging examples
+- Code quality checks with pylint and Black
+- Test parametrization patterns
+- Multi-thread execution examples
+- Sitemap status checking
+- Azure Pipelines pytest execution
 
-## Allure reports
-Type this in your project console:
+## Scope
 
-`pytest --alluredir=reports src\test`
+This is not a single production-ready test framework.
 
-and after test execution type `allure serve reports` then your browser will open reports.
+It is a collection of independent CI/CD testing examples that can be reused, adapted, or combined in real QA automation projects.
 
+## How to use this repository
+
+Choose a scenario:
+
+| Scenario | What it demonstrates |
+|---|---|
+| GitLab CI pytest execution | Running automated tests inside GitLab pipelines |
+| GitLab artifacts | Passing and publishing test outputs between jobs |
+| Slack notifications | Sending pipeline/test feedback to team channels |
+| Selenium in Docker | Running browser tests in isolated containers |
+| Allure reporting | Producing readable test reports and logged steps |
+| Code quality checks | Running pylint and formatting checks in CI |
+| Azure Pipelines | Running pytest outside GitLab CI |
+| Sitemap checking | Validating public links and HTTP statuses |
+
+## Quick start
+
+Requirements:
+
+- Python 3.12+
+- pip
+- Docker, optional, for browser/Selenium examples
+- Allure CLI, optional, for local report generation
+
+Install dependencies:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Run tests:
+
+```bash
+pytest src/tests
+```
+
+## Generate Allure report
+
+```bash
+pytest --alluredir=reports src/tests
+allure serve reports
+```
+
+## Design goals
+
+- keep test feedback close to the delivery pipeline
+- make test results visible and actionable
+- provide reusable CI/CD examples for QA automation teams
+- demonstrate local and CI execution patterns
+- combine tests, quality checks, reports, and notifications
