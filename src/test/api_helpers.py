@@ -20,4 +20,4 @@ def load_json_resource(filename: str) -> dict:
 
 def validate_json_schema(data: dict, schema_filename: str) -> None:
     schema = load_json_resource(schema_filename)
-    jsonschema.validate(data=data, schema=schema)
+    jsonschema.validate(instance=data, schema=schema)
