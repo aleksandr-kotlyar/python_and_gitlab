@@ -7,22 +7,24 @@ jobs:
   Black:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - uses: psf/black@20.8b1
         with:
-          args: ". --diff --target-version=py37 --skip-string-normalization=1"
+          args: ". --diff --target-version=py312 --skip-string-normalization=1"
 
   Pycodestyle:
     name: Lint Pycodestyle
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.7'
+          python-version: '3.12'
       - name: Pycodestyle
         run: |
           pip install pycodestyle
@@ -30,14 +32,14 @@ jobs:
 
   Pycodestyle-full-report:
     name: Lint Pycodestyle Full Report
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.7'
+          python-version: '3.12'
       - name: Pycodestyle Full Report
         run: |
           pip install pycodestyle
@@ -46,14 +48,14 @@ jobs:
 
   Pylint:
     name: Lint Pylint
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.7'
+          python-version: '3.12'
       - name: Pylint
         run: |
           pip install pylint
@@ -63,14 +65,14 @@ jobs:
 
   Pylint-full-report:
     name: Lint Pylint Full Report
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.7'
+          python-version: '3.12'
       - name: Pylint Full Report
         run: |
           pip install pylint
