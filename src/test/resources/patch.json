@@ -36,14 +36,8 @@
       "required": [
         "Accept",
         "Accept-Encoding",
-        "Accept-Language",
-        "Connection",
         "Content-Length",
-        "Cookie",
-        "Dnt",
         "Host",
-        "Origin",
-        "Referer",
         "User-Agent"
       ],
       "properties": {

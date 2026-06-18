@@ -2,8 +2,13 @@
 import os
 from pprint import pprint
 
-from stat_git_downloads import get_current_gitlab_stat, get_archive_stat, save_stats, \
-    public_stats, merge_two_lists_of_dicts_by_key_condition
+from stat_git_downloads import (
+    get_current_gitlab_stat,
+    get_archive_stat,
+    save_stats,
+    public_stats,
+    merge_two_lists_of_dicts_by_key_condition,
+)
 
 GL_COUNT_CLONES_BADGE = os.environ.get('GL_COUNT_CLONES_BADGE')
 LOG_FILE = 'gl_fetches.json'

@@ -7,7 +7,7 @@
       --header "PRIVATE-TOKEN: ${PRIVATE_TOKEN}"
       --data "link_url=${job_url}&image_url=${job_url}/artifacts/raw/pylint/pylint.svg" https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/badges/${BADGE_ID}
   tags:
-    - gitlab-org
+    - macos-local
 
 Badge:
   extends: .badge

@@ -1,15 +1,24 @@
-image: registry.gitlab.com/aleksandr-kotlyar/python_and_gitlab/python-3.7-allure2-openjdk8:v13
+image: python:3.14-alpine
+
+workflow:
+  rules:
+    - if: '$CI_MERGE_REQUEST_TITLE =~ /\[(ci skip|skip ci)\]/i'
+      when: never
+    - when: always
 
 stages:
   - build
   - Linter
   - Badge
+  - scan
   - security
   - Merge Request
   - test
   - Slack Notification
   - Generate Reports
   - deploy
+  - report
+  - publish
 
 variables:
   BROWSER: 'chrome'
@@ -49,7 +58,13 @@ include:
   # after_script:
   # - curl  --request POST --data-urlencode "payload={\"channel\":\"$SLACK_CHANNEL\",\"username\":\"$SLACK_USER\",\"text\":\"$SLACK_TEXT_FINISH\", \"icon_emoji\":\":gitlab:\"}" https://hooks.slack.com/services/$SLACK_TOKEN
 
+.ci_tooling_requirements:
+  before_script:
+    - python3 -m pip install --upgrade pip
+    - pip3 install -r requirements-lint.txt
+
 stats:github:unique:clones:
+  extends: .ci_tooling_requirements
   stage: Badge
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
@@ -62,6 +77,7 @@ stats:github:unique:clones:
     expire_in: 9 mos
 
 stats:github:clones:
+  extends: .ci_tooling_requirements
   stage: Badge
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
@@ -74,6 +90,7 @@ stats:github:clones:
     expire_in: 9 mos
 
 stats:gitlab:fetches:
+  extends: .ci_tooling_requirements
   stage: Badge
   rules:
     - if: '$CI_PIPELINE_SOURCE == "schedule"'

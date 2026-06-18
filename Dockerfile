@@ -1,31 +1,36 @@
-FROM python:3.7.9-alpine3.13 AS compile-image
+ARG ALLURE_VERSION=2.43.0
+
+FROM python:3.14-alpine AS compile-image
 
 WORKDIR /app
-RUN apk --no-cache -U add \
-    gcc=10.2.1_pre1-r3 \
-    libc-dev=0.7.2-r3 \
+RUN apk --no-cache add \
+    gcc \
+    libc-dev \
     && rm -rf /var/cache/apk/*
 
 COPY requirements.txt /app/requirements.txt
-ENV PATH="/app/venv/bin:$PATH"
-RUN python -m venv /app/venv
-RUN pip3 install --upgrade pip setuptools wheel \
-    && pip3 install --no-cache-dir -r requirements.txt
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
+RUN python -m venv "${VIRTUAL_ENV}"
+RUN pip install --upgrade pip setuptools wheel \
+    && pip install --no-cache-dir -r requirements.txt
 
-FROM python:3.7.9-alpine3.13 AS build-image
-COPY --from=compile-image /app/venv /app/venv
+FROM python:3.14-alpine AS build-image
+ARG ALLURE_VERSION
+COPY --from=compile-image /opt/venv /opt/venv
+
+ENV VIRTUAL_ENV=/opt/venv
+ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
 RUN apk --no-cache add \
-    git=2.30.2-r0 \
-    openjdk8-jre=8.275.01-r0 \
-    curl=7.74.0-r1 \
+    git \
+    openjdk25-jre-headless \
+    curl \
     && rm -rf /var/cache/apk/*
 
-ENV VERSION 2.13.8
-RUN wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/$VERSION/allure-commandline-$VERSION.tgz
-RUN tar -zxf allure-commandline-$VERSION.tgz
-RUN rm allure-commandline-${VERSION}.tgz
-ENV PATH="/allure-${VERSION}/bin:${PATH}"
+RUN wget https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${ALLURE_VERSION}/allure-commandline-${ALLURE_VERSION}.tgz
+RUN tar -zxf allure-commandline-${ALLURE_VERSION}.tgz
+RUN rm allure-commandline-${ALLURE_VERSION}.tgz
+ENV PATH="/allure-${ALLURE_VERSION}/bin:${PATH}"
 
-ENV PATH="/app/venv/bin:$PATH"
 WORKDIR /app

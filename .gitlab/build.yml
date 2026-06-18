@@ -1,15 +1,14 @@
 .build:
   image: docker
-  services:
-    - name: docker:dind
-      alias: docker
+  # Shared GitLab runners fallback:
+  # services:
+  #   - name: docker:dind
+  #     alias: docker
   variables:
-     # Specify to Docker where to create the certificates, Docker will
-     # create them automatically on boot, and will create
-     # `/certs/client` that will be shared between the service and
-     # build container.
-    DOCKER_TLS_CERTDIR: "/certs"
+    DOCKER_BUILDKIT: "1"
     DOCKER_DRIVER: overlay2
+    # Shared GitLab runners fallback:
+    # DOCKER_TLS_CERTDIR: "/certs"
   before_script:
     - docker info
     - echo "$CI_REGISTRY_PASSWORD" | docker login --username $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
@@ -17,7 +16,7 @@
     - docker build $BUILD_ARG -f $DOCKERFILE_PATH -t $IMAGE_NAME $BUILD_CONTEXT
     - docker push $IMAGE_NAME
   tags:
-    - gitlab-org-docker
+    - macos-local
   rules:
     - if: '$CI_PIPELINE_SOURCE == "web" && $IMAGE_TAG && $IMAGE_CATEGORY'
 
@@ -29,3 +28,33 @@ Build:
     DOCKERFILE_PATH: ".docker/$IMAGE_CATEGORY/Dockerfile"
     BUILD_CONTEXT: "."
     BUILD_ARG: "--build-arg ALLURE_VERSION=$ALLURE_VERSION"
+
+Auto:docker:rebuild:test:publish:
+  extends: .build
+  stage: build
+  variables:
+    DOCKERFILE_PATH: "Dockerfile"
+    BUILD_CONTEXT: "."
+    BUILD_ARG: ""
+    IMAGE_NAME_SHA: "$CI_REGISTRY_IMAGE:sha-$CI_COMMIT_SHORT_SHA"
+    IMAGE_NAME_LATEST: "$CI_REGISTRY_IMAGE:latest"
+    TEST_PATH: "src/test/test_api.py"
+  script:
+    - docker build $BUILD_ARG -f $DOCKERFILE_PATH -t $IMAGE_NAME_SHA $BUILD_CONTEXT
+    - docker run --rm -v "$CI_PROJECT_DIR:/app" -w /app $IMAGE_NAME_SHA pytest $TEST_PATH
+    - docker push $IMAGE_NAME_SHA
+    - |
+      if [ "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ]; then
+        docker tag $IMAGE_NAME_SHA $IMAGE_NAME_LATEST
+        docker push $IMAGE_NAME_LATEST
+      fi
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes:
+        - Dockerfile
+        - requirements.txt
+        - Pipfile
+        - Pipfile.lock
+        - .gitlab/.gitlab-ci.yml
+        - .gitlab/build.yml
+        - .gitlab/security.yml
