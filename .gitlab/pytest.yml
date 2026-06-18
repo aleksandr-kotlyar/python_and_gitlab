@@ -1,6 +1,8 @@
 .pytest_template:
   stage: test
   before_script:
+    - python3 -m pip install --upgrade pip
+    - pip3 install -r requirements.txt
     - echo $BROWSER
     - echo "${CI_JOB_ID}" > jobid  # for allure report directory name in allure job
     - function lowercase(){
@@ -9,7 +11,6 @@
     - BROWSER=$(lowercase $BROWSER)
   script:
     - pytest ${TESTS} --remote=$REMOTE --browser=$BROWSER
-  allow_failure: true
   artifacts:
     expire_in: 2 hours
     when: always
@@ -20,4 +21,4 @@
     - changes:
         - '**/*.py'
   tags:
-    - gitlab-org
+    - macos-local

@@ -1,20 +1,21 @@
 .linter_template:
   stage: Linter
   before_script:
+    - pip3 install -r requirements-lint.txt;
     - mkdir ./pylint;
     - touch __init__.py;
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
       changes:
         - '**/*.py'
+        - requirements-lint.txt
   tags:
-    - gitlab-org
+    - macos-local
 
 Pylint:
-  allow_failure: true
   extends: .linter_template
   script:
-    - pylint --rcfile=pylintrc $PWD | tee ./pylint/pylint.log
+    - pylint --rcfile=.pylintrc $PWD | tee ./pylint/pylint.log
   after_script:
     - PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint/pylint.log)
     - echo $PYLINT_SCORE
@@ -35,4 +36,4 @@ Pylint:
 #  script:
 #    - python3 quality_control.py
 #  tags:
-#    - gitlab-org
+#    - macos-local

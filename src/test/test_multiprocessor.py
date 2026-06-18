@@ -12,7 +12,7 @@ from src.main.allure_helpers import arrange, act, assertion
 
 @pytest.fixture(scope='function')
 def sitemap_urls():
-    """ Request sitemap html to get all links startswith """
+    """Request sitemap html to get all links startswith"""
 
     with arrange('Get sitemap page source'):
         sitemap_url = "https://bonus.qiwi.com/sitemap"
@@ -27,7 +27,7 @@ def sitemap_urls():
 
 # test goes about 45 seconds
 def test_multiprocessor_sitemap_checker(sitemap_urls):
-    """ Sitemap checking for 200 status code (multi thread) """
+    """Sitemap checking for 200 status code (multi thread)"""
 
     with assertion('Check all links return code 200'):
         threads = 15
@@ -39,7 +39,7 @@ def test_multiprocessor_sitemap_checker(sitemap_urls):
 # test goes about 9 minutes
 @pytest.mark.skip(reason='gitlab execution time economy')
 def test_one_thread_sitemap_checker(sitemap_urls):
-    """ Sitemap checking for 200 status code (one thread) """
+    """Sitemap checking for 200 status code (one thread)"""
 
     with assertion('Check all links return code 200'):
         for url in sitemap_urls:
@@ -48,7 +48,7 @@ def test_one_thread_sitemap_checker(sitemap_urls):
 
 
 def find_urls_on_sitemap(pagesource, startswith):
-    """ Parse sitemap html to get all links startswith """
+    """Parse sitemap html to get all links startswith"""
     # load page source in parse able way
     soup = BeautifulSoup(pagesource, 'html.parser')
     # collect all links from "href" attribute on the page into links_list
@@ -60,7 +60,7 @@ def find_urls_on_sitemap(pagesource, startswith):
 
 
 def assert_status_code(url, status_code=200):
-    """ Request url to assert response status code """
+    """Request url to assert response status code"""
     code = requests.get(url=url).status_code
     logging.debug(f'{code} {url}')
     assert_that(val=code, description='status code for link "' + url + '"').is_equal_to(status_code)

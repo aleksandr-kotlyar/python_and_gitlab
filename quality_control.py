@@ -10,9 +10,11 @@ PRIVATE_TOKEN = os.getenv('PRIVATE_TOKEN')
 
 def get_opened_merge_requests_of_source_branch(project, branch):
     """Get list of opened merge requests for source branch"""
-    response = requests.request(method='get',
-                                url=f'https://gitlab.com/api/v4/projects/{project}/merge_requests',
-                                params={'source_branch': branch, 'state': 'opened'})
+    response = requests.request(
+        method='get',
+        url=f'https://gitlab.com/api/v4/projects/{project}/merge_requests',
+        params={'source_branch': branch, 'state': 'opened'},
+    )
     assert response.status_code == 200
     return response.json()
 
@@ -24,10 +26,11 @@ def get_target_branch_of_merge_request(merge_request):
 
 def get_latest_job_artifact_of_branch(project, branch):
     """Get latest score.log artifact for branch."""
-    result = requests.request(method='get',
-                              url=f'https://gitlab.com/api/v4/projects/{project}/jobs/artifacts/'
-                                  f'{branch}/raw/pylint/score.log?job=Pylint',
-                              headers={'PRIVATE-TOKEN': PRIVATE_TOKEN}).text
+    result = requests.request(
+        method='get',
+        url=f'https://gitlab.com/api/v4/projects/{project}/jobs/artifacts/{branch}/raw/pylint/score.log?job=Pylint',
+        headers={'PRIVATE-TOKEN': PRIVATE_TOKEN},
+    ).text
     print(f'{branch} score = {result}')
     return result
 

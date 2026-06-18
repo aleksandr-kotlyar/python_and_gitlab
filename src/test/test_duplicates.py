@@ -6,17 +6,7 @@ from assertpy import soft_assertions, assert_that
 from mimesis.random import Random
 from pytest import mark
 
-SOMETHING = [
-    {
-        'key': 'abc', 'id': 1
-    },
-    {
-        'key': 'abc', 'id': 2
-    },
-    {
-        'key': 'zzz', 'id': 3
-    }
-]
+SOMETHING = [{'key': 'abc', 'id': 1}, {'key': 'abc', 'id': 2}, {'key': 'zzz', 'id': 3}]
 
 
 def test_list_of_dictionaries_does_not_duplicate_by_some_key_value():
@@ -36,14 +26,18 @@ def test_list_of_dictionaries_does_not_duplicate_by_some_key_value():
     with soft_assertions():
         for key in new_some_view:
             assert_that(len(new_some_view[key])).described_as(
-                f'key "{key}"" has duplicates "{new_some_view[key]}"').is_less_than_or_equal_to(1)
+                f'key "{key}"" has duplicates "{new_some_view[key]}"'
+            ).is_less_than_or_equal_to(1)
 
 
-@mark.parametrize('some_list', [
-    [20, 30, 20, 30, 40, 50, 15, 11, 20, 40, 50, 15, 6, 7],
-    [9, 5, 4],
-    Random().randints(20, 0, 10),
-])
+@mark.parametrize(
+    'some_list',
+    [
+        [20, 30, 20, 30, 40, 50, 15, 11, 20, 40, 50, 15, 6, 7],
+        [9, 5, 4],
+        Random().randints(20, 0, 10),
+    ],
+)
 def test_list_doesnt_have_duplicates(some_list):
     """Parametrized test asserts there is no duplicate ints in list.
 

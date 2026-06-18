@@ -20,6 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
 import json
 import os
 import sys
@@ -27,9 +28,7 @@ import sys
 from more_itertools import flatten
 
 ALLURE_REPORT_DIRECTORY_PATH = sys.argv[1]
-ALLURE_TEST_CASES_PATH = os.path.join(
-    ALLURE_REPORT_DIRECTORY_PATH, 'data', 'test-cases'
-)
+ALLURE_TEST_CASES_PATH = os.path.join(ALLURE_REPORT_DIRECTORY_PATH, 'data', 'test-cases')
 ALLURE_TEST_CASES = os.listdir(ALLURE_TEST_CASES_PATH)
 
 
@@ -73,9 +72,7 @@ ALLURE_ATTACHMENT_SOURCES = allure_attachment_sources()
 def clean_allure_attachments_of_passed_tests():
     """Go to attachments/ and clean collected "sources" one by one."""
     for attachment in ALLURE_ATTACHMENT_SOURCES:
-        attachment_path = os.path.join(
-            ALLURE_REPORT_DIRECTORY_PATH, 'data', 'attachments', attachment
-        )
+        attachment_path = os.path.join(ALLURE_REPORT_DIRECTORY_PATH, 'data', 'attachments', attachment)
         if os.path.exists(attachment_path):
             os.remove(attachment_path)
         else:
