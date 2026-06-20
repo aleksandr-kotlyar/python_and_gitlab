@@ -26,9 +26,13 @@ Trivy:
   script:
     - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
     - apk -vv info|sort
-    - trivy filesystem --exit-code 1 --skip-dirs /builds/gitlab-org-forks/ --cache-dir .trivycache/ /
+    - trivy filesystem --exit-code 1 --skip-dirs /builds/gitlab-org-forks/ --cache-dir .trivycache/ --skip-java-db-update /
   tags:
     - macos-local
+  cache:
+    key: trivy-fs
+    paths:
+      - .trivycache/
 
 Bandit:
   stage: security
@@ -70,6 +74,7 @@ Bandit:
     DOCKERIMAGE: "$CI_REGISTRY_IMAGE:sha-$CI_COMMIT_SHORT_SHA"
     SHOWSTOPPER_PRIORITY: "CRITICAL"
     TRIVYCACHE: ".cache"
+    TRIVY_SCAN_OPTIONS: "--scanners vuln --skip-java-db-update"
     ARTIFACT_FOLDER: "."
   before_script:
     - docker info
@@ -132,15 +137,16 @@ TrivyNice:
     - apk add rpm
     - export VERSION=$(wget -q -O - https://api.github.com/repos/aquasecurity/trivy/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
     - wget https://github.com/aquasecurity/trivy/releases/download/v${VERSION}/trivy_${VERSION}_Linux-64bit.tar.gz && tar zxf trivy_${VERSION}_Linux-64bit.tar.gz
+    - export TRIVY_SCAN_OPTIONS="$TRIVY_SCAN_OPTIONS --skip-dirs /allure-${ALLURE_VERSION:-2.43.0} --skip-dirs /usr/lib/jvm/"
 
     # displaying all vulnerabilities w/o failing the build
-    - ./trivy image --cache-dir $TRIVYCACHE --format json --output $ARTIFACT_FOLDER/trivy_results.json --exit-code 0 $DOCKERIMAGE
+    - ./trivy image --cache-dir $TRIVYCACHE $TRIVY_SCAN_OPTIONS --format json --output $ARTIFACT_FOLDER/trivy_results.json --exit-code 0 $DOCKERIMAGE
 
     # write vulnerabilities info to stdout in human readable format (reading pure json is not fun, eh?). You can remove this if you don't need this.
-    - ./trivy image --cache-dir $TRIVYCACHE --exit-code 0 $DOCKERIMAGE
+    - ./trivy image --cache-dir $TRIVYCACHE $TRIVY_SCAN_OPTIONS --exit-code 0 $DOCKERIMAGE
 
     # failing the build if the SHOWSTOPPER priority is found
-    - ./trivy image --cache-dir $TRIVYCACHE --exit-code 1 --severity $SHOWSTOPPER_PRIORITY --quiet $DOCKERIMAGE
+    - ./trivy image --cache-dir $TRIVYCACHE $TRIVY_SCAN_OPTIONS --exit-code 1 --severity $SHOWSTOPPER_PRIORITY --quiet $DOCKERIMAGE
 
   artifacts:
     when: always # return artifacts even after job failure
@@ -164,6 +170,9 @@ Report:
       artifacts: true
     - job: TrivyNice
       artifacts: true
+    - job: Pytest
+      artifacts: false
+      optional: true
 
   script:
     - mkdir json
