@@ -41,7 +41,15 @@ Auto:docker:rebuild:test:publish:
     TEST_PATH: "src/test/test_api.py"
   script:
     - docker build $BUILD_ARG -f $DOCKERFILE_PATH -t $IMAGE_NAME_SHA $BUILD_CONTEXT
-    - docker run --rm -v "$CI_PROJECT_DIR:/app" -w /app $IMAGE_NAME_SHA pytest $TEST_PATH
+    - |
+      TEST_CONTAINER="test-runner-${CI_JOB_ID:-local}"
+      trap 'docker rm -f "$TEST_CONTAINER" >/dev/null 2>&1 || true' EXIT
+
+      docker rm -f "$TEST_CONTAINER" >/dev/null 2>&1 || true
+      docker create --name "$TEST_CONTAINER" -w /app "$IMAGE_NAME_SHA" sh -c "while :; do sleep 3600; done"
+      docker cp "$CI_PROJECT_DIR/." "$TEST_CONTAINER:/app"
+      docker start "$TEST_CONTAINER"
+      docker exec -w /app "$TEST_CONTAINER" pytest "$TEST_PATH"
     - docker push $IMAGE_NAME_SHA
     - |
       if [ "$CI_COMMIT_BRANCH" = "$CI_DEFAULT_BRANCH" ]; then
