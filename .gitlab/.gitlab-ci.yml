@@ -1,5 +1,9 @@
 image: python:3.14-alpine
 
+default:
+  tags:
+    - macos-local
+
 workflow:
   rules:
     - if: '$CI_MERGE_REQUEST_TITLE =~ /\[(ci skip|skip ci)\]/i'

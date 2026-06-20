@@ -5,7 +5,6 @@
   rules:
     - changes:
         - src/test/moretv/**/*
-    - when: always
 
 chrome:remote:
   variables:
@@ -13,9 +12,12 @@ chrome:remote:
     REMOTE: 'True'
   extends: .browser
   services:
-    - name: selenium/standalone-chrome
+    - name: selenium/standalone-chromium
+      alias: selenium__standalone-chrome
   rules:
-    - if: $BROWSER == "chrome"
+    - if: '$BROWSER == "chrome"'
+      changes:
+        - src/test/moretv/**/*
 
 firefox:remote:
   variables:
@@ -25,7 +27,9 @@ firefox:remote:
   services:
     - name: selenium/standalone-firefox
   rules:
-    - if: $BROWSER == "firefox"
+    - if: '$BROWSER == "firefox"'
+      changes:
+        - src/test/moretv/**/*
       when: manual
 
 chrome:local:manual:
