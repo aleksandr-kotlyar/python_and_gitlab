@@ -1,5 +1,7 @@
 .badge:
   stage: Badge
+  before_script:
+    - apk --no-cache add curl
   script:
     - job_url=$(head -n 1 ./pylint/job_url.log)
     - >

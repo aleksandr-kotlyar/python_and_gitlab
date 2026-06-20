@@ -25,6 +25,8 @@ stages:
   - publish
 
 variables:
+  GIT_DEPTH: "0"
+  GIT_CLONE_PATH: "$CI_BUILDS_DIR/$CI_CONCURRENT_PROJECT_ID/$CI_PROJECT_PATH"
   BROWSER: 'chrome'
   REMOTE: 'True'
   ## suits
@@ -43,6 +45,12 @@ include:
   - local: '.gitlab/security.yml'
   - local: '.gitlab/pytest.yml'
   - local: '.gitlab/browser.yml'
+  - component: gitlab.com/aleksandr-kotlyar/gitlab-allure-history/gitlab-allure-history@2026.2.9
+    inputs:
+      environment: dev
+      allure-history-image-tag: "2026.2.9"
+      pages-branch: gl-pages
+      reports-to-keep: "30"
   - local: '.gitlab/allure.yml'
 
   # .job_allure_reports_upload_template:

@@ -4,7 +4,7 @@
     - python3 -m pip install --upgrade pip
     - pip3 install -r requirements.txt
     - echo $BROWSER
-    - echo "${CI_JOB_ID}" > jobid  # for allure report directory name in allure job
+    - echo "${CI_JOB_ID}" > jobid  # for allure report directory name in publish-allure-history
     - function lowercase(){
         echo "$1" | tr '[:upper:]' '[:lower:]';
       }
@@ -15,10 +15,18 @@
     expire_in: 2 hours
     when: always
     paths:
-      - reports
+      - allure-results
       - jobid
   rules:
     - changes:
         - '**/*.py'
+        - requirements.txt
+        - pytest.ini
+        - .gitlab/.gitlab-ci.yml
+        - .gitlab/allure.yml
+        - .gitlab/pytest.yml
   tags:
     - macos-local
+
+Pytest:
+  extends: .pytest_template
