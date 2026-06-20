@@ -30,6 +30,7 @@ Choose a scenario:
 | Scenario | What it demonstrates |
 |---|---|
 | GitLab CI pytest execution | Running automated tests inside GitLab pipelines |
+| GitLab CI/CD and Docker | Moving from basic jobs to Docker images, schedules, variables, and parallel test pipelines |
 | GitLab artifacts | Passing and publishing test outputs between jobs |
 | Slack notifications | Sending pipeline/test feedback to team channels |
 | Selenium in Docker | Running browser tests in isolated containers |
